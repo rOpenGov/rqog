@@ -39,9 +39,10 @@ indicatorQogBasic <- function(urli = "http://www.qogdata.pol.gu.se/data/qog_bas_
 #' Download data from Quality of Government Institute Basic data at
 #' \url{http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/}
 #'
-#' @param country Character string. Name of the country
+#' @param country Character string. Name of the country. Value \code{"all"} returns data from all the countries.
+#' @param year Numeric. Year or years (eg. (\code{c("2000:2003")}). Value \code{0} returns data from all the years available.
 #' @param indicator Character string. Select indicator from the \code{indicator} column 
-#' of data frame returned by function \code{QogIndicator()}. More than one country or indicator 
+#' of data frame returned by function \code{qogIndicator()}. More than one country or indicator 
 #' is allowed using \code{c("indicator1","indicator2")}
 #'  
 #' @return data frame with 4 columns
