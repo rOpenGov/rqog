@@ -63,7 +63,7 @@ getQogBasic <- function(country = "all",
                     sep = ";")
   
   indicatorx <- c("cname","year",indicator)
-  if (country != "all") df <- qog[qog.l$cname %in% c(country), ]
+  if (country != "all") df <- qog[qog$cname %in% c(country), ]
   if (country == "all") df <- qog
   
   df <- df[, c(indicatorx)]
