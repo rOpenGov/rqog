@@ -12,32 +12,32 @@
 
 
 #' List the currently available 
-#' indicators from Quality of Government Institute Basic data
+#' indicators from Quality of Government Institute Standard data
 #' 
 #' List the currently available 
-#' indicators from Quality of Government Institute Basic data
-#' \url{http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/}
+#' indicators from Quality of Government Institute Standard data
+#' \url{http://www.qog.pol.gu.se/data/datadownloads/qogstandarddata/}
 #'
 #' @param urli is the url address to the data
 #'
 #' @return string of names of available indicators
 #' 
 #' @export
-#' @examples # available.indicators <- indicatorQogBasic()
+#' @examples # available.indicators <- indicatorQogStandard()
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
 
-indicatorQogBasic <- function(urli = "http://www.qogdata.pol.gu.se/data/qog_bas_ts_30aug13.csv") {
+indicatorQogStandard <- function(urli = "http://www.qogdata.pol.gu.se/data/qog_std_ts_15may13.csv") {
   qog.l <- read.csv(urli, sep = ";")
   l <- colnames(qog.l)
   l
 }
 
 
-#' Download data from Quality of Government Institute Basic data
+#' Download data from Quality of Government Institute Standard data
 #' 
-#' Download data from Quality of Government Institute Basic data at
-#' \url{http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/}
+#' Download data from Quality of Government Institute Standard data at
+#' \url{http://www.qog.pol.gu.se/data/datadownloads/qogstandarddata/}
 #'
 #' @param country Character string. Name of the country
 #' @param indicator Character string. Select indicator from the \code{indicator} column 
@@ -53,19 +53,19 @@ indicatorQogBasic <- function(urli = "http://www.qogdata.pol.gu.se/data/qog_bas_
 #'  }
 #' 
 #' @export
-#' @examples # dat <- getQogBasic(country = c("Russia", "China"), indicator = c("undp_hdi", "fh_polity2"))
+#' @examples # dat <- getQogStandard(country = c("Russia", "China"), indicator = c("undp_hdi", "fh_polity2"))
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
-getQogBasic <- function(country = "all", 
-                        indicator = "undp_hdi",
-                        year = 0) {
-  qog <- read.csv("http://www.qogdata.pol.gu.se/data/qog_bas_ts_30aug13.csv", 
-                    sep = ";")
+getQogStandard <- function(country = "all", 
+                           indicator = "undp_hdi",
+                           year = 0) {
+  qog <- read.csv("http://www.qogdata.pol.gu.se/data/qog_std_ts_15may13.csv", 
+                      sep = ";")
   
-  indicatorx <- c("cname","year",indicator)
-  if (country != "all") df <- qog[qog.l$cname %in% c(country), ]
+  if (country != "all") df <- qog[qog$cname %in% c(country), ]
   if (country == "all") df <- qog
-  
+
+  indicatorx <- c("cname","year",indicator)
   df <- df[, c(indicatorx)]
   library(reshape2)
   df.l <- melt(df, id.vars=c("cname","year"))

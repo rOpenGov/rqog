@@ -6,9 +6,10 @@ Date: 2013-12-05
 Author: Markus Kainu
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 VignetteBuilder: knitr
-Depends:
-    R (>= 3.0.0)
+Depends: R (>= 3.0.0), reshape2
 Description: Search, extract and format data from the Quality of Government Institute data
 License: MIT
 Collate:
-    'qog.R'
+    'rQog.R'
+    'QogBasic.R'
+    'QogStandard.R'
