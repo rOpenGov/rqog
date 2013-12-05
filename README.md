@@ -2,7 +2,7 @@
 
 *Search, extract and format data from the Quality of Government Institute data*
 
-Quotation form [ Quality of Governance institute website](http://www.qog.pol.gu.se/)
+Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.se/)
 
 >The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.
 
@@ -19,10 +19,6 @@ Quotation form [ Quality of Governance institute website](http://www.qog.pol.gu.
 **rQog**-package provides access to **Basic** and **Standard** datasets through functions `getQogBasic()` and `getQogStandard()`. **Standard** data has all the same indicators  as in **Basic** data (143 variables) and an additional 585 indicators.
 
 Quality of Government Institute provides codebooks for all datasets (see [Basic codebook](http://www.qogdata.pol.gu.se/codebook/codebook_basic_30aug13.pdf) and [Standard codebook](http://www.qogdata.pol.gu.se/codebook/codebook_standard_15may13.pdf)) and you should use the codebooks to find the indicator code you are interested in and pass it to either of two functions.
-
-### STATA-package
-
-*Christoph Thewes, from University of Potsdam* has already written a package for STATA users. [See details from QoG website](http://www.qog.pol.gu.se/data/dataextras/forstatausers/)
 
 
 ## Installation
@@ -124,4 +120,7 @@ ggplot(map.df, aes(long,lat,group=group)) +
 
 
 
+### STATA-package
+
+*Christoph Thewes, from University of Potsdam* has already written a package for STATA users. [See details from QoG website](http://www.qog.pol.gu.se/data/dataextras/forstatausers/)
 
