@@ -113,7 +113,7 @@ We will include all the countries and all the years included in the data.
 ```r
 library(rQog)
 # Download a local coppy of the file
-getQog("SocialPolicy")
+getQog("socialPolicy")
 # Read the data
 dat <- read.csv("data/qog_soc_tsl_4apr12.csv", sep = ";")
 # Subset the data
@@ -184,4 +184,3 @@ ggplot(map.df, aes(long,lat,group=group)) +
 ### STATA-package
 
 *Christoph Thewes, from University of Potsdam* has already written a package for STATA users. [See details from QoG website](http://www.qog.pol.gu.se/data/dataextras/forstatausers/)
-
