@@ -1,14 +1,13 @@
 Package: rQog
 Type: Package
-Title: Search, extract and format data from the Quality of Government Institute data
-Version: 0.1.0
-Date: 2013-12-05
+Title: Download data from the Quality of Government Institute data
+Version: 0.1.1
+Date: 2013-12-23
 Author: Markus Kainu
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 VignetteBuilder: knitr
-Depends: R (>= 3.0.0), reshape2
-Description: Search, extract and format data from the Quality of Government Institute data
+Depends: R (>= 3.0.0)
+Description: Download data from the Quality of Government Institute data
 License: MIT
 Collate:
-    'rQog.R'
     'getQog.R'

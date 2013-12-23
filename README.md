@@ -1,6 +1,6 @@
 # rQog-package
 
-*Search, extract and format data from the Quality of Government Institute data*
+*Download data from the Quality of Government Institute data*
 
 Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.se/)
 
@@ -8,7 +8,7 @@ Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.
 
 >The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.
 
-**Quality of Government institute** provides data in five different data sets
+**Quality of Government institute** provides data in five different data sets, both in cross-sectional and longitudinal versions:
 
 1. [QoG Basic Data](http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/)
 2. [QoG Standard Data](http://www.qog.pol.gu.se/data/datadownloads/qogstandarddata/)
@@ -16,9 +16,15 @@ Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.
 4. [QoG Expert Survey Data](http://www.qog.pol.gu.se/data/datadownloads/qogexpertsurveydata/) 
 5. [QoG EU Regional Data](http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/)
 
-**rQog**-package provides access to **Basic** and **Standard** datasets through functions `getQogBasic()` and `getQogStandard()`. **Standard** data has all the same indicators  as in **Basic** data (143 variables) and an additional 585 indicators.
+**rQog**-package provides access to **Basic**, **Standard** and **Social Policy** datasets through function `getQog()`. **Standard** data has all the same indicators as in **Basic** data (143 variables) and an additional 585 indicators. Both **basic** and **standard** datasets have 211 countries. **Social Policy** dataset has 1009 indicators from 40 countries. **rQog** uses *longitudinal* datasets has time-series of varying duration from majority of the indicators and countries.
 
-Quality of Government Institute provides codebooks for all datasets (see [Basic codebook](http://www.qogdata.pol.gu.se/codebook/codebook_basic_30aug13.pdf) and [Standard codebook](http://www.qogdata.pol.gu.se/codebook/codebook_standard_15may13.pdf)) and you should use the codebooks to find the indicator code you are interested in and pass it to either of two functions.
+Quality of Government Institute provides codebooks for all datasets: 
+
+1. [Basic data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_basic_30aug13.pdf)
+2. [Standard data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_standard_15may13.pdf)) 
+3. [Social Policy data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_social_4apr12.pdf)
+
+You consult the codebooks for description of the data and indicators.
 
 
 ## Installation
@@ -35,27 +41,34 @@ library(rQog)
 
 ### Basic Data
 
-Basic data has a limited selection of most common indicators incluidng totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries and plot it.
+Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plot it.
 
 
 ```r
 library(rQog)
-dat <- getQogBasic(country = c("Russia","China","India","Brazil"), # country,countries
-              indicator=c("undp_hdi","fh_polity2")) # indicator(s)
+# Download a local coppy of the file
+getQog("basic")
+# Read the data
+dat <- read.csv("data/qog_bas_ts_30aug13.csv", sep = ";")
+# Subset the data
+dat2 <- dat[dat$cname %in% c("Russia", "China", "India", "Brazil"), ]
+dat2 <- dat2[c("cname", "year", "undp_hdi", "fh_polity2")]
+dat2 <- dat2[dat2$year %in% 1990:2010, ]
+# melt to long format
+library(reshape2)
+dat.l <- melt(dat2, id.vars = c("cname", "year"))
+dat.l <- dat.l[!is.na(dat.l$value), ]
 library(ggplot2)
-ggplot(dat, aes(x=year,y=value,color=cname)) + 
-  geom_point() + geom_line() +
-  geom_text(data=merge(dat,aggregate(year ~ cname, dat, max),
-                     by=c("year","cname")),
-          aes(x=year,y=value,label=cname),
-          hjust=1,vjust=-1,size=3,alpha=.8) +
-  facet_wrap(~indicator, scales="free") +
-  theme(legend.position="none")
+# Plot the data
+ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_line() + 
+    geom_text(data = merge(dat.l, aggregate(year ~ cname, dat.l, max), by = c("year", 
+        "cname")), aes(x = year, y = value, label = cname), hjust = 1, vjust = -1, 
+        size = 3, alpha = 0.8) + facet_wrap(~variable, scales = "free") + theme(legend.position = "none")
 ```
 
 
 
-### Standard Data
+### Social Policy data
 
 Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
@@ -63,17 +76,58 @@ Standard data includes a all the indicators 748 variables. Below is an example o
 
 ```r
 library(rQog)
-dat <- getQogStandard(country = c("Russia","China","India","Brazil"), # country,countries
-              indicator=c("epi_epi","dpi_hlio")) # indicator(s)
+# Download a local coppy of the file
+getQog("standard")
+# Read the data
+dat <- read.csv("data/qog_std_ts_15may13.csv", sep = ";")
+# Subset the data
+dat2 <- dat[dat$cname %in% c("Russia", "China", "India", "Brazil"), ]
+dat2 <- dat2[c("cname", "year", "epi_epi", "dpi_hlio")]
+dat2 <- dat2[dat2$year %in% 2000:2010, ]
+# melt to long format
+library(reshape2)
+dat.l <- melt(dat2, id.vars = c("cname", "year"))
+dat.l <- dat.l[!is.na(dat.l$value), ]
+# Plot the data
 library(ggplot2)
-ggplot(dat, aes(x=year,y=value,color=cname)) + 
-  geom_point() + geom_line() +
-  geom_text(data=merge(dat,aggregate(year ~ cname, dat, max),
-                     by=c("year","cname")),
-          aes(x=year,y=value,label=cname),
-          hjust=1,vjust=-1,size=3,alpha=.8) +
-  facet_wrap(~indicator, scales="free") +
-  theme(legend.position="none")
+ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_line() + 
+    geom_text(data = merge(dat.l, aggregate(year ~ cname, dat.l, max), by = c("year", 
+        "cname")), aes(x = year, y = value, label = cname), hjust = 1, vjust = -1, 
+        size = 3, alpha = 0.8) + facet_wrap(~variable, scales = "free") + theme(legend.position = "none")
+```
+
+
+### Social Policy data
+
+Social Policy data includes 1009 variables, but from a smaller number of wealthier countries of 41. In the example below four indicators:
+
+1. Total social expenditure (public) `socx_tput`
+2. Total social expenditure (mandatory private) `socx_tmpt`
+3. Old age expenditure (public) `socx_oput`
+4. Old age expenditure (mandatory private) `socx_ompt`
+
+We will include all the countries and all the years included in the data.
+
+
+
+```r
+library(rQog)
+# Download a local coppy of the file
+getQog("SocialPolicy")
+# Read the data
+dat <- read.csv("data/qog_soc_tsl_4apr12.csv", sep = ";")
+# Subset the data
+dat2 <- dat[c("cname", "year", "socx_tput", "socx_tmpt", "socx_oput", "socx_ompt")]
+# melt to long format
+library(reshape2)
+dat.l <- melt(dat2, id.vars = c("cname", "year"))
+dat.l <- dat.l[!is.na(dat.l$value), ]
+library(ggplot2)
+# Plot the data
+ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_line() + 
+    geom_text(data = merge(dat.l, aggregate(year ~ cname, dat.l, max), by = c("year", 
+        "cname")), aes(x = year, y = value, label = cname), hjust = 1, vjust = -1, 
+        size = 3, alpha = 0.8) + facet_wrap(~variable, scales = "free") + theme(legend.position = "none")
 ```
 
 
@@ -96,11 +150,18 @@ shape$id <- rownames(shape@data)
 map.points <- fortify(shape, region = "id")
 map.df <- merge(map.points, shape, by = "id")
 ## laod the data with all countries
-dat <- getQogStandard(country = "all", # country,countries
-              indicator=c("epi_epi"),
-                      year = 2008) # indicator(s)
+getQog("standard")
+# Read the data
+dat <- read.csv("data/qog_std_ts_15may13.csv",sep=";")
+# Subset the data
+dat2 <- dat[c("cname","year","epi_epi")]
+dat2 <- dat2[dat2$year %in% 2008,]
+# melt to long format
+library(reshape2)
+dat.l <- melt(dat2, id.vars=c("cname","year"))
+dat.l <- dat.l[!is.na(dat.l$value), ]
 # merge the datas using country names
-map.df <- merge(map.df, dat, by.x = "NAME", by.y = "cname", all.x = TRUE)
+map.df <- merge(map.df, dat.l, by.x = "NAME", by.y = "cname", all.x = TRUE)
 # order the data for smooth plotting
 map.df <- map.df[order(map.df$order), ]
 
@@ -114,7 +175,7 @@ ggplot(map.df, aes(long,lat,group=group)) +
   scale_fill_gradient2(low="white", high="blue")+
     theme(legend.position="top") +
   labs(title=paste("Indicator mapped is ",
-                    as.character(dat[1, "indicator"]),
+                    as.character(dat.l[1, "variable"]),
                     sep=""))
 ```
 
