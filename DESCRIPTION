@@ -11,5 +11,4 @@ Description: Search, extract and format data from the Quality of Government Inst
 License: MIT
 Collate:
     'rQog.R'
-    'QogBasic.R'
-    'QogStandard.R'
+    'getQog.R'
