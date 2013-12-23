@@ -134,22 +134,11 @@ ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_lin
 
 ### Spatial visualisation of Quality of Government data
 
-Here I'm downloading the whole world shapefile from www-mappinghacks.com. I'm taking a bit of a shortcut here as I'm converting the `SpatialPolygonDataFrame` right away into regular `data.frame` using `fortify`-function from **ggplot2**. Thereafter I extract the *Enviromental Performance Index* from **Standard** data and merge it with map data and plot whole world using mercator projetion. Grey color stands for missing data.
-
+First I extract the *Enviromental Performance Index* from **Standard** data and merge it with map data using `joinCountryData2Map()`-funktion from [**rworldmap**](http://cran.r-project.org/web/packages/rworldmap/index.html), then fortify the `SpatialPolygonDataFrame` into regular `data.frame` using `fortify`-function from **ggplot2**,  and finally plot whole world using mercator projetion. Grey color stands for missing data.
 
 
 ```r
-download.file("http://www.mappinghacks.com/data/TM_WORLD_BORDERS-0.2.zip", destfile = "worldborders.zip")
-# unzip to SpatialPolygonsDataFrame
-unzip("worldborders.zip")
-library(rgdal)
-shape <- readOGR(dsn = "./", layer = "TM_WORLD_BORDERS-0.2")
-# fortify the data
-library(ggplot2)
-shape$id <- rownames(shape@data)
-map.points <- fortify(shape, region = "id")
-map.df <- merge(map.points, shape, by = "id")
-## laod the data with all countries
+library(rQog)
 getQog("standard")
 # Read the data
 dat <- read.csv("data/qog_std_ts_15may13.csv",sep=";")
@@ -160,11 +149,17 @@ dat2 <- dat2[dat2$year %in% 2008,]
 library(reshape2)
 dat.l <- melt(dat2, id.vars=c("cname","year"))
 dat.l <- dat.l[!is.na(dat.l$value), ]
-# merge the datas using country names
-map.df <- merge(map.df, dat.l, by.x = "NAME", by.y = "cname", all.x = TRUE)
+# merge the data using rworldmap
+library(rworldmap)
+shape <- joinCountryData2Map(dat.l,joinCode = "NAME",nameJoinColumn = "cname")
+# fortify the SpatialPolygonDataFrame into data.frame
+library(ggplot2)
+shape$id <- rownames(shape@data)
+map.points <- fortify(shape, region = "id")
+map.df <- merge(map.points, shape, by = "id")
 # order the data for smooth plotting
 map.df <- map.df[order(map.df$order), ]
-
+# and plot
 library(ggplot2)
 ggplot(map.df, aes(long,lat,group=group)) +
   geom_polygon(aes(fill=value)) +
