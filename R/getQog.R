@@ -25,8 +25,7 @@
 #' @examples # get_qog(which.data="basic",data.dir="data")
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
-get_qog <- function(which.data = "basic", data.dir = "~/tmp", 
-                    cache=TRUE) {
+get_qog <- function(which.data = "basic", data.dir = "~/tmp") {
     # URL's for different data's
     data.url <- "http://www.qogdata.pol.gu.se/data/"
     
@@ -124,7 +123,8 @@ read_qog <- function(which.data = "basic", data.dir = "~/tmp") {
 #' is allowed using \code{c("indicator1","indicator2")}
 
 
-subset_qog <- function(country=c("Finland","Sweden"),
+subset_qog <- function(object.name="dat",
+                       country=c("Finland","Sweden"),
                        years=2000:2010,
                        indicator=c("undp_hdi","fh_polity2")) {
     if (exists("dat") == FALSE) {
