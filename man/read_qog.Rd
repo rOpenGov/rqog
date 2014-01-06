@@ -1,6 +1,6 @@
 \name{read_qog}
 \alias{read_qog}
-\title{Read Quality of Government Institute data in R}
+\title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
 read_qog(which.data = "basic", data.dir = "~/tmp")
 }
