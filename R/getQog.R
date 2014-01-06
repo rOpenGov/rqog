@@ -25,19 +25,18 @@
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
 read_qog <- function(which.data = "basic", data.dir = "~/tmp") {
-        
         # Beginning of the URL's for all data's
         data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
-    
-    if (which.data == "basic") {
         # local csv that will be read
-        name.csv <- "qog_bas_ts_30aug13.csv"
-        # local data directory
+        if (which.data == "basic")          name.csv <- "qog_bas_ts_30aug13.csv"
+        if (which.data == "standard")       name.csv <- "qog_std_ts_15may13.csv"
+        if (which.data == "social_policy")  name.csv <- "qog_soc_tsl_4apr12.csv"        
+        # creating local file path
         local.path <- file.path(data.dir, name.csv)
         # Check whether to local file exist.
         # If it does not exist then download it
         if (!file.exists(local.path) == TRUE) {
-            # create local folder if it is missing
+             # create local folder if it is missing
             if (!file.exists(data.dir)) dir.create(data.dir)
             # Create the web address from where to fetch the csv
             data.url <- paste(data.url.begin, name.csv, sep = "")
@@ -48,56 +47,10 @@ in file: ", local.path,"
 -----------------------------------
 -----------------------------------", sep=""))
             download.file(data.url, destfile = local.path)
-        }
-    }
-            
-    if (which.data == "standard") {
-        # local csv that will be read
-        name.csv <- "qog_std_ts_15may13.csv"
-        # local data directory
-        local.path <- file.path(data.dir, name.csv)
-        # Check whether to local file exist.
-        # If it does not exist then download it
-        if (!file.exists(local.path) == TRUE) {
-            # create local folder if it is missing
-            if (!file.exists(data.dir)) dir.create(data.dir)
-            # Create the web address from where to fetch the csv
-            data.url <- paste(data.url.begin, name.csv, sep = "")
-            message(paste("Local file not found.
-Downloading QoG ",which.data," data 
-from ",data.url, " 
-in file: ", local.path," 
------------------------------------
------------------------------------", sep=""))
-            download.file(data.url, destfile = local.path)
-        }
-    }
-    
-    if (which.data == "social_policy") {
-        # local csv that will be read
-        name.csv <- "qog_soc_tsl_4apr12.csv"
-        # local data directory
-        local.path <- file.path(data.dir, name.csv)
-        # Check whether to local file exist.
-        # If it does not exist then download it
-        if (!file.exists(local.path) == TRUE) {
-            # create local folder if it is missing
-            if (!file.exists(data.dir)) dir.create(data.dir)
-            # Create the web address from where to fetch the csv
-            data.url <- paste(data.url.begin, name.csv, sep = "")
-            message(paste("Local file not found.
-Downloading QoG ",which.data," data 
-from ",data.url, " 
-in file: ", local.path," 
------------------------------------
------------------------------------", sep=""))
-            download.file(data.url, destfile = local.path)
-        }
-    }
-    # read the local file file
+     }
+    # read the local file in every case
     message(paste("Reading local file from ",local.path, sep=""))
     read.csv(local.path, sep=";")
-        
 }
 
 
