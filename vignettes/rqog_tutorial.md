@@ -47,7 +47,8 @@ library(rQog)
 
 ### Basic Data
 
-Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plot it.
+Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plo
+
 
 
 ```r
