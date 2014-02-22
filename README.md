@@ -1,4 +1,4 @@
-# rQog-package
+# rqog-package
 
 
 ## Installation
@@ -7,7 +7,7 @@
 ```r
 library(devtools)
 install_github(repo = "rQog", username = "muuankarski")
-library(rQog)
+library(rqog)
 ```
 
 
@@ -15,7 +15,7 @@ library(rQog)
 
 
 ```r
-library(rQog)
+library(rqog)
 # Reading the data
 dat <- read_qog(which.data = "standard", data.dir = "datafolder")
 ```
