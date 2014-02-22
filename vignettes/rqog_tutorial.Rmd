@@ -52,8 +52,6 @@ library(rQog)
 # Download a local coppy of the file
 dat <- read_qog(which.data="basic",
                  data.dir="~/temp/")
-# Read the data
-dat <- read.csv("data/qog_bas_ts_30aug13.csv",sep=";")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia","China","India","Brazil"), ]
 dat2 <- dat2[c("cname","year","undp_hdi","fh_polity2")]

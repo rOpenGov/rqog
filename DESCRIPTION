@@ -2,7 +2,7 @@ Package: rQog
 Type: Package
 Title: Download data from the Quality of Government Institute data
 Version: 0.1.1
-Date: 2013-12-23
+Date: 2014-02-22
 Author: Markus Kainu
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 VignetteBuilder: knitr
