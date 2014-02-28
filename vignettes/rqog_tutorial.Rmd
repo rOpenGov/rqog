@@ -35,7 +35,7 @@ You consult the codebooks for description of the data and indicators.
 
 ## Installation
 
-```{r, eval=FALSE, message=FALSE}
+```{r, eval=TRUE, message=FALSE}
 library(devtools)
 install_github(repo = "rqog", username = "muuankarski")
 library(rqog)
@@ -52,7 +52,7 @@ Basic data has a limited selection of most common indicators incluiding totally 
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog(which.data="basic",
-                 data.dir="~/temp/")
+                 data.dir="datafolder")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia","China","India","Brazil"), ]
 dat2 <- dat2[c("cname","year","undp_hdi","fh_polity2")]
@@ -79,12 +79,10 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
 
-```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
-getQog("standard")
-# Read the data
-dat <- read.csv("data/qog_std_ts_15may13.csv",sep=";")
+dat <- read_qog("standard",data.dir="datafolder")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia","China","India","Brazil"), ]
 dat2 <- dat2[c("cname","year","epi_epi","dpi_hlio")]
@@ -117,12 +115,10 @@ Social Policy data includes 1009 variables, but from a smaller number of wealthi
 We will include all the countries and all the years included in the data.
 
 
-```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
-getQog("socialPolicy")
-# Read the data
-dat <- read.csv("data/qog_soc_tsl_4apr12.csv",sep=";")
+dat <- read_qog("social_policy",data.dir="datafolder")
 # Subset the data
 dat2 <- dat[c("cname","year","socx_tput","socx_tmpt","socx_oput","socx_ompt")]
 # melt to long format
@@ -146,11 +142,9 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 First I extract the *Enviromental Performance Index* from **Standard** data and merge it with map data using `joinCountryData2Map()`-funktion from [**rworldmap**](http://cran.r-project.org/web/packages/rworldmap/index.html), then fortify the `SpatialPolygonDataFrame` into regular `data.frame` using `fortify`-function from **ggplot2**,  and finally plot whole world using mercator projetion. Grey color stands for missing data.
 
-```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
-getQog("standard")
-# Read the data
-dat <- read.csv("data/qog_std_ts_15may13.csv",sep=";")
+dat <- read_qog("standard",data.dir="datafolder")
 # Subset the data
 dat2 <- dat[c("cname","year","epi_epi")]
 dat2 <- dat2[dat2$year %in% 2008,]
@@ -180,11 +174,16 @@ ggplot(map.df, aes(long,lat,group=group)) +
     theme(legend.position="top") +
   labs(title=paste("Indicator mapped is ",
                     as.character(dat.l[1, "variable"]),
+                   "from year ",
+                   as.character(dat.l[1, "year"]),
                     sep=""))
 ```
 
+
+<!--
 
 ### STATA-package
 
 *Christoph Thewes, from University of Potsdam* has already written a package for STATA users. [See details from QoG website](http://www.qog.pol.gu.se/data/dataextras/forstatausers/)
 
+-->

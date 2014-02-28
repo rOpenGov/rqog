@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <style>
+  
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(fonts/Lato.woff) format('woff');
+  }
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(fonts/LatoBold.woff) format('woff');
+  }
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Lato Black'), local('Lato-Black'), url(fonts/LatoBlack.woff) format('woff');
+  }
+  @font-face {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Lato Italic'), local('Lato-Italic'), url(fonts/LatoItalic.woff) format('woff');
+  }
+  
+  
+  -something { /* Just to escape the effect of html tag above in pandoc*/
+  
+  }
+  
+  .title /* Pandoc title header (h1.title) */
+      {
+      text-align: center;
+  	border-width:0px;
+  	font-size: 1.5em;
+  	margin: 0 0 5px 0;
+  	word-spacing: .1em;
+  	border-bottom: 0px;
+  	text-transform:none;
+      }
+  
+  .author /* Pandoc author(s) header (h2.author) */
+      {
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.2em;
+      border-bottom: 0px;
+      }
+  
+  .date /* Pandoc date header (h3.date) */
+      {
+  	font-family:  Lato, Arial;
+  	text-align: center;
+  	font-size: 1.1em;
+  	line-height: 1.2em;
+      }
+  
+  
+  body {
+      margin-left: 240px;
+      max-width:750px; 
+      border: 0px;
+      font-family: Lato, Helvetica, sans-serif;
+  }
+  
+  
+  #toc {
+      font-size:0.9em;
+      height: 100%;
+      position: fixed; 
+      width: 220px;
+      left: 5px;
+      padding-top: 20px;
+      color: #003333;
+      border-right: 1px dashed #C1C1C1;
+  }
+  
+  #toc_header {
+      font-size: 1em;
+      font-weight: bold;    
+      border-bottom: 1px dashed #C1C1C1;
+      color: black;
+  }
+  
+  
+  
+  #TOC li {
+      padding: 2px 4px;
+      margin-left: 2px;
+  }
+  
+  
+  #TOC a {
+      color: #003333;
+      display: block;
+  }
+  
+  
+  #TOC {
+      font-size:0.9em;
+      height: 100%;
+      position: fixed; 
+      width: 220px;
+      left: 5px;
+      padding-top: 20px;
+      color: #003333;
+      border-right: 1px dashed #C1C1C1;
+  }
+  
+  #TOC_HEADER {
+      font-size: 1em;
+      font-weight: bold;    
+      border-bottom: 1px dashed #C1C1C1;
+      color: black;
+  }
+  
+  
+  
+  #TOC li {
+      padding: 2px 4px;
+      margin-left: 2px;
+  }
+  
+  
+  #TOC a {
+      color: #003333;
+      display: block;
+  }
+  
+  
+  blockquote {
+  	padding-left: .5em; 
+      border-left: 2px solid #C1C1C1;
+  	font-style: italic;
+  }
+  
+  
+  pre {	
+     margin-top: 0;
+     max-width: 95%;
+     border: 1px dashed #ccc;
+     white-space: pre-wrap;
+     font-size:1.0em;
+      background: #FFFFFF;
+  }
+  
+  pre code {
+     display: block; 
+     padding: 0.2em;
+     font-size:1.0em;
+  }
+  
+  code.r, code.cpp {
+     background-color: #ECEEF0;
+  }
+  
+  
+  
+  ul {
+  	font-size: 100% !important;
+  	font-family: Lato, Helvetica, sans-serif;
+  }
+  li {
+  	font-family: Lato, Helvetica, sans-serif;
+   	font-size: 1em;
+   	line-height: 1.1em;
+  }
+  
+  
+  p {
+  	font-family: Lato, Helvetica, sans-serif;
+  	padding-top: 2px;
+  	padding-bottom: 2px;
+  	font-size: 1em;
+  	line-height: 1.2em;
+  }
+  ol {
+  	list-style: decimal outside;
+  	list-style-type: decimal;
+  	float: none;
+  	margin: .5em 0 .5em 30px;
+  	padding: 0;
+  }
+  ul {
+  	margin: .2em 0 .2em 10px;
+  	padding: 0;
+  }
+  UL li, ol li {
+  	line-height: 1.1em;
+  	padding: 2px;
+  }
+  a:link {
+  	color: #657b83;
+     /* text-decoration: none; */
+  }
+  a:hover {
+  	color: #657b83;
+  }
+  a:visited {
+  	color: #657b83;
+  }
+  a:focus {
+  	color: #657b83;
+  }
+  a:active {
+  	color: #657b83;
+  }
+  
+  h1 {
+  	font-family:  Lato, Arial;
+  	font-size: 1.3em;
+  	padding: 2px;
+  	line-height: 1.3em;
+      font-weight: 400;
+  	/*letter-spacing: 0.06em;
+  	word-spacing: .1em;*/
+      border-bottom: 0.5px solid #657b83;
+  	text-transform:uppercase;
+      color: #657b83;
+  }
+  h2 {
+  	font-family:  Lato, Arial;
+  	font-size: 1.1em;
+  	padding: 2px;
+  	line-height: 1.1em;
+      font-weight: 300;
+  	letter-spacing: 0.05em;
+  	word-spacing: .1em;
+  	border-bottom: 0.5px dashed #657b83;
+  /*	text-transform:capitalize;*/
+      color: #657b83;
+  
+  }
+  h3 {
+  	font-family:  Lato, Arial;
+  	font-size: 1.1em;
+  	padding: 2px;
+  	line-height: 1.1em;
+      font-weight: 300;
+  	letter-spacing: 0.05em;
+  	word-spacing: .1em;
+      color: #657b83;
+  
+  }
+  h4 {
+  	font-family: Lato;
+  	font-size: 1.0em;
+  	padding: 2px;
+  	line-height: 1.0em;
+  	color: #555;
+  	font-weight: italic;
+      color: #657b83;
+  }
+  h5 {
+  	font-family: Avant Garde;
+  	font-size: 1.05em;
+  	padding: 2px;
+  	line-height: 1.15em;
+  	color: #555;
+  	font-weight: normal;
+      color: #657b83;
+  }
+  h6 {
+  	font-family: Lato;
+  	font-size: 1em;
+  	padding: 2px;
+  	line-height: 1.1em;
+  	color: #555;
+  	font-weight: normal;
+      color: #657b83;
+  }
+  p.caption, table caption, caption{
+      margin-top:0em;
+      padding:2px;
+      font-weight: 600;
+      font-size:1.0em;
+      text-align:left;
+      color: #657b83;
+  }
+  
+  /* table styles */
+  table {
+  	border-collapse: collapse;
+  	border-spacing: 0;
+      line-height: 1.4em;
+  	font-size: 0.9em;
+  	/*font-family: monospace;*/
+  
+  }
+  .views-table, table {
+  	margin-left: 2px;
+  	margin-bottom: 10px;
+  	/*width: 1300px;*/
+  }
+  tr {
+  	line-height: 1.2em;
+  	border-bottom: #9e9e9e thin solid;
+  }
+  tr:last-child {
+  	line-height: 1.2em;
+  }
+  th {
+  	margin: 5px 0 5px 0;
+  	padding: 0 5px 0 5px;
+  /*	border-right: #9e9e9e thin solid; */
+  	text-align: left;
+  	border-bottom: #9e9e9e thin solid;
+  }
+  th:last-child {
+  	margin: 5px 0 5px 0;
+  	padding: 0 5px 0 5px;
+  /*	border-right: #9e9e9e thin solid; */
+  	text-align: left;
+  }
+  th:first-child {
+  	margin: 5px 0 5px 0;
+  	padding: 0 5px 0 5px;
+  /*	border: #9e9e9e thin solid; */
+  }
+  tbody tr {
+  	line-height: 1.2em;
+  /*	border-left: #9e9e9e thin solid; */
+  }
+  tbody tr:nth-child(odd) {
+  	line-height: 1.2em;
+  	background-color: #F3F5F5;
+  }
+  td {
+  	padding: 0 5px 0 5px;
+  /*	border-right: #9e9e9e thin solid; */
+  }
+  td:last-child {
+  	padding: 0 5px 0 5px;
+  }
+  DL {
+  	margin: .3em 0 .3em 0;
+  }
+  DT {
+  	margin: .3em 0 .3em 0;
+  }
+  DD {
+  	line-height: 1.5em;
+  	list-style: none;
+  	margin: .7em 0 .7em 2em;
+  }
+  td.active {
+  	background-color: transparent!important;
+  }
+  tr:last-child {
+  	border-bottom: #9e9e9e thin solid;
+  }
+  tr:first-child {
+  	border-top: #9e9e9e thin solid;
+  }
+  th:last-child {
+  /*	border-left: #9e9e9e thin solid; */
+  }
+  th:last-child {
+  	/*border-right: #9e9e9e thin solid;*/
+  }
+  </style>
+  
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#rqog-package-for-r">rqog-package for R</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#basic-data">Basic Data</a></li>
+<li><a href="#social-policy-data">Social Policy data</a></li>
+<li><a href="#social-policy-data-1">Social Policy data</a></li>
+<li><a href="#spatial-visualisation-of-quality-of-government-data">Spatial visualisation of Quality of Government data</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{rqog Markdown Vignette made with knitr}
+-->
+
+<h1 id="rqog-package-for-r">rqog-package for R</h1>
+<p><em>Download data from the Quality of Government Institute data</em></p>
+<p>Quotation from <a href="http://www.qog.pol.gu.se/">Quality of Governance institute website</a></p>
+<p>“<em>The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.</em>”</p>
+<p>“<em>The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.</em>”</p>
+<p><strong>Quality of Government institute</strong> provides data in five different data sets, both in cross-sectional and longitudinal versions:</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/">QoG Basic Data</a></li>
+<li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogstandarddata/">QoG Standard Data</a></li>
+<li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogsocialpolicydata/">QoG Social Policy Data</a></li>
+<li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogexpertsurveydata/">QoG Expert Survey Data</a></li>
+<li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/">QoG EU Regional Data</a></li>
+</ol>
+<p><strong>rqog</strong>-package provides access to <strong>Basic</strong>, <strong>Standard</strong> and <strong>Social Policy</strong> datasets through function <code>getQog()</code>. <strong>Standard</strong> data has all the same indicators as in <strong>Basic</strong> data (143 variables) and an additional 585 indicators. Both <strong>basic</strong> and <strong>standard</strong> datasets have 211 countries. <strong>Social Policy</strong> dataset has 1009 indicators from 40 countries. <strong>rqog</strong> uses <em>longitudinal</em> datasets has time-series of varying duration from majority of the indicators and countries.</p>
+<p>Quality of Government Institute provides codebooks for all datasets:</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://www.qogdata.pol.gu.se/codebook/codebook_basic_30aug13.pdf">Basic data codebook</a></li>
+<li><a href="http://www.qogdata.pol.gu.se/codebook/codebook_standard_15may13.pdf">Standard data codebook</a>)</li>
+<li><a href="http://www.qogdata.pol.gu.se/codebook/codebook_social_4apr12.pdf">Social Policy data codebook</a></li>
+</ol>
+<p>You consult the codebooks for description of the data and indicators.</p>
+<h2 id="installation">Installation</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
+<span class="kw">install_github</span>(<span class="dt">repo =</span> <span class="st">&quot;rqog&quot;</span>, <span class="dt">username =</span> <span class="st">&quot;muuankarski&quot;</span>)
+<span class="kw">library</span>(rqog)</code></pre>
+<h2 id="examples">Examples</h2>
+<h3 id="basic-data">Basic Data</h3>
+<p>Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plo</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
+<span class="co"># Download a local coppy of the file</span>
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="dt">which.data =</span> <span class="st">&quot;basic&quot;</span>, <span class="dt">data.dir =</span> <span class="st">&quot;datafolder&quot;</span>)
+<span class="co"># Subset the data</span>
+dat2 &lt;-<span class="st"> </span>dat[dat$cname %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;China&quot;</span>, <span class="st">&quot;India&quot;</span>, <span class="st">&quot;Brazil&quot;</span>), ]
+dat2 &lt;-<span class="st"> </span>dat2[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;undp_hdi&quot;</span>, <span class="st">&quot;fh_polity2&quot;</span>)]
+dat2 &lt;-<span class="st"> </span>dat2[dat2$year %in%<span class="st"> </span><span class="dv">1990</span>:<span class="dv">2010</span>, ]
+<span class="co"># melt to long format</span>
+<span class="kw">library</span>(reshape2)
+dat.l &lt;-<span class="st"> </span><span class="kw">melt</span>(dat2, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>))
+dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$value), ]
+<span class="kw">library</span>(ggplot2)
+<span class="co"># Plot the data</span>
+<span class="kw">ggplot</span>(dat.l, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">color =</span> cname)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">merge</span>(dat.l, <span class="kw">aggregate</span>(year ~<span class="st"> </span>cname, dat.l, max), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, 
+        <span class="st">&quot;cname&quot;</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">label =</span> cname), <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> -<span class="dv">1</span>, 
+        <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<div class="figure">
+<img src="figure/ExampleBasic.png" alt="plot of chunk ExampleBasic" /><p class="caption">plot of chunk ExampleBasic</p>
+</div>
+<h3 id="social-policy-data">Social Policy data</h3>
+<p>Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on <em>Environmental Performance Index</em> and <em>Party of Chief Executive: How Long in Office</em> from BRIC-countries and plot it.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
+<span class="co"># Download a local coppy of the file</span>
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;standard&quot;</span>, <span class="dt">data.dir =</span> <span class="st">&quot;datafolder&quot;</span>)
+<span class="co"># Subset the data</span>
+dat2 &lt;-<span class="st"> </span>dat[dat$cname %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;China&quot;</span>, <span class="st">&quot;India&quot;</span>, <span class="st">&quot;Brazil&quot;</span>), ]
+dat2 &lt;-<span class="st"> </span>dat2[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;epi_epi&quot;</span>, <span class="st">&quot;dpi_hlio&quot;</span>)]
+dat2 &lt;-<span class="st"> </span>dat2[dat2$year %in%<span class="st"> </span><span class="dv">2000</span>:<span class="dv">2010</span>, ]
+<span class="co"># melt to long format</span>
+<span class="kw">library</span>(reshape2)
+dat.l &lt;-<span class="st"> </span><span class="kw">melt</span>(dat2, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>))
+dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$value), ]
+<span class="co"># Plot the data</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(dat.l, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">color =</span> cname)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">merge</span>(dat.l, <span class="kw">aggregate</span>(year ~<span class="st"> </span>cname, dat.l, max), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, 
+        <span class="st">&quot;cname&quot;</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">label =</span> cname), <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> -<span class="dv">1</span>, 
+        <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<div class="figure">
+<img src="figure/ExampleStandard.png" alt="plot of chunk ExampleStandard" /><p class="caption">plot of chunk ExampleStandard</p>
+</div>
+<h3 id="social-policy-data-1">Social Policy data</h3>
+<p>Social Policy data includes 1009 variables, but from a smaller number of wealthier countries of 41. In the example below four indicators:</p>
+<ol style="list-style-type: decimal">
+<li>Total social expenditure (public) <code>socx_tput</code></li>
+<li>Total social expenditure (mandatory private) <code>socx_tmpt</code></li>
+<li>Old age expenditure (public) <code>socx_oput</code></li>
+<li>Old age expenditure (mandatory private) <code>socx_ompt</code></li>
+</ol>
+<p>We will include all the countries and all the years included in the data.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
+<span class="co"># Download a local coppy of the file</span>
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;social_policy&quot;</span>, <span class="dt">data.dir =</span> <span class="st">&quot;datafolder&quot;</span>)
+<span class="co"># Subset the data</span>
+dat2 &lt;-<span class="st"> </span>dat[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;socx_tput&quot;</span>, <span class="st">&quot;socx_tmpt&quot;</span>, <span class="st">&quot;socx_oput&quot;</span>, <span class="st">&quot;socx_ompt&quot;</span>)]
+<span class="co"># melt to long format</span>
+<span class="kw">library</span>(reshape2)
+dat.l &lt;-<span class="st"> </span><span class="kw">melt</span>(dat2, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>))
+dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$value), ]
+<span class="kw">library</span>(ggplot2)
+<span class="co"># Plot the data</span>
+<span class="kw">ggplot</span>(dat.l, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">color =</span> cname)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">merge</span>(dat.l, <span class="kw">aggregate</span>(year ~<span class="st"> </span>cname, dat.l, max), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, 
+        <span class="st">&quot;cname&quot;</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">label =</span> cname), <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> -<span class="dv">1</span>, 
+        <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>) +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<div class="figure">
+<img src="figure/ExampleSocialPolicy.png" alt="plot of chunk ExampleSocialPolicy" /><p class="caption">plot of chunk ExampleSocialPolicy</p>
+</div>
+<h3 id="spatial-visualisation-of-quality-of-government-data">Spatial visualisation of Quality of Government data</h3>
+<p>First I extract the <em>Enviromental Performance Index</em> from <strong>Standard</strong> data and merge it with map data using <code>joinCountryData2Map()</code>-funktion from <a href="http://cran.r-project.org/web/packages/rworldmap/index.html"><strong>rworldmap</strong></a>, then fortify the <code>SpatialPolygonDataFrame</code> into regular <code>data.frame</code> using <code>fortify</code>-function from <strong>ggplot2</strong>, and finally plot whole world using mercator projetion. Grey color stands for missing data.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;standard&quot;</span>,<span class="dt">data.dir=</span><span class="st">&quot;datafolder&quot;</span>)
+<span class="co"># Subset the data</span>
+dat2 &lt;-<span class="st"> </span>dat[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;epi_epi&quot;</span>)]
+dat2 &lt;-<span class="st"> </span>dat2[dat2$year %in%<span class="st"> </span><span class="dv">2008</span>,]
+<span class="co"># melt to long format</span>
+<span class="kw">library</span>(reshape2)
+dat.l &lt;-<span class="st"> </span><span class="kw">melt</span>(dat2, <span class="dt">id.vars=</span><span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>,<span class="st">&quot;year&quot;</span>))
+dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$value), ]
+<span class="co"># merge the data using rworldmap</span>
+<span class="kw">library</span>(rworldmap)
+shape &lt;-<span class="st"> </span><span class="kw">joinCountryData2Map</span>(dat.l,<span class="dt">joinCode =</span> <span class="st">&quot;NAME&quot;</span>,<span class="dt">nameJoinColumn =</span> <span class="st">&quot;cname&quot;</span>)</code></pre>
+<pre><code>## 125 codes from your data successfully matched countries in the map
+## 7 codes from your data failed to match with a country code in the map
+## 119 codes from the map weren&#39;t represented in your data</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># fortify the SpatialPolygonDataFrame into data.frame</span>
+<span class="kw">library</span>(ggplot2)
+shape$id &lt;-<span class="st"> </span><span class="kw">rownames</span>(shape@data)
+map.points &lt;-<span class="st"> </span><span class="kw">fortify</span>(shape, <span class="dt">region =</span> <span class="st">&quot;id&quot;</span>)
+map.df &lt;-<span class="st"> </span><span class="kw">merge</span>(map.points, shape, <span class="dt">by =</span> <span class="st">&quot;id&quot;</span>)
+<span class="co"># order the data for smooth plotting</span>
+map.df &lt;-<span class="st"> </span>map.df[<span class="kw">order</span>(map.df$order), ]
+<span class="co"># and plot</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(map.df, <span class="kw">aes</span>(long,lat,<span class="dt">group=</span>group)) +
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>value)) +
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> map.df, <span class="kw">aes</span>(long,lat), 
+               <span class="dt">fill=</span><span class="ot">NA</span>, 
+               <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,
+               <span class="dt">size=</span><span class="fl">0.1</span>) +<span class="st"> </span><span class="co"># white borders</span>
+<span class="st">  </span><span class="kw">scale_fill_gradient2</span>(<span class="dt">low=</span><span class="st">&quot;white&quot;</span>, <span class="dt">high=</span><span class="st">&quot;blue&quot;</span>)+
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) +
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste</span>(<span class="st">&quot;Indicator mapped is &quot;</span>,
+                    <span class="kw">as.character</span>(dat.l[<span class="dv">1</span>, <span class="st">&quot;variable&quot;</span>]),
+                   <span class="st">&quot;from year &quot;</span>,
+                   <span class="kw">as.character</span>(dat.l[<span class="dv">1</span>, <span class="st">&quot;year&quot;</span>]),
+                    <span class="dt">sep=</span><span class="st">&quot;&quot;</span>))</code></pre>
+<div class="figure">
+<img src="figure/ExampleQogSpatial.png" alt="plot of chunk ExampleQogSpatial" /><p class="caption">plot of chunk ExampleQogSpatial</p>
+</div>
+<!--
+
+### STATA-package
+
+*Christoph Thewes, from University of Potsdam* has already written a package for STATA users. [See details from QoG website](http://www.qog.pol.gu.se/data/dataextras/forstatausers/)
+
+-->
+</body>
+</html>

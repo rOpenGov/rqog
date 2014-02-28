@@ -3,16 +3,16 @@
 %\VignetteIndexEntry{rqog Markdown Vignette made with knitr}
 -->
 
-rQog-package for R
+rqog-package for R
 ====================================
 
 *Download data from the Quality of Government Institute data*
 
 Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.se/)
 
->The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.
+"*The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.*"
 
->The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.
+"*The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.*"
 
 **Quality of Government institute** provides data in five different data sets, both in cross-sectional and longitudinal versions:
 
@@ -22,7 +22,7 @@ Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.
 4. [QoG Expert Survey Data](http://www.qog.pol.gu.se/data/datadownloads/qogexpertsurveydata/) 
 5. [QoG EU Regional Data](http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/)
 
-**rQog**-package provides access to **Basic**, **Standard** and **Social Policy** datasets through function `getQog()`. **Standard** data has all the same indicators as in **Basic** data (143 variables) and an additional 585 indicators. Both **basic** and **standard** datasets have 211 countries. **Social Policy** dataset has 1009 indicators from 40 countries. **rQog** uses *longitudinal* datasets has time-series of varying duration from majority of the indicators and countries.
+**rqog**-package provides access to **Basic**, **Standard** and **Social Policy** datasets through function `getQog()`. **Standard** data has all the same indicators as in **Basic** data (143 variables) and an additional 585 indicators. Both **basic** and **standard** datasets have 211 countries. **Social Policy** dataset has 1009 indicators from 40 countries. **rqog** uses *longitudinal* datasets has time-series of varying duration from majority of the indicators and countries.
 
 Quality of Government Institute provides codebooks for all datasets: 
 
@@ -38,8 +38,8 @@ You consult the codebooks for description of the data and indicators.
 
 ```r
 library(devtools)
-install_github(repo = "rQog", username = "muuankarski")
-library(rQog)
+install_github(repo = "rqog", username = "muuankarski")
+library(rqog)
 ```
 
 
@@ -52,9 +52,9 @@ Basic data has a limited selection of most common indicators incluiding totally 
 
 
 ```r
-library(rQog)
+library(rqog)
 # Download a local coppy of the file
-dat <- read_qog(which.data = "basic", data.dir = "~/temp/")
+dat <- read_qog(which.data = "basic", data.dir = "datafolder")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia", "China", "India", "Brazil"), ]
 dat2 <- dat2[c("cname", "year", "undp_hdi", "fh_polity2")]
@@ -82,11 +82,9 @@ Standard data includes a all the indicators 748 variables. Below is an example o
 
 
 ```r
-library(rQog)
+library(rqog)
 # Download a local coppy of the file
-getQog("standard")
-# Read the data
-dat <- read.csv("data/qog_std_ts_15may13.csv", sep = ";")
+dat <- read_qog("standard", data.dir = "datafolder")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia", "China", "India", "Brazil"), ]
 dat2 <- dat2[c("cname", "year", "epi_epi", "dpi_hlio")]
@@ -103,6 +101,8 @@ ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_lin
         size = 3, alpha = 0.8) + facet_wrap(~variable, scales = "free") + theme(legend.position = "none")
 ```
 
+![plot of chunk ExampleStandard](figure/ExampleStandard.png) 
+
 
 ### Social Policy data
 
@@ -118,11 +118,9 @@ We will include all the countries and all the years included in the data.
 
 
 ```r
-library(rQog)
+library(rqog)
 # Download a local coppy of the file
-getQog("socialPolicy")
-# Read the data
-dat <- read.csv("data/qog_soc_tsl_4apr12.csv", sep = ";")
+dat <- read_qog("social_policy", data.dir = "datafolder")
 # Subset the data
 dat2 <- dat[c("cname", "year", "socx_tput", "socx_tmpt", "socx_oput", "socx_ompt")]
 # melt to long format
@@ -137,6 +135,8 @@ ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_lin
         size = 3, alpha = 0.8) + facet_wrap(~variable, scales = "free") + theme(legend.position = "none")
 ```
 
+![plot of chunk ExampleSocialPolicy](figure/ExampleSocialPolicy.png) 
+
 
 
 ### Spatial visualisation of Quality of Government data
@@ -145,10 +145,8 @@ First I extract the *Enviromental Performance Index* from **Standard** data and 
 
 
 ```r
-library(rQog)
-getQog("standard")
-# Read the data
-dat <- read.csv("data/qog_std_ts_15may13.csv",sep=";")
+library(rqog)
+dat <- read_qog("standard",data.dir="datafolder")
 # Subset the data
 dat2 <- dat[c("cname","year","epi_epi")]
 dat2 <- dat2[dat2$year %in% 2008,]
@@ -159,6 +157,15 @@ dat.l <- dat.l[!is.na(dat.l$value), ]
 # merge the data using rworldmap
 library(rworldmap)
 shape <- joinCountryData2Map(dat.l,joinCode = "NAME",nameJoinColumn = "cname")
+```
+
+```
+## 125 codes from your data successfully matched countries in the map
+## 7 codes from your data failed to match with a country code in the map
+## 119 codes from the map weren't represented in your data
+```
+
+```r
 # fortify the SpatialPolygonDataFrame into data.frame
 library(ggplot2)
 shape$id <- rownames(shape@data)
@@ -178,12 +185,19 @@ ggplot(map.df, aes(long,lat,group=group)) +
     theme(legend.position="top") +
   labs(title=paste("Indicator mapped is ",
                     as.character(dat.l[1, "variable"]),
+                   "from year ",
+                   as.character(dat.l[1, "year"]),
                     sep=""))
 ```
 
+![plot of chunk ExampleQogSpatial](figure/ExampleQogSpatial.png) 
 
+
+
+<!--
 
 ### STATA-package
 
 *Christoph Thewes, from University of Potsdam* has already written a package for STATA users. [See details from QoG website](http://www.qog.pol.gu.se/data/dataextras/forstatausers/)
 
+-->
