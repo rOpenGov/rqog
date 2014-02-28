@@ -398,8 +398,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#installation">Installation</a></li>
 <li><a href="#examples">Examples</a><ul>
 <li><a href="#basic-data">Basic Data</a></li>
+<li><a href="#standard-data">Standard data</a></li>
 <li><a href="#social-policy-data">Social Policy data</a></li>
-<li><a href="#social-policy-data-1">Social Policy data</a></li>
 <li><a href="#spatial-visualisation-of-quality-of-government-data">Spatial visualisation of Quality of Government data</a></li>
 </ul></li>
 </ul></li>
@@ -413,7 +413,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 id="rqog-package-for-r">rqog-package for R</h1>
 <p><code>compiled at</code></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.time</span>()</code></pre>
-<pre><code>## [1] &quot;2014-02-28 14:20:31 EET&quot;</code></pre>
+<pre><code>## [1] &quot;2014-02-28 14:36:44 EET&quot;</code></pre>
 <p><em>Download data from the Quality of Government Institute data</em></p>
 <p>Quotation from <a href="http://www.qog.pol.gu.se/">Quality of Governance institute website</a></p>
 <blockquote>
@@ -447,7 +447,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plo</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
 <span class="co"># Download a local coppy of the file</span>
-dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="dt">which.data =</span> <span class="st">&quot;basic&quot;</span>, <span class="dt">data.dir =</span> <span class="st">&quot;datafolder&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="dt">which.data =</span> <span class="st">&quot;basic&quot;</span>)
 <span class="co"># Subset the data</span>
 dat2 &lt;-<span class="st"> </span>dat[dat$cname %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;China&quot;</span>, <span class="st">&quot;India&quot;</span>, <span class="st">&quot;Brazil&quot;</span>), ]
 dat2 &lt;-<span class="st"> </span>dat2[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;undp_hdi&quot;</span>, <span class="st">&quot;fh_polity2&quot;</span>)]
@@ -465,11 +465,11 @@ dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$v
 <div class="figure">
 <img src="figure/ExampleBasic.png" alt="plot of chunk ExampleBasic" /><p class="caption">plot of chunk ExampleBasic</p>
 </div>
-<h3 id="social-policy-data">Social Policy data</h3>
+<h3 id="standard-data">Standard data</h3>
 <p>Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on <em>Environmental Performance Index</em> and <em>Party of Chief Executive: How Long in Office</em> from BRIC-countries and plot it.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
 <span class="co"># Download a local coppy of the file</span>
-dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;standard&quot;</span>, <span class="dt">data.dir =</span> <span class="st">&quot;datafolder&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;standard&quot;</span>)
 <span class="co"># Subset the data</span>
 dat2 &lt;-<span class="st"> </span>dat[dat$cname %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;China&quot;</span>, <span class="st">&quot;India&quot;</span>, <span class="st">&quot;Brazil&quot;</span>), ]
 dat2 &lt;-<span class="st"> </span>dat2[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;epi_epi&quot;</span>, <span class="st">&quot;dpi_hlio&quot;</span>)]
@@ -487,7 +487,7 @@ dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$v
 <div class="figure">
 <img src="figure/ExampleStandard.png" alt="plot of chunk ExampleStandard" /><p class="caption">plot of chunk ExampleStandard</p>
 </div>
-<h3 id="social-policy-data-1">Social Policy data</h3>
+<h3 id="social-policy-data">Social Policy data</h3>
 <p>Social Policy data includes 1009 variables, but from a smaller number of wealthier countries of 41. In the example below four indicators:</p>
 <ol style="list-style-type: decimal">
 <li>Total social expenditure (public) <code>socx_tput</code></li>
@@ -498,7 +498,7 @@ dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$v
 <p>We will include all the countries and all the years included in the data.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
 <span class="co"># Download a local coppy of the file</span>
-dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;social_policy&quot;</span>, <span class="dt">data.dir =</span> <span class="st">&quot;datafolder&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;social_policy&quot;</span>)
 <span class="co"># Subset the data</span>
 dat2 &lt;-<span class="st"> </span>dat[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;socx_tput&quot;</span>, <span class="st">&quot;socx_tmpt&quot;</span>, <span class="st">&quot;socx_oput&quot;</span>, <span class="st">&quot;socx_ompt&quot;</span>)]
 <span class="co"># melt to long format</span>
@@ -517,7 +517,7 @@ dat.l &lt;-<span class="st"> </span>dat.l[!<span class="kw">is.na</span>(dat.l$v
 <h3 id="spatial-visualisation-of-quality-of-government-data">Spatial visualisation of Quality of Government data</h3>
 <p>First I extract the <em>Enviromental Performance Index</em> from <strong>Standard</strong> data and merge it with map data using <code>joinCountryData2Map()</code>-funktion from <a href="http://cran.r-project.org/web/packages/rworldmap/index.html"><strong>rworldmap</strong></a>, then fortify the <code>SpatialPolygonDataFrame</code> into regular <code>data.frame</code> using <code>fortify</code>-function from <strong>ggplot2</strong>, and finally plot whole world using mercator projetion. Grey color stands for missing data.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
-dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;standard&quot;</span>,<span class="dt">data.dir=</span><span class="st">&quot;datafolder&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">read_qog</span>(<span class="st">&quot;standard&quot;</span>)
 <span class="co"># Subset the data</span>
 dat2 &lt;-<span class="st"> </span>dat[<span class="kw">c</span>(<span class="st">&quot;cname&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;epi_epi&quot;</span>)]
 dat2 &lt;-<span class="st"> </span>dat2[dat2$year %in%<span class="st"> </span><span class="dv">2008</span>,]
@@ -550,7 +550,7 @@ map.df &lt;-<span class="st"> </span>map.df[<span class="kw">order</span>(map.df
 <span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) +
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste</span>(<span class="st">&quot;Indicator mapped is &quot;</span>,
                     <span class="kw">as.character</span>(dat.l[<span class="dv">1</span>, <span class="st">&quot;variable&quot;</span>]),
-                   <span class="st">&quot;from year &quot;</span>,
+                   <span class="st">&quot; from year &quot;</span>,
                    <span class="kw">as.character</span>(dat.l[<span class="dv">1</span>, <span class="st">&quot;year&quot;</span>]),
                     <span class="dt">sep=</span><span class="st">&quot;&quot;</span>))</code></pre>
 <div class="figure">

@@ -13,7 +13,7 @@ Sys.time()
 ```
 
 ```
-## [1] "2014-02-28 14:20:31 EET"
+## [1] "2014-02-28 14:36:44 EET"
 ```
 
 
@@ -66,7 +66,7 @@ Basic data has a limited selection of most common indicators incluiding totally 
 ```r
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog(which.data = "basic", data.dir = "datafolder")
+dat <- read_qog(which.data = "basic")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia", "China", "India", "Brazil"), ]
 dat2 <- dat2[c("cname", "year", "undp_hdi", "fh_polity2")]
@@ -87,7 +87,7 @@ ggplot(dat.l, aes(x = year, y = value, color = cname)) + geom_point() + geom_lin
 
 
 
-### Social Policy data
+### Standard data
 
 Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
@@ -96,7 +96,7 @@ Standard data includes a all the indicators 748 variables. Below is an example o
 ```r
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("standard", data.dir = "datafolder")
+dat <- read_qog("standard")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia", "China", "India", "Brazil"), ]
 dat2 <- dat2[c("cname", "year", "epi_epi", "dpi_hlio")]
@@ -132,7 +132,7 @@ We will include all the countries and all the years included in the data.
 ```r
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("social_policy", data.dir = "datafolder")
+dat <- read_qog("social_policy")
 # Subset the data
 dat2 <- dat[c("cname", "year", "socx_tput", "socx_tmpt", "socx_oput", "socx_ompt")]
 # melt to long format
@@ -158,7 +158,7 @@ First I extract the *Enviromental Performance Index* from **Standard** data and 
 
 ```r
 library(rqog)
-dat <- read_qog("standard",data.dir="datafolder")
+dat <- read_qog("standard")
 # Subset the data
 dat2 <- dat[c("cname","year","epi_epi")]
 dat2 <- dat2[dat2$year %in% 2008,]
@@ -197,7 +197,7 @@ ggplot(map.df, aes(long,lat,group=group)) +
     theme(legend.position="top") +
   labs(title=paste("Indicator mapped is ",
                     as.character(dat.l[1, "variable"]),
-                   "from year ",
+                   " from year ",
                    as.character(dat.l[1, "year"]),
                     sep=""))
 ```
