@@ -6,13 +6,25 @@
 rqog-package for R
 ====================================
 
+`compiled at`
+
+```r
+Sys.time()
+```
+
+```
+## [1] "2014-02-28 14:20:31 EET"
+```
+
+
+
 *Download data from the Quality of Government Institute data*
 
 Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.se/)
 
-"*The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.*"
+>The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.
 
-"*The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.*"
+>The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.
 
 **Quality of Government institute** provides data in five different data sets, both in cross-sectional and longitudinal versions:
 
@@ -22,7 +34,7 @@ Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.
 4. [QoG Expert Survey Data](http://www.qog.pol.gu.se/data/datadownloads/qogexpertsurveydata/) 
 5. [QoG EU Regional Data](http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/)
 
-**rqog**-package provides access to **Basic**, **Standard** and **Social Policy** datasets through function `getQog()`. **Standard** data has all the same indicators as in **Basic** data (143 variables) and an additional 585 indicators. Both **basic** and **standard** datasets have 211 countries. **Social Policy** dataset has 1009 indicators from 40 countries. **rqog** uses *longitudinal* datasets has time-series of varying duration from majority of the indicators and countries.
+**rqog**-package provides access to **Basic**, **Standard** and **Social Policy** datasets through function `read_qog()`. **Standard** data has all the same indicators as in **Basic** data (143 variables) and an additional 585 indicators. Both **basic** and **standard** datasets have 211 countries. **Social Policy** dataset has 1009 indicators from 40 countries. **rqog** uses *longitudinal* datasets by default that have time-series of varying duration from majority of the indicators and countries.
 
 Quality of Government Institute provides codebooks for all datasets: 
 

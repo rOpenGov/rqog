@@ -411,10 +411,17 @@ code > span.er { color: #ff0000; font-weight: bold; }
 -->
 
 <h1 id="rqog-package-for-r">rqog-package for R</h1>
+<p><code>compiled at</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.time</span>()</code></pre>
+<pre><code>## [1] &quot;2014-02-28 14:20:31 EET&quot;</code></pre>
 <p><em>Download data from the Quality of Government Institute data</em></p>
 <p>Quotation from <a href="http://www.qog.pol.gu.se/">Quality of Governance institute website</a></p>
-<p>“<em>The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.</em>”</p>
-<p>“<em>The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.</em>”</p>
+<blockquote>
+<p>The QoG Institute was founded in 2004 by Professor Bo Rothstein and Professor Sören Holmberg. It is an independent research institute within the Department of Political Science at the University of Gothenburg. We conduct and promote research on the causes, consequences and nature of Good Governance and the Quality of Government (QoG) - that is, trustworthy, reliable, impartial, uncorrupted and competent government institutions.</p>
+</blockquote>
+<blockquote>
+<p>The main objective of our research is to address the theoretical and empirical problem of how political institutions of high quality can be created and maintained. A second objective is to study the effects of Quality of Government on a number of policy areas, such as health, the environment, social policy, and poverty. We approach these problems from a variety of different theoretical and methodological angles.</p>
+</blockquote>
 <p><strong>Quality of Government institute</strong> provides data in five different data sets, both in cross-sectional and longitudinal versions:</p>
 <ol style="list-style-type: decimal">
 <li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/">QoG Basic Data</a></li>
@@ -423,7 +430,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogexpertsurveydata/">QoG Expert Survey Data</a></li>
 <li><a href="http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/">QoG EU Regional Data</a></li>
 </ol>
-<p><strong>rqog</strong>-package provides access to <strong>Basic</strong>, <strong>Standard</strong> and <strong>Social Policy</strong> datasets through function <code>getQog()</code>. <strong>Standard</strong> data has all the same indicators as in <strong>Basic</strong> data (143 variables) and an additional 585 indicators. Both <strong>basic</strong> and <strong>standard</strong> datasets have 211 countries. <strong>Social Policy</strong> dataset has 1009 indicators from 40 countries. <strong>rqog</strong> uses <em>longitudinal</em> datasets has time-series of varying duration from majority of the indicators and countries.</p>
+<p><strong>rqog</strong>-package provides access to <strong>Basic</strong>, <strong>Standard</strong> and <strong>Social Policy</strong> datasets through function <code>read_qog()</code>. <strong>Standard</strong> data has all the same indicators as in <strong>Basic</strong> data (143 variables) and an additional 585 indicators. Both <strong>basic</strong> and <strong>standard</strong> datasets have 211 countries. <strong>Social Policy</strong> dataset has 1009 indicators from 40 countries. <strong>rqog</strong> uses <em>longitudinal</em> datasets by default that have time-series of varying duration from majority of the indicators and countries.</p>
 <p>Quality of Government Institute provides codebooks for all datasets:</p>
 <ol style="list-style-type: decimal">
 <li><a href="http://www.qogdata.pol.gu.se/codebook/codebook_basic_30aug13.pdf">Basic data codebook</a></li>
