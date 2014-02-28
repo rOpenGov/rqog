@@ -6,12 +6,16 @@
 
 ```r
 library(devtools)
-install_github(repo = "rQog", username = "muuankarski")
+install_github(repo = "rqog", username = "muuankarski")
 library(rqog)
 ```
 
 
 ## Examples
+
+See the preliminary vignette for more examples
+
+- [muuankarski.github.io/rqog/vignettes/rqog_tutorial.html](muuankarski.github.io/rqog/vignettes/rqog_tutorial.html)
 
 
 ```r
