@@ -54,7 +54,7 @@ library(rqog)
 Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plo
 
 
-```{rExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{rExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog(which.data="basic")
@@ -84,7 +84,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
 
-```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("standard")
@@ -120,7 +120,7 @@ Social Policy data includes 1009 variables, but from a smaller number of wealthi
 We will include all the countries and all the years included in the data.
 
 
-```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("social_policy")
