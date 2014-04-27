@@ -147,7 +147,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 First I extract the *Enviromental Performance Index* from **Standard** data and merge it with map data using `joinCountryData2Map()`-funktion from [**rworldmap**](http://cran.r-project.org/web/packages/rworldmap/index.html), then fortify the `SpatialPolygonDataFrame` into regular `data.frame` using `fortify`-function from **ggplot2**,  and finally plot whole world using mercator projetion. Grey color stands for missing data.
 
-```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 dat <- read_qog("standard")
 # Subset the data
