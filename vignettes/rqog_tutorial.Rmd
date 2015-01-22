@@ -62,7 +62,7 @@ library(rqog)
 Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plot
 
 
-```{rExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog(which.data="basic", data.type = "time-series")
@@ -92,7 +92,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 Standard data includes a all the indicators 748 variables. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
 
-```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("standard", "time-series")
@@ -120,20 +120,23 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 OECD data includes 1199 variables, but from a smaller number of wealthier countries of 34. In the example below four indicators:
 
-1. Total social expenditure (public) `socx_tput`
-2. Total social expenditure (mandatory private) `socx_tmpt`
-3. Old age expenditure (public) `socx_oput`
-4. Old age expenditure (mandatory private) `socx_ompt`
+1. Total social expenditure (public) `socx_expsocpu`
+2. Income inequality: Gini coefficient; level; late 2000s `socx_ginilvl`
+3. Gross national income per capita `socx_gnic`
+4. General government debt `socx_govdept`
 
 We will include all the countries and all the years included in the data.
 
 
-```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("oecd", "cross-sectional")
+dat <- read_qog("oecd", "time-series")
 # Subset the data
-dat2 <- dat[c("cname","year","socx_tput","socx_tmpt","socx_oput","socx_ompt")]
+dat2 <- dat[c("cname","year","socx_expsocpu",
+                            "socx_ginilvl",
+                            "socx_gnic",
+                            "socx_govdebt")]
 # melt to long format
 library(reshape2)
 dat.l <- melt(dat2, id.vars=c("cname","year"))
@@ -155,7 +158,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 First I extract the *Enviromental Performance Index* from **Standard** data and merge it with map data using `joinCountryData2Map()`-funktion from [**rworldmap**](http://cran.r-project.org/web/packages/rworldmap/index.html), then fortify the `SpatialPolygonDataFrame` into regular `data.frame` using `fortify`-function from **ggplot2**,  and finally plot whole world using mercator projetion. Grey color stands for missing data.
 
-```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
 library(rqog)
 dat <- read_qog("standard", "cross-sectional")
 # Subset the data
