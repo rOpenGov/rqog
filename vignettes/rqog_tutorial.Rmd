@@ -1,10 +1,14 @@
+---
+title: "rqog-package for R"
+output: html_document
+---
+
+
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rqog Markdown Vignette made with knitr}
 -->
 
-rqog-package for R
-====================================
 
 `compiled at`
 ```{rtimestamp}
