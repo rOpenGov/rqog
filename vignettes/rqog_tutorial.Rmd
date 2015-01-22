@@ -24,17 +24,25 @@ Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.
 
 1. [QoG Basic Data](http://www.qog.pol.gu.se/data/datadownloads/qogbasicdata/)
 2. [QoG Standard Data](http://www.qog.pol.gu.se/data/datadownloads/qogstandarddata/)
-3. [QoG Social Policy Data](http://www.qog.pol.gu.se/data/datadownloads/qogsocialpolicydata/)
+3. [QoG OECD Data](http://qog.pol.gu.se/data/datadownloads/qogoecddata)
 4. [QoG Expert Survey Data](http://www.qog.pol.gu.se/data/datadownloads/qogexpertsurveydata/) 
 5. [QoG EU Regional Data](http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/)
+
+Discontinued datasets
+
+-  [QoG Social Policy Data](http://www.qog.pol.gu.se/data/datadownloads/qogsocialpolicydata/)
 
 **rqog**-package provides access to **Basic**, **Standard** and **Social Policy** datasets through function `read_qog()`. **Standard** data has all the same indicators as in **Basic** data (143 variables) and an additional 585 indicators. Both **basic** and **standard** datasets have 211 countries. **Social Policy** dataset has 1009 indicators from 40 countries. **rqog** uses *longitudinal* datasets by default that have time-series of varying duration from majority of the indicators and countries.
 
 Quality of Government Institute provides codebooks for all datasets: 
 
-1. [Basic data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_basic_30aug13.pdf)
-2. [Standard data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_standard_15may13.pdf)) 
-3. [Social Policy data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_social_4apr12.pdf)
+1. [Basic data codebook](http://www.qogdata.pol.gu.se/data/qog_bas_jan15.pdf)
+2. [Standard data codebook](http://www.qogdata.pol.gu.se/data/qog_std_jan15.pdf)
+3. [OECD data codebook](http://www.qogdata.pol.gu.se/data/qog_oecd_jan15.pdf)
+
+Discontinued datasets
+
+- [Social Policy data codebook](http://www.qogdata.pol.gu.se/codebook/codebook_social_4apr12.pdf)
 
 You consult the codebooks for description of the data and indicators.
 
@@ -51,16 +59,16 @@ library(rqog)
 
 ### Basic Data
 
-Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plo
+Basic data has a limited selection of most common indicators incluiding totally 143 variables. Below is an example on how to extract data on human development index and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and plot
 
 
 ```{rExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog(which.data="basic")
+dat <- read_qog(which.data="basic", data.type = "time-series")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia","China","India","Brazil"), ]
-dat2 <- dat2[c("cname","year","undp_hdi","fh_polity2")]
+dat2 <- dat2[c("cname","year","fh_polity2","wdi_gdpgr")]
 dat2 <- dat2[dat2$year %in% 1990:2010,]
 # melt to long format
 library(reshape2)
@@ -87,7 +95,7 @@ Standard data includes a all the indicators 748 variables. Below is an example o
 ```{rExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("standard")
+dat <- read_qog("standard", "time-series")
 # Subset the data
 dat2 <- dat[dat$cname %in% c("Russia","China","India","Brazil"), ]
 dat2 <- dat2[c("cname","year","epi_epi","dpi_hlio")]
@@ -108,9 +116,9 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
   theme(legend.position="none")
 ```
 
-### Social Policy data
+### OECD data
 
-Social Policy data includes 1009 variables, but from a smaller number of wealthier countries of 41. In the example below four indicators:
+OECD data includes 1199 variables, but from a smaller number of wealthier countries of 34. In the example below four indicators:
 
 1. Total social expenditure (public) `socx_tput`
 2. Total social expenditure (mandatory private) `socx_tmpt`
@@ -123,7 +131,7 @@ We will include all the countries and all the years included in the data.
 ```{rExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("social_policy")
+dat <- read_qog("oecd", "cross-sectional")
 # Subset the data
 dat2 <- dat[c("cname","year","socx_tput","socx_tmpt","socx_oput","socx_ompt")]
 # melt to long format
@@ -149,13 +157,12 @@ First I extract the *Enviromental Performance Index* from **Standard** data and 
 
 ```{rExampleQogSpatial, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
-dat <- read_qog("standard")
+dat <- read_qog("standard", "cross-sectional")
 # Subset the data
-dat2 <- dat[c("cname","year","epi_epi")]
-dat2 <- dat2[dat2$year %in% 2008,]
+dat2 <- dat[c("cname","epi_epi")]
 # melt to long format
 library(reshape2)
-dat.l <- melt(dat2, id.vars=c("cname","year"))
+dat.l <- melt(dat2, id.vars=c("cname"))
 dat.l <- dat.l[!is.na(dat.l$value), ]
 # merge the data using rworldmap
 library(rworldmap)
@@ -179,8 +186,6 @@ ggplot(map.df, aes(long,lat,group=group)) +
     theme(legend.position="top") +
   labs(title=paste("Indicator mapped is ",
                     as.character(dat.l[1, "variable"]),
-                   " from year ",
-                   as.character(dat.l[1, "year"]),
                     sep=""))
 ```
 
