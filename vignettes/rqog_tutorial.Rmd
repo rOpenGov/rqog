@@ -55,7 +55,7 @@ You consult the codebooks for description of the data and indicators.
 
 ```{r, eval=FALSE, message=FALSE}
 library(devtools)
-install_github(repo = "rqog", username = "ropengov")
+install_github("ropengov/rqog")
 library(rqog)
 ```
 

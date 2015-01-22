@@ -6,7 +6,7 @@
 
 ```r
 library(devtools)
-install_github(repo = "rqog", username = "ropengov")
+install_github("ropengov/rqog")
 library(rqog)
 ```
 
