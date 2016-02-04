@@ -7,6 +7,7 @@ Author: Markus Kainu
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 VignetteBuilder: knitr
 Depends: R (>= 3.0.0)
+Depends: readr
 Description: Download data from the Quality of Government Institute data
 License: MIT
 Collate:
