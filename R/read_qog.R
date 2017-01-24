@@ -63,7 +63,7 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = "
      }
     # read the local file in every case
     message(paste("Reading local file from ",local.path, sep=""))
-    read.csv(local.path, sep=",")
+    read.csv(local.path, sep=",", stringsAsFactors = FALSE)
 }
 
 
