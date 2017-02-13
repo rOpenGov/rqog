@@ -1,8 +1,8 @@
 Package: rqog
 Type: Package
 Title: Download data from the Quality of Government Institute data
-Version: 0.1.4
-Date: 2017-01-24
+Version: 0.1.5
+Date: 2017-02-13
 Author: Markus Kainu
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 VignetteBuilder: knitr
@@ -12,4 +12,4 @@ Description: Download data from the Quality of Government Institute data
 License: MIT
 Collate:
     'read_qog.R'
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

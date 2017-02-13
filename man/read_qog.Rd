@@ -27,4 +27,3 @@ Download data from Quality of Government Institute Basic data at
 \author{
 Markus Kainu <markuskainu(at)gmail.com>
 }
-

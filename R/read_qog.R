@@ -35,17 +35,17 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = "
         # time-series data
         if (data.type == "time-series") {
             # local csv that will be read
-            if (which.data == "basic")          name.csv <- "qog_bas_ts_jan16.csv"
-            if (which.data == "standard")       name.csv <- "qog_std_ts_jan16.csv"
-            if (which.data == "oecd")           name.csv <- "qog_oecd_ts_jan16.csv"        
+            if (which.data == "basic")          name.csv <- "qog_bas_ts_jan17.csv"
+            if (which.data == "standard")       name.csv <- "qog_std_ts_jan17.csv"
+            if (which.data == "oecd")           name.csv <- "qog_oecd_ts_jan17.csv"        
         }
         
         # time-series data
         if (data.type == "cross-sectional") {
             # local csv that will be read
-            if (which.data == "basic")          name.csv <- "qog_bas_cs_jan16.csv"
-            if (which.data == "standard")       name.csv <- "qog_std_cs_jan16.csv"
-            if (which.data == "oecd")           name.csv <- "qog_oecd_cs_jan16.csv"
+            if (which.data == "basic")          name.csv <- "qog_bas_cs_jan17.csv"
+            if (which.data == "standard")       name.csv <- "qog_std_cs_jan17.csv"
+            if (which.data == "oecd")           name.csv <- "qog_oecd_cs_jan17.csv"
         }
         
         # creating local file path
@@ -64,6 +64,7 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = "
     # read the local file in every case
     message(paste("Reading local file from ",local.path, sep=""))
     read.csv(local.path, sep=",", stringsAsFactors = FALSE)
-}
+    # readr::read_csv(local.path)
+    }
 
 
