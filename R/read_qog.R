@@ -17,8 +17,14 @@
 #'
 #' @param which.data A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.
 #' @param data.type A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.
-#' @param data.dir A string. Specify the path where to save the downloaded data file.
+#' @param data.dir a path to a cache directory. The directory have to exist.
+#'        The \code{NULL} (default) uses and creates
+#'        'rqog' directory in the temporary directory from
+#'        \code{\link{tempdir}}.
 #' @param file.format A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.
+#' @param cache a logical whether to do caching. Default is \code{TRUE}.
+#' @param update_cache a locigal whether to update cache. Default is \code{FALSE}.
+
 #'  
 #' @return data.frame 
 #' 
@@ -26,49 +32,71 @@
 #' @examples # dat <- read_qog(which.data = "basic", data.dir="data")
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
-read_qog <- function(which.data = "basic", data.type="time-series", data.dir = "~/tmp", file.format = "csv") {
-        # Beginning of the URL's for all data's
-        data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
-        
-        if (!(which.data %in% c("basic","standard","oecd"))) stop('Wrong data name, use "basic","standard" or "oecd" instead')
-        if (!(data.type %in% c("time-series","cross-sectional"))) stop('Wrong data name, use "time-series" or "cross-sectional" instead')
-        
-        if (file.format == "csv")  file_ext <- "csv"
-        if (file.format == "dta")  file_ext <- "dta"
-        if (file.format == "sav")  file_ext <- "sav"
-        if (file.format == "xlsx") file_ext <- "xlsx"
-        
-        if (which.data == "basic")    dname <- "bas"
-        if (which.data == "standard") dname <- "std"
-        if (which.data == "oecd")     dname <- "oecd"
-        
-        if (data.type == "cross-sectional") dtype <- "cs"
-        if (data.type == "time-series")     dtype <- "ts"
-        
-        file.name <- paste0("qog_",dname,"_",dtype,"_jan17.",file_ext)
-        
-        # creating local file path
-        local.path <- file.path(data.dir, file.name)
-        # Check whether to local file exist.
-        # If it does not exist then download it
-        if (!file.exists(local.path)) {
-             # create local folder if it is missing
-            if (!file.exists(data.dir)) dir.create(data.dir)
-            # Create the web address from where to fetch the csv
-            data.url <- paste0(data.url.begin, file.name)
-            message(paste("Local file not found. \n Downloading QoG",file.name,"data, \n",
-                              "from",data.url,"\n in file:", local.path,"\n", sep=" "))
-            download.file(data.url, destfile = local.path)
-     }
-    # read the local file in every case
-    message(paste("Reading local file from ",local.path, sep=""))
-    
-    if (file.format == "csv")  dd <- read.csv(local.path, sep=",", stringsAsFactors = FALSE)
-    if (file.format == "dta")  dd <- haven::read_dta(local.path)
-    if (file.format == "sav")  dd <- haven::read_sav(local.path)
-    if (file.format == "xlsx") dd <- readxl::read_excel(local.path)
-    return(dd)
-    # readr::read_csv(local.path)
-    }
+read_qog <- function(which.data = "basic", data.type="time-series", data.dir = NULL, file.format = "csv",
+                     cache = TRUE, update_cache = FALSE) {
+  # Beginning of the URL's for all data's
+  data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
 
+  if (!(which.data %in% c("basic","standard","oecd"))) stop('Wrong data name, use "basic","standard" or "oecd" instead')
+  if (!(data.type %in% c("time-series","cross-sectional"))) stop('Wrong data name, use "time-series" or "cross-sectional" instead')
+  
+  if (file.format == "csv")  file_ext <- "csv"
+  if (file.format == "dta")  file_ext <- "dta"
+  if (file.format == "sav")  file_ext <- "sav"
+  if (file.format == "xlsx") file_ext <- "xlsx"
+  
+  if (which.data == "basic")    dname <- "bas"
+  if (which.data == "standard") dname <- "std"
+  if (which.data == "oecd")     dname <- "oecd"
+  
+  if (data.type == "cross-sectional") dtype <- "cs"
+  if (data.type == "time-series")     dtype <- "ts"
+  
+  file.name <- paste0("qog_",dname,"_",dtype,"_jan17.",file_ext)
+  
+  # creating local file path
+  
+  # Check whether to local file exist.
+  # If it does not exist then download it
+  
+  
+  if (cache){
+    cache_dir <- data.dir
+    # check option for update
+    # get cache directory
+    if (is.null(cache_dir)){
+      cache_dir <- file.path(tempdir(), "rqog")
+      if (!file.exists(cache_dir)) dir.create(cache_dir)
+    } else {
+      if (!file.exists(cache_dir)) {
+        stop("The folder ", cache_dir, " does not exist")
+      }
+    }
+    
+    # cache filename
+    cache_file <- file.path(cache_dir, file.name)
+  }
+  
+  # if cache = FALSE or update or new: dowload else read from cache
+  if (!cache || update_cache || !file.exists(cache_file)){
+    
+    data.url <- paste0(data.url.begin, file.name)
+    message(paste("Local file not found. \n Downloading QoG",file.name,"data, \n",
+                  "from",data.url,"\n in file:", cache_file,"\n", sep=" "))
+    download.file(data.url, destfile = cache_file)
+
+  }
+  
+  if (cache & file.exists(cache_file)) {
+    cf <- path.expand(cache_file)
+    message(paste("Reading cache file", cf))
+    # y <- readRDS(cache_file)
+    if (file.format == "csv")  dd <- read.csv(cache_file, sep=",", stringsAsFactors = FALSE)
+    if (file.format == "dta")  dd <- haven::read_dta(cache_file)
+    if (file.format == "sav")  dd <- haven::read_sav(cache_file)
+    if (file.format == "xlsx") dd <- readxl::read_excel(cache_file)
+  }
+  return(dd)
+  # readr::read_csv(local.path)
+  }
 

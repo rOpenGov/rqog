@@ -4,17 +4,24 @@
 \alias{read_qog}
 \title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
-read_qog(which.data = "basic", data.type = "time-series",
-  data.dir = "~/tmp", file.format = "csv")
+read_qog(which.data = "basic", data.type = "time-series", data.dir = NULL,
+  file.format = "csv", cache = TRUE, update_cache = FALSE)
 }
 \arguments{
 \item{which.data}{A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.}
 
 \item{data.type}{A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.}
 
-\item{data.dir}{A string. Specify the path where to save the downloaded data file.}
+\item{data.dir}{a path to a cache directory. The directory have to exist.
+The \code{NULL} (default) uses and creates
+'rqog' directory in the temporary directory from
+\code{\link{tempdir}}.}
 
 \item{file.format}{A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.}
+
+\item{cache}{a logical whether to do caching. Default is \code{TRUE}.}
+
+\item{update_cache}{a locigal whether to update cache. Default is \code{FALSE}.}
 }
 \value{
 data.frame
