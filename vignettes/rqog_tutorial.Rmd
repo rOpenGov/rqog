@@ -30,13 +30,13 @@ Quotation from [ Quality of Governance institute website](http://www.qog.pol.gu.
 5. [QoG EU Regional Data](http://www.qog.pol.gu.se/data/datadownloads/qogeuregionaldata/)
 
 
-**rqog**-package provides access to **Basic**, **Standard** and **OECD** datasets through function `read_qog()`. **Standard** data has all the same indicators as in **Basic** data (241 variables) and an additional ~2300 indicators. Both **basic** and **standard** datasets have 211 countries. **OECD** dataset has 1274 indicators from 34 countries. **rqog** uses *longitudinal* datasets by default that have time-series of varying duration from majority of the indicators and countries.
+**rqog**-package provides access to **Basic**, **Standard** and **OECD** datasets through function `read_qog()`. **Standard** data has all the same indicators as in **Basic** data (367 variables) and an additional ~1600 indicators. Both **basic** and **standard** datasets have 194 countries. **OECD** dataset has 1020 indicators from 35 countries. **rqog** uses *longitudinal* datasets by default that have time-series of varying duration from majority of the indicators and countries.
 
 Quality of Government Institute provides codebooks for all datasets: 
 
-1. [Basic data codebook](http://www.qogdata.pol.gu.se/data/qog_bas_jan16.pdf)
-2. [Standard data codebook](http://www.qogdata.pol.gu.se/data/qog_std_jan16.pdf)
-3. [OECD data codebook](http://www.qogdata.pol.gu.se/data/qog_oecd_jan16.pdf)
+1. [Basic data codebook](http://www.qogdata.pol.gu.se/data/qog_bas_jan17.pdf)
+2. [Standard data codebook](http://www.qogdata.pol.gu.se/data/qog_std_jan17.pdf)
+3. [OECD data codebook](http://www.qogdata.pol.gu.se/data/qog_oecd_jan17.pdf)
 
 You consult the codebooks for description of the data and indicators.
 

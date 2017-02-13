@@ -1,11 +1,14 @@
 Package: rqog
 Type: Package
 Title: Download data from the Quality of Government Institute data
-Version: 0.1.5
+Version: 0.2
 Date: 2017-02-13
 Author: Markus Kainu
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 VignetteBuilder: knitr
+Import: 
+     haven
+     readxl
 Depends:
     R (>= 3.0.0)
 Description: Download data from the Quality of Government Institute data

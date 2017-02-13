@@ -1,6 +1,6 @@
 # This file is part of the rQog-package (https://github.com/muuankarski/rqog)
 
-# Copyright (C) 2012-2013 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
+# Copyright (C) 2012-2017 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
 
 # This program is open source software; you can redistribute it and/or modify
 # it under the terms of the FreeBSD License (keep this notice):
@@ -18,6 +18,7 @@
 #' @param which.data A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.
 #' @param data.type A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.
 #' @param data.dir A string. Specify the path where to save the downloaded data file.
+#' @param file.format A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.
 #'  
 #' @return data.frame 
 #' 
@@ -25,45 +26,48 @@
 #' @examples # dat <- read_qog(which.data = "basic", data.dir="data")
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
-read_qog <- function(which.data = "basic", data.type="time-series", data.dir = "~/tmp") {
+read_qog <- function(which.data = "basic", data.type="time-series", data.dir = "~/tmp", file.format = "csv") {
         # Beginning of the URL's for all data's
         data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
         
         if (!(which.data %in% c("basic","standard","oecd"))) stop('Wrong data name, use "basic","standard" or "oecd" instead')
         if (!(data.type %in% c("time-series","cross-sectional"))) stop('Wrong data name, use "time-series" or "cross-sectional" instead')
         
-        # time-series data
-        if (data.type == "time-series") {
-            # local csv that will be read
-            if (which.data == "basic")          name.csv <- "qog_bas_ts_jan17.csv"
-            if (which.data == "standard")       name.csv <- "qog_std_ts_jan17.csv"
-            if (which.data == "oecd")           name.csv <- "qog_oecd_ts_jan17.csv"        
-        }
+        if (file.format == "csv")  file_ext <- "csv"
+        if (file.format == "dta")  file_ext <- "dta"
+        if (file.format == "sav")  file_ext <- "sav"
+        if (file.format == "xlsx") file_ext <- "xlsx"
         
-        # time-series data
-        if (data.type == "cross-sectional") {
-            # local csv that will be read
-            if (which.data == "basic")          name.csv <- "qog_bas_cs_jan17.csv"
-            if (which.data == "standard")       name.csv <- "qog_std_cs_jan17.csv"
-            if (which.data == "oecd")           name.csv <- "qog_oecd_cs_jan17.csv"
-        }
+        if (which.data == "basic")    dname <- "bas"
+        if (which.data == "standard") dname <- "std"
+        if (which.data == "oecd")     dname <- "oecd"
+        
+        if (data.type == "cross-sectional") dtype <- "cs"
+        if (data.type == "time-series")     dtype <- "ts"
+        
+        file.name <- paste0("qog_",dname,"_",dtype,"_jan17.",file_ext)
         
         # creating local file path
-        local.path <- file.path(data.dir, name.csv)
+        local.path <- file.path(data.dir, file.name)
         # Check whether to local file exist.
         # If it does not exist then download it
-        if (!file.exists(local.path) == TRUE) {
+        if (!file.exists(local.path)) {
              # create local folder if it is missing
             if (!file.exists(data.dir)) dir.create(data.dir)
             # Create the web address from where to fetch the csv
-            data.url <- paste(data.url.begin, name.csv, sep = "")
-            message(paste("Local file not found. \n Downloading QoG",data.type,which.data,"data, \n",
+            data.url <- paste0(data.url.begin, file.name)
+            message(paste("Local file not found. \n Downloading QoG",file.name,"data, \n",
                               "from",data.url,"\n in file:", local.path,"\n", sep=" "))
             download.file(data.url, destfile = local.path)
      }
     # read the local file in every case
     message(paste("Reading local file from ",local.path, sep=""))
-    read.csv(local.path, sep=",", stringsAsFactors = FALSE)
+    
+    if (file.format == "csv")  dd <- read.csv(local.path, sep=",", stringsAsFactors = FALSE)
+    if (file.format == "dta")  dd <- haven::read_dta(local.path)
+    if (file.format == "sav")  dd <- haven::read_sav(local.path)
+    if (file.format == "xlsx") dd <- readxl::read_excel(local.path)
+    return(dd)
     # readr::read_csv(local.path)
     }
 

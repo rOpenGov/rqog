@@ -5,7 +5,7 @@
 \title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
 read_qog(which.data = "basic", data.type = "time-series",
-  data.dir = "~/tmp")
+  data.dir = "~/tmp", file.format = "csv")
 }
 \arguments{
 \item{which.data}{A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.}
@@ -13,6 +13,8 @@ read_qog(which.data = "basic", data.type = "time-series",
 \item{data.type}{A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.}
 
 \item{data.dir}{A string. Specify the path where to save the downloaded data file.}
+
+\item{file.format}{A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.}
 }
 \value{
 data.frame
