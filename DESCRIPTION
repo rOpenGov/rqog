@@ -3,8 +3,9 @@ Type: Package
 Title: Download data from the Quality of Government Institute data
 Version: 0.2.1
 Date: 2017-02-13
-Author: Markus Kainu
+Authors@R: person("Markus", "Kainu", email = "markuskainu@gmail.com", role = c("aut", "cre"))
 Maintainer: Markus Kainu <markuskainu@gmail.com>
+Encoding: UTF-8
 VignetteBuilder: knitr
 Import: 
      haven

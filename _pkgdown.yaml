@@ -1,0 +1,8 @@
+template:
+  params:
+     bootswatch: united
+     
+navbar:
+  right:
+     - icon: fa-github
+       href: https://github.com/rOpenGov/rqog

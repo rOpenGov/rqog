@@ -118,12 +118,12 @@ OECD data includes 1199 variables, but from a smaller number of wealthier countr
 We will include all the countries and all the years included in the data.
 
 
-```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("oecd", "time-series")
 # Subset the data
-dat2 <- dat[c("cname","year","oecd_socexpnd_t1a",
+dat2 <- dat[c("cname","year","oecd_socexpnd_t1a")],
                             "oecd_incinequal_t1a",
                             "oecd_natinccap_t1",
                             "oecd_govdebt_t1")]
