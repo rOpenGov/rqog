@@ -1,6 +1,6 @@
 # This file is part of the rQog-package (https://github.com/muuankarski/rqog)
 
-# Copyright (C) 2012-2017 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
+# Copyright (C) 2012-2018 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
 
 # This program is open source software; you can redistribute it and/or modify
 # it under the terms of the FreeBSD License (keep this notice):
@@ -52,7 +52,7 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
   if (data.type == "cross-sectional") dtype <- "cs"
   if (data.type == "time-series")     dtype <- "ts"
   
-  file.name <- paste0("qog_",dname,"_",dtype,"_jan17.",file_ext)
+  file.name <- paste0("qog_",dname,"_",dtype,"_jan18.",file_ext)
   
   # creating local file path
   

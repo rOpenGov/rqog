@@ -61,7 +61,7 @@ library(rqog)
 dat <- read_qog(which.data="basic", data.type = "time-series")
 # Subset the data
 dat2 <- dat[dat$year %in% 1990:2010 & dat$cname %in% c("Russia","China","India","Brazil"),
-             c("cname","year","fh_ipolity2","wdi_pop")]
+             c("cname","year","fh_ipolity2","wdi_pop1564")]
 # gather to long format
 library(tidyr)
 dat.l <- gather(dat2, "var", "value", 3:4)
@@ -118,12 +118,12 @@ OECD data includes 1199 variables, but from a smaller number of wealthier countr
 We will include all the countries and all the years included in the data.
 
 
-```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("oecd", "time-series")
 # Subset the data
-dat2 <- dat[c("cname","year","oecd_socexpnd_t1a",
+dat2 <- dat[c("cname","year","oecd_socexpnd_t1a")],
                             "oecd_incinequal_t1a",
                             "oecd_natinccap_t1",
                             "oecd_govdebt_t1")]
@@ -145,5 +145,5 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 
 ```{r}
-sessionInfo()
+devtools::session_info()
 ```
