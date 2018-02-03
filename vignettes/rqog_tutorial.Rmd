@@ -52,95 +52,121 @@ library(rqog)
 
 ### Basic Data
 
-Basic data has a limited selection of most common indicators. Below is an example on how to extract data on population and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and to plot it.
+Basic data has a selection of most common indicators, 344 indicators from 211 countries. Below is an example on how to extract data on population and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and to plot it.
 
 
-```{r ExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{r ExampleBasic, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
 library(rqog)
+library(tidyverse)
+library(hrbrthemes)
 # Download a local coppy of the file
 dat <- read_qog(which.data="basic", data.type = "time-series")
 # Subset the data
-dat2 <- dat[dat$year %in% 1990:2010 & dat$cname %in% c("Russia","China","India","Brazil"),
-             c("cname","year","fh_ipolity2","wdi_pop1564")]
-# gather to long format
-library(tidyr)
-dat.l <- gather(dat2, "var", "value", 3:4)
-dat.l <- dat.l[!is.na(dat.l$value), ]
-# Plot the data
-library(ggplot2)
+dat.l <- dat %>% 
+  # filter years and countries
+  filter(year %in% 1990:2010,
+         cname %in% c("Russia","China","India","Brazil")) %>% 
+  # select variables
+  select(cname,year,fh_ipolity2,wdi_pop1564) %>% 
+  # gather to long format
+  gather(., var, value, 3:4) %>% 
+  # remove NA values
+  filter(!is.na(value))
+
+# Plot
 ggplot(dat.l, aes(x=year,y=value,color=cname)) + 
   geom_point() + geom_line() +
-  geom_text(data=merge(dat.l,aggregate(year ~ cname, dat.l, max),
-                     by=c("year","cname")),
+  geom_text(data = dat.l %>% 
+              group_by(cname) %>% 
+              filter(year == max(year)),
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme(legend.position="none")
+  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme(legend.position = "none") +
+  labs(title = "Plotting QoG basic data",
+       caption = "Data: QoG Basic data")
 ```
 
 
 ### Standard data
 
-Standard data includes roughly 2500 indicators. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
+Standard data includes 2190 indicators from 211 countries. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
 
-```{r ExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12}
+```{r ExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("standard", "time-series")
 # Subset the data
-dat2 <- dat[dat$cname %in% c("Russia","China","India","Brazil") & dat$year %in% 2000:2010, c("cname","year","epi_epi","dpi_hlio")]
-# gather to long format
-library(tidyr)
-dat.l <- gather(dat2, "var", "value", 3:4)
-dat.l <- dat.l[!is.na(dat.l$value), ]
+dat.l <- dat %>% 
+  # filter years and countries
+  filter(year %in% 1990:2010,
+         cname %in% c("Russia","China","India","Brazil")) %>% 
+  # select variables
+  select(cname,year,epi_epi,dpi_hlio) %>% 
+  # gather to long format
+  gather(., var, value, 3:4) %>% 
+  # remove NA values
+  filter(!is.na(value))
+
 # Plot the data
-library(ggplot2)
+# Plot
 ggplot(dat.l, aes(x=year,y=value,color=cname)) + 
   geom_point() + geom_line() +
-  geom_text(data=merge(dat.l,aggregate(year ~ cname, dat.l, max),
-                     by=c("year","cname")),
+  geom_text(data = dat.l %>% 
+              group_by(cname) %>% 
+              filter(year == max(year)),
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme(legend.position="none")
+  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme(legend.position = "none") +
+  labs(title = "Plotting QoG Standard data",
+       caption = "Data: QoG Standard data")
+
 ```
 
 ### OECD data
 
-OECD data includes 1199 variables, but from a smaller number of wealthier countries of 34. In the example below four indicators:
+OECD data includes 1006 variables, but from a smaller number of wealthier countries of 36. In the example below four indicators:
 
-1. Total social expenditure (public) `oecd_socexpnd_t1a`
-2. Income inequality: Gini coefficient; level; late 2000s `oecd_incinequal_t1a`
-3. Gross national income per capita `oecd_natinccap_t1`
-4. General government debt `oecd_govdebt_t1`
+1. Total health expenditure (public) `wdi_exph`
+2. Income inequality: GINI index (World Bank estimate) `wdi_gini`
+3. Gross National Income per Capita `oecd_natinccap_t1`
+4. Government gross debt (Percent of GDP) `imf_gd`
 
 We will include all the countries and all the years included in the data.
 
 
-```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=FALSE, fig.width=12}
+```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
 library(rqog)
 # Download a local coppy of the file
 dat <- read_qog("oecd", "time-series")
 # Subset the data
-dat2 <- dat[c("cname","year","oecd_socexpnd_t1a")],
-                            "oecd_incinequal_t1a",
-                            "oecd_natinccap_t1",
-                            "oecd_govdebt_t1")]
-# gather to long format
-library(tidyr)
-dat.l <- gather(dat2, "var", "value", 3:6)
-dat.l <- dat.l[!is.na(dat.l$value), ]
-library(ggplot2)
+dat.l <- dat %>% 
+  # select variables
+  select(cname,year,wdi_exph,wdi_gini,oecd_natinccap_t1,imf_gd) %>% 
+  # gather to long format
+  gather(., var, value, 3:6) %>% 
+  # remove NA values
+  filter(!is.na(value))
+
 # Plot the data
+# Plot
 ggplot(dat.l, aes(x=year,y=value,color=cname)) + 
   geom_point() + geom_line() +
-  geom_text(data=merge(dat.l,aggregate(year ~ cname, dat.l, max),
-                     by=c("year","cname")),
+  geom_text(data = dat.l %>% 
+              group_by(cname) %>% 
+              filter(year == max(year)),
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme(legend.position="none")
+  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme(legend.position = "none") +
+  labs(title = "Plotting QoG OECD data",
+       caption = "Data: QoG OECD data")
+
 ```
 
 

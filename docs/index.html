@@ -29,10 +29,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="articles/index.html">Articles</a>
+  <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/rqog_tutorial.html">rqog-package for R</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -53,29 +68,22 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-    <div id="rqog-package" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rqog-package" class="anchor"></a>rqog-package</h1></div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
-<span class="kw">install_github</span>(<span class="st">"ropengov/rqog"</span>)
-<span class="kw">library</span>(rqog)</code></pre></div>
-</div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
-<p>See the preliminary vignette for more examples</p>
+    <section class="level1"><div class="page-header"><h1>rqog-package. Download data from the Quality of Government Institute data</h1></div>
+<p>Download latest datasets from the Quality of Government institute using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <code><a href="reference/read_qog.html">?read_qog</a></code> for instructions.</p>
+<p>See <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for metadata.</p>
+<section class="level2"><h2>Installation</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">dectools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ropengov/rqog"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(rqog)</a></code></pre></div>
+</section><section class="level2"><h2>Download data</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(rqog)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which.data =</span> <span class="st">"standard"</span>, <span class="dt">data.dir =</span> <span class="st">"datafolder"</span>)</a></code></pre></div>
+<p>See the vignette for examples</p>
 <ul>
-<li><a href="http://ropengov.github.io/rqog/vignettes/rqog_tutorial.html">ropengov.github.io/rqog/vignettes/rqog_tutorial.html</a></li>
+<li><a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="uri">http://ropengov.github.io/rqog/articles/rqog_tutorial.html</a></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rqog)
-<span class="co"># Reading the data</span>
-dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which.data =</span> <span class="st">"standard"</span>, <span class="dt">data.dir =</span> <span class="st">"datafolder"</span>)</code></pre></div>
+<p>Copyright (C) 2012-2018 Markus Kainu <a href="mailto:markuskainu@gmail.com">markuskainu@gmail.com</a>. MIT-licence.</p>
+</section></section>
 </div>
-</div>
-  </div>
 
   <div class="col-md-3" id="sidebar">
     <h2>License</h2>
@@ -93,7 +101,7 @@ dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.h
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
