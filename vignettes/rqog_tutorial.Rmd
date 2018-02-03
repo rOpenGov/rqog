@@ -157,7 +157,7 @@ dat.l <- dat %>%
 ggplot(dat.l, aes(x=year,y=value,color=cname)) + 
   geom_point() + geom_line() +
   geom_text(data = dat.l %>% 
-              group_by(cname) %>% 
+              group_by(var,cname) %>% 
               filter(year == max(year)),
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
