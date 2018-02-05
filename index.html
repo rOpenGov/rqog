@@ -69,19 +69,21 @@
       </header><div class="row">
   <div class="contents col-md-9">
     <section class="level1"><div class="page-header"><h1>rqog-package. Download data from the Quality of Government Institute data</h1></div>
-<p>Download latest datasets from the Quality of Government institute using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <code><a href="reference/read_qog.html">?read_qog</a></code> for instructions.</p>
-<p>See <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for metadata.</p>
+<p>Download latest datasets from the <a href="https://qog.pol.gu.se/data">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <code><a href="reference/read_qog.html">?read_qog</a></code> for instructions.</p>
 <section class="level2"><h2>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">dectools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ropengov/rqog"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(rqog)</a></code></pre></div>
-</section><section class="level2"><h2>Download data</h2>
+</section><section class="level2"><h2>Use</h2>
+<p><strong>Download data</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(rqog)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which.data =</span> <span class="st">"standard"</span>, <span class="dt">data.dir =</span> <span class="st">"datafolder"</span>)</a></code></pre></div>
-<p>See the vignette for examples</p>
-<ul>
-<li><a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="uri">http://ropengov.github.io/rqog/articles/rqog_tutorial.html</a></li>
-</ul>
+<p><strong>Browse metadata</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(rqog)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">meta_standard[<span class="kw">grepl</span>(<span class="st">"Corruption|corruption"</span>, meta_standard<span class="op">$</span>name),]</a></code></pre></div>
+<p>See the vignette for examples <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="uri">http://ropengov.github.io/rqog/articles/rqog_tutorial.html</a> and <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for an interactive access to metadata.</p>
 <p>Copyright (C) 2012-2018 Markus Kainu <a href="mailto:markuskainu@gmail.com">markuskainu@gmail.com</a>. MIT-licence.</p>
+</section><section class="level2"><h2>Disclaimer</h2>
+<p>This package is in no way officially related to or endorsed by Quality of Government Institute.</p>
 </section></section>
 </div>
 
