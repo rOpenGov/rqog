@@ -50,7 +50,9 @@ library(rqog)
 
 ## Examples
 
-### Basic Data
+### Download data and plot numeric indicators
+
+**Basic Data**
 
 Basic data has a selection of most common indicators, 344 indicators from 211 countries. Below is an example on how to extract data on population and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and to plot it.
 
@@ -60,9 +62,9 @@ library(rqog)
 library(tidyverse)
 library(hrbrthemes)
 # Download a local coppy of the file
-dat <- read_qog(which.data="basic", data.type = "time-series")
+basic <- read_qog(which.data="basic", data.type = "time-series")
 # Subset the data
-dat.l <- dat %>% 
+dat.l <- basic %>% 
   # filter years and countries
   filter(year %in% 1990:2010,
          cname %in% c("Russia","China","India","Brazil")) %>% 
@@ -89,7 +91,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 ```
 
 
-### Standard data
+**Standard data**
 
 Standard data includes 2190 indicators from 211 countries. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
 
@@ -97,9 +99,9 @@ Standard data includes 2190 indicators from 211 countries. Below is an example o
 ```{r ExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("standard", "time-series")
+standard <- read_qog("standard", "time-series")
 # Subset the data
-dat.l <- dat %>% 
+dat.l <- standard %>% 
   # filter years and countries
   filter(year %in% 1990:2010,
          cname %in% c("Russia","China","India","Brazil")) %>% 
@@ -127,7 +129,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 ```
 
-### OECD data
+**OECD data**
 
 OECD data includes 1006 variables, but from a smaller number of wealthier countries of 36. In the example below four indicators:
 
@@ -142,9 +144,9 @@ We will include all the countries and all the years included in the data.
 ```{r ExampleSocialPolicy, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
 library(rqog)
 # Download a local coppy of the file
-dat <- read_qog("oecd", "time-series")
+oecd <- read_qog("oecd", "time-series")
 # Subset the data
-dat.l <- dat %>% 
+dat.l <- oecd %>% 
   # select variables
   select(cname,year,wdi_exph,wdi_gini,oecd_natinccap_t1,imf_gd) %>% 
   # gather to long format
@@ -168,6 +170,96 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
        caption = "Data: QoG OECD data")
 
 ```
+
+### Work with metadata and factor indicators
+
+Packages is shipped with three metadatas `meta_basic`, `meta_standard` and `meta_oecd`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
+
+**Browsing metadata**
+
+You can browse the content by applying `grepl` to `name` column. Let's find indicators containing term `Corruption` either in lower or uppercase.
+
+```{r}
+library(rqog)
+meta_basic[grepl("Corruption", meta_basic$name, ignore.case = TRUE),]
+```
+
+**Assigning labels to values with metadata**
+
+The data `rqoq` imports to R is in `.csv`-format without the labels and names shipped together with `spss` or `Stata` formats. As such it is the desired format to work with in R, especially with numeric indicators. However, many of the indicators in QoG are factors meaning that they have discrete values with a corresponding label. You can use the metadatas to assign labels for  values of such indicators. Lets take the `ccp_cc` as an example below and first print the `value` and `label` colums of the data.
+
+```{r}
+meta_basic %>% filter(code == "ccp_cc") %>% select(value,label)
+```
+
+Currently we have basic data in R in an object called `basic`. Lets see the frequencies of each value
+
+```{r}
+basic %>% count(ccp_cc)
+```
+
+Now, using the metadata with assign values with corresponding labels
+
+```{r}
+basic %>% 
+  count(ccp_cc) %>% 
+  mutate(ccp_cc_lab = meta_basic[meta_basic$code == "ccp_cc",]$label[match(ccp_cc,meta_basic[meta_basic$code == "ccp_cc",]$value)])
+```
+
+A more straighforward method is by using [`tidymetadata::label_data()`](https://muuankarski.github.io/tidymetadata/reference/label_data.html) -function like this.
+
+
+```{r}
+library(tidymetadata)
+basic %>% 
+  count(ccp_cc) %>% 
+  mutate(ccp_cc_lab = label_data(data = ., variable.data = "ccp_cc", metadata = meta_basic))
+```
+
+
+So, lets find a factor variable with few more values
+
+```{r}
+meta_basic %>% 
+  filter(class =="factor") %>% 
+  group_by(code) %>% 
+  summarise(n_of_values = n()) %>% 
+  arrange(desc(n_of_values))
+
+```
+
+Lets take these two factors and summarise the regime types per regions
+
+```{r}
+meta_basic %>% filter(code %in% c("ht_region","gwf_regimetype"))
+```
+
+
+```{r}
+# lets download the cross-sectional data first
+basic_cs <- read_qog(which.data = "basic", data.type = "cross-sectional")
+
+plot_d <- basic_cs %>% 
+  # group by region
+  group_by(ht_region) %>% 
+  # count per group frequencies of each regime type
+  count(gwf_regimetype) %>%
+  ungroup() %>% 
+  # label
+  mutate(ht_region_lab = label_data(data = ., variable.data = "ht_region", metadata = meta_basic),
+         gwf_regimetype_lab = label_data(data = ., variable.data = "gwf_regimetype", metadata = meta_basic))
+head(plot)
+```
+
+Then we can create a simple bar plot
+
+```{r}
+ggplot(plot_d, aes(x=gwf_regimetype_lab,y=n))
+
+
+
+```
+
 
 
 ```{r}
