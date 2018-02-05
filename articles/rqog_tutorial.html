@@ -80,7 +80,7 @@
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rqog Markdown Vignette made with knitr}
 -->
-<p><code>compiled at</code> 2018-02-05 15:22:13</p>
+<p><code>compiled at</code> 2018-02-05 16:00:17</p>
 <p><em>Download data from the Quality of Government Institute data</em></p>
 <p>Quotation from <a href="http://www.qog.pol.gu.se/">Quality of Governance institute website</a></p>
 <blockquote>
@@ -217,7 +217,7 @@
 <a class="sourceLine" id="cb4-26" data-line-number="26">       <span class="dt">caption =</span> <span class="st">"Data: QoG OECD data"</span>)</a></code></pre></div>
 <p><img src="rqog_tutorial_files/figure-html/ExampleSocialPolicy-1.png" width="1152"></p>
 </section><section id="work-with-metadata-and-factor-indicators" class="level3"><h3>Work with metadata and factor indicators</h3>
-<p>Packages is shipped with three metadatas <code>meta_basic</code>, <code>meta_standard</code> and <code>meta_oecd</code>. Data frames are generated from original <code>spss</code> versions of data using <code><a href="http://www.rdocumentation.org/packages/tidymetadata/topics/create_metadata">tidymetadata::create_metadata()</a></code>-function.</p>
+<p>Packages is shipped with six metadatas <code>meta_basic_cs</code>, <code>meta_basic_ts</code>, <code>meta_std_cs</code>, <code>meta_std_ts</code>, <code>meta_oecd_cs</code> and <code>meta_oecd_ts</code>. Data frames are generated from original <code>spss</code> versions of data using <code><a href="http://www.rdocumentation.org/packages/tidymetadata/topics/create_metadata">tidymetadata::create_metadata()</a></code>-function.</p>
 <p><strong>Browsing metadata</strong></p>
 <p>You can browse the content by applying <code>grepl</code> to <code>name</code> column. Let’s find indicators containing term <code>Corruption</code> either in lower or uppercase.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(rqog)</a>
