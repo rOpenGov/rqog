@@ -22,7 +22,7 @@ dat <- read_qog(which.data = "standard", data.dir = "datafolder")
 
 ```r
 library(rqog)
-meta_standard_ts[grepl("Corruption", meta_standard_ts$name, ignore.case = TRUE),]
+meta_std_ts[grepl("Corruption", meta_std_ts$name, ignore.case = TRUE),]
 ```
 
   

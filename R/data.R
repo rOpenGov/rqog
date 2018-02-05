@@ -44,7 +44,7 @@
 #'    \item{label}{Value label for factor indicators}
 #'    \item{class}{Class of the indicator. Numeric, factor or character}
 #' }
-"meta_standard_ts"
+"meta_std_ts"
 
 #'
 #' Metadata for 2018 Quality of Government institute Standard Data - cross-sectional
@@ -60,7 +60,7 @@
 #'    \item{label}{Value label for factor indicators}
 #'    \item{class}{Class of the indicator. Numeric, factor or character}
 #' }
-"meta_standard_cs"
+"meta_std_cs"
 
 
 
@@ -115,16 +115,16 @@
 # save(meta_basic_cs, file="./data/meta_basic_cs.rda")
 # 
 # # Standard
-# ## time-series
+## time-series
 # d <- read_qog(which.data = "standard", data.type = "time-series", file.format = "sav")
-# meta_standard_ts <- tidymetadata::create_metadata(d) %>% 
+# meta_std_ts <- tidymetadata::create_metadata(d) %>%
 #   select(code,name,value,label,class)
-# save(meta_standard_ts, file="./data/meta_standard_ts.rda")
+# save(meta_std_ts, file="./data/meta_std_ts.rda")
 # ## cross-section
 # d <- read_qog(which.data = "standard", data.type = "cross-sectional", file.format = "sav")
-# meta_standard_cs <- tidymetadata::create_metadata(d) %>% 
+# meta_std_cs <- tidymetadata::create_metadata(d) %>%
 #   select(code,name,value,label,class)
-# save(meta_standard_cs, file="./data/meta_standard_cs.rda")
+# save(meta_std_cs, file="./data/meta_std_cs.rda")
 # 
 # 
 # # Oecd

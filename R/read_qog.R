@@ -37,7 +37,7 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
   # Beginning of the URL's for all data's
   data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
 
-  if (!(which.data %in% c("basic","standard","oecd"))) stop('Wrong data name, use "basic","standard" or "oecd" instead')
+  if (!(which.data %in% c("basic","standard","std","oecd"))) stop('Wrong data name, use "basic","standard" or "oecd" instead')
   if (!(data.type %in% c("time-series","cross-sectional"))) stop('Wrong data name, use "time-series" or "cross-sectional" instead')
   
   if (file.format == "csv")  file_ext <- "csv"
@@ -47,6 +47,7 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
   
   if (which.data == "basic")    dname <- "bas"
   if (which.data == "standard") dname <- "std"
+  if (which.data == "std")      dname <- "std"
   if (which.data == "oecd")     dname <- "oecd"
   
   if (data.type == "cross-sectional") dtype <- "cs"

@@ -178,7 +178,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 ### Work with metadata and factor indicators
 
-Packages is shipped with three metadatas `meta_basic`, `meta_standard` and `meta_oecd`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
+Packages is shipped with six metadatas `meta_basic_cs`, `meta_basic_ts`, `meta_std_cs`, `meta_std_ts`, `meta_oecd_cs` and  `meta_oecd_ts`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
 
 **Browsing metadata**
 
