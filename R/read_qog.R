@@ -22,6 +22,7 @@
 #'        'rqog' directory in the temporary directory from
 #'        \code{\link{tempdir}}.
 #' @param file.format A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.
+#' @param download_only a logical whether to only download and save the dataset and skip importing in R.  Default is \code{FALSE}.
 #' @param cache a logical whether to do caching. Default is \code{TRUE}.
 #' @param update_cache a locigal whether to update cache. Default is \code{FALSE}.
 
@@ -33,6 +34,7 @@
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
 read_qog <- function(which.data = "basic", data.type="time-series", data.dir = NULL, file.format = "csv",
+                     download_only = FALSE,
                      cache = TRUE, update_cache = FALSE) {
   # Beginning of the URL's for all data's
   data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
@@ -88,16 +90,18 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
 
   }
   
-  if (cache & file.exists(cache_file)) {
-    cf <- path.expand(cache_file)
-    message(paste("Reading cache file", cf))
-    # y <- readRDS(cache_file)
-    if (file.format == "csv")  dd <- read.csv(cache_file, sep=",", stringsAsFactors = FALSE)
-    if (file.format == "dta")  dd <- haven::read_dta(cache_file)
-    if (file.format == "sav")  dd <- haven::read_sav(cache_file)
-    if (file.format == "xlsx") dd <- readxl::read_excel(cache_file)
+  if (!download_only){
+    
+    if (cache & file.exists(cache_file)) {
+      cf <- path.expand(cache_file)
+      message(paste("Reading cache file", cf))
+      # y <- readRDS(cache_file)
+      if (file.format == "csv")  dd <- read.csv(cache_file, sep=",", stringsAsFactors = FALSE)
+      if (file.format == "dta")  dd <- haven::read_dta(cache_file)
+      if (file.format == "sav")  dd <- haven::read_sav(cache_file)
+      if (file.format == "xlsx") dd <- readxl::read_excel(cache_file)
+    }
+    return(dd)
   }
-  return(dd)
-  # readr::read_csv(local.path)
   }
 
