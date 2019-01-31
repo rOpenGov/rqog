@@ -124,10 +124,14 @@ read_qog <- function(which.data = "basic",
   # if cache = FALSE or update or new: dowload else read from cache
   if (!cache || update_cache || !file.exists(cache_file)){
     
+    if (file.format == "xlsx"){
+      mode <- "wb"
+    } else {
+      mode <- "w"
+    }
     data.url <- glue("{data.url.begin}{file.name}")
     message(glue("Local file not found. \n Downloading QoG {file.name} data \n from {data.url}\n in file: {cache_file}\n"))
-    download.file(data.url, destfile = cache_file)
-
+    download.file(data.url, destfile = cache_file, mode = mode)
   }
   
   if (!download_only){
