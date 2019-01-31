@@ -1,6 +1,6 @@
 # This file is part of the rQog-package (https://github.com/muuankarski/rqog)
 
-# Copyright (C) 2012-2018 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
+# Copyright (C) 2012-2019 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
 
 # This program is open source software; you can redistribute it and/or modify
 # it under the terms of the FreeBSD License (keep this notice):
@@ -17,6 +17,7 @@
 #'
 #' @param which.data A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.
 #' @param data.type A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.
+#' @param year numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default \code{2019}
 #' @param data.dir a path to a cache directory. The directory have to exist.
 #'        The \code{NULL} (default) uses and creates
 #'        'rqog' directory in the temporary directory from
@@ -30,17 +31,57 @@
 #' @return data.frame 
 #' 
 #' @export
-#' @examples # dat <- read_qog(which.data = "basic", data.dir="data")
+#' @examples # dat <- read_qog(which.data = "basic", year = 2019, data.dir="data")
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
-read_qog <- function(which.data = "basic", data.type="time-series", data.dir = NULL, file.format = "csv",
+read_qog <- function(which.data = "basic", 
+                     data.type="time-series", 
+                     year = 2019,
+                     data.dir = NULL, 
+                     file.format = "csv",
                      download_only = FALSE,
                      cache = TRUE, update_cache = FALSE) {
-  # Beginning of the URL's for all data's
-  data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
+  month = "jan"
+  latest_year <- 2019
+  # checks
+  if (!year %in% 2008:latest_year) stop(glue("Data has been published between 2008 and {latest_year}"))
+  if (year != 2019 & file.format == "xlsx") stop("Only the latest data is available in .xlsx-format. Archived data only in .dat, .sav or .csv format")
+  if (year == 2014) stop("No data was published in 2014")
+  # basic data
+  if (which.data == "basic"){
+    if (year %in% 2008:2011) stop("Basic Data was not published in 2008 - 2011")
+    if (year == 2012) month <- "21may"
+    if (year == 2013) month <- "30aug"
+  }
+  if (which.data == "standard"){
+    if (year == 2008) month <- "15may"
+    if (year == 2009) month <- "17jun"
+    if (year == 2010) month <- "27may"
+    if (year == 2011) month <- "6apr"
+    if (year == 2012) stop("Standard Data was not published in 2012")
+    if (year == 2013) month <- "20dec"
+  }
+  if (which.data == "oecd"){
+    if (year %in% 2008:2013) stop("Oecd Data was not published in 2008-2013")
+  }
+  if (which.data == "social_policy"){
+    if (year == 2008) month <- "4nov"
+    if (year == 2009) stop("Social Policy Data was not published in 2009")
+    if (year == 2010) month <- "22feb"
+    if (year == 2011) stop("Social Policy Data was not published in 2011")
+    if (year == 2012) month <- "4apr"
+    if (year %in% 2013:2018) stop(glue("Social Policy Data was not published in {year}"))
+  }
+
+  # Beginning of the URL's for latest data
+  if (year == 2019){
+    data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
+  } else {
+    data.url.begin <- "http://www.qogdata.pol.gu.se/dataarchive/"
+  }
 
   if (!(which.data %in% c("basic","standard","std","oecd"))) stop('Wrong data name, use "basic","standard" or "oecd" instead')
-  if (!(data.type %in% c("time-series","cross-sectional"))) stop('Wrong data name, use "time-series" or "cross-sectional" instead')
+  if (!(data.type %in% c("time-series","cross-sectional"))) stop('Wrong data type, use "time-series" or "cross-sectional" instead')
   
   if (file.format == "csv")  file_ext <- "csv"
   if (file.format == "dta")  file_ext <- "dta"
@@ -55,7 +96,7 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
   if (data.type == "cross-sectional") dtype <- "cs"
   if (data.type == "time-series")     dtype <- "ts"
   
-  file.name <- paste0("qog_",dname,"_",dtype,"_jan18.",file_ext)
+  file.name <- glue("qog_{dname}_{dtype}_{month}{substr(year, 3, 4)}.{file_ext}")
   
   # creating local file path
   
@@ -83,9 +124,8 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
   # if cache = FALSE or update or new: dowload else read from cache
   if (!cache || update_cache || !file.exists(cache_file)){
     
-    data.url <- paste0(data.url.begin, file.name)
-    message(paste("Local file not found. \n Downloading QoG",file.name,"data, \n",
-                  "from",data.url,"\n in file:", cache_file,"\n", sep=" "))
+    data.url <- glue("{data.url.begin}{file.name}")
+    message(glue("Local file not found. \n Downloading QoG {file.name} data \n from {data.url}\n in file: {cache_file}\n"))
     download.file(data.url, destfile = cache_file)
 
   }
@@ -94,12 +134,12 @@ read_qog <- function(which.data = "basic", data.type="time-series", data.dir = N
     
     if (cache & file.exists(cache_file)) {
       cf <- path.expand(cache_file)
-      message(paste("Reading cache file", cf))
+      message(glue("Reading cache file {cf}"))
       # y <- readRDS(cache_file)
       if (file.format == "csv")  dd <- read.csv(cache_file, sep=",", stringsAsFactors = FALSE)
-      if (file.format == "dta")  dd <- haven::read_dta(cache_file)
-      if (file.format == "sav")  dd <- haven::read_sav(cache_file)
-      if (file.format == "xlsx") dd <- readxl::read_excel(cache_file)
+      if (file.format == "dta")  dd <- read_dta(cache_file)
+      if (file.format == "sav")  dd <- read_sav(cache_file)
+      if (file.format == "xlsx") dd <- read_excel(cache_file)
     }
     return(dd)
   }

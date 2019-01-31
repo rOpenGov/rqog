@@ -4,13 +4,16 @@
 \alias{read_qog}
 \title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
-read_qog(which.data = "basic", data.type = "time-series", data.dir = NULL,
-  file.format = "csv", cache = TRUE, update_cache = FALSE)
+read_qog(which.data = "basic", data.type = "time-series",
+  year = 2019, data.dir = NULL, file.format = "csv",
+  download_only = FALSE, cache = TRUE, update_cache = FALSE)
 }
 \arguments{
 \item{which.data}{A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.}
 
 \item{data.type}{A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.}
+
+\item{year}{numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default \code{2019}}
 
 \item{data.dir}{a path to a cache directory. The directory have to exist.
 The \code{NULL} (default) uses and creates
@@ -18,6 +21,8 @@ The \code{NULL} (default) uses and creates
 \code{\link{tempdir}}.}
 
 \item{file.format}{A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.}
+
+\item{download_only}{a logical whether to only download and save the dataset and skip importing in R.  Default is \code{FALSE}.}
 
 \item{cache}{a logical whether to do caching. Default is \code{TRUE}.}
 
@@ -31,7 +36,7 @@ Download data from Quality of Government Institute Basic data at
 \url{http://www.qog.pol.gu.se/data/}
 }
 \examples{
-# dat <- read_qog(which.data = "basic", data.dir="data")
+# dat <- read_qog(which.data = "basic", year = 2019, data.dir="data")
 }
 \author{
 Markus Kainu <markuskainu(at)gmail.com>
