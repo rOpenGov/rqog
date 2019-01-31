@@ -22,14 +22,13 @@ dat <- read_qog(which.data = "standard", data.dir = "datafolder")
 
 ```r
 library(rqog)
-meta_std_ts[grepl("Corruption", meta_std_ts$name, ignore.case = TRUE),]
+meta_std_ts_2019[grepl("Corruption", meta_std_ts_2019$name, ignore.case = TRUE),]
 ```
 
-  
 
 See the vignette for examples <http://ropengov.github.io/rqog/articles/rqog_tutorial.html> and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for an interactive access to metadata.
 
-Copyright (C) 2012-2018 Markus Kainu <markuskainu@gmail.com>. MIT-licence.
+Copyright (C) 2012-2019 Markus Kainu <markuskainu@gmail.com>. MIT-licence.
 
 ## Disclaimer
 
