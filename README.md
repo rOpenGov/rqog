@@ -38,7 +38,7 @@ ggplot(dat[!is.na(dat$undp_hdi),],
        aes(x = year, y = undp_hdi, color = cname)) + 
   geom_line() + theme(legend.position = "none")
 ```
-![](undp_hdi.png)
+![](https://raw.githubusercontent.com/rOpenGov/rqog/master/undp_hdi.png)
 
 See the vignette for more examples <http://ropengov.github.io/rqog/articles/rqog_tutorial.html> and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for an interactive access to metadata.
 
