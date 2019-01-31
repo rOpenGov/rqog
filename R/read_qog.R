@@ -18,7 +18,7 @@
 #' @param which_data A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.
 #' @param data_type A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.
 #' @param year numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default \code{2019}
-#' @param data.dir a path to a cache directory. The directory have to exist.
+#' @param data_dir a path to a cache directory. The directory have to exist.
 #'        The \code{NULL} (default) uses and creates
 #'        'rqog' directory in the temporary directory from
 #'        \code{\link{tempdir}}.
@@ -31,13 +31,13 @@
 #' @return data.frame 
 #' 
 #' @export
-#' @examples # dat <- read_qog(which_data = "basic", year = 2019, data.dir="data")
+#' @examples # dat <- read_qog(which_data = "basic", year = 2019, data_dir="data")
 #' @author Markus Kainu <markuskainu(at)gmail.com> 
 
 read_qog <- function(which_data = "basic", 
                      data_type="time-series", 
                      year = 2019,
-                     data.dir = NULL, 
+                     data_dir = NULL, 
                      file_format = "csv",
                      download_only = FALSE,
                      cache = TRUE, update_cache = FALSE) {
@@ -105,7 +105,7 @@ read_qog <- function(which_data = "basic",
   
   
   if (cache){
-    cache_dir <- data.dir
+    cache_dir <- data_dir
     # check option for update
     # get cache directory
     if (is.null(cache_dir)){

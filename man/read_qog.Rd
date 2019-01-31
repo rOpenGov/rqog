@@ -5,7 +5,7 @@
 \title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
 read_qog(which_data = "basic", data_type = "time-series",
-  year = 2019, data.dir = NULL, file_format = "csv",
+  year = 2019, data_dir = NULL, file_format = "csv",
   download_only = FALSE, cache = TRUE, update_cache = FALSE)
 }
 \arguments{
@@ -15,7 +15,7 @@ read_qog(which_data = "basic", data_type = "time-series",
 
 \item{year}{numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default \code{2019}}
 
-\item{data.dir}{a path to a cache directory. The directory have to exist.
+\item{data_dir}{a path to a cache directory. The directory have to exist.
 The \code{NULL} (default) uses and creates
 'rqog' directory in the temporary directory from
 \code{\link{tempdir}}.}
@@ -36,7 +36,7 @@ Download data from Quality of Government Institute Basic data at
 \url{http://www.qog.pol.gu.se/data/}
 }
 \examples{
-# dat <- read_qog(which_data = "basic", year = 2019, data.dir="data")
+# dat <- read_qog(which_data = "basic", year = 2019, data_dir="data")
 }
 \author{
 Markus Kainu <markuskainu(at)gmail.com>

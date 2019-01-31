@@ -6,7 +6,6 @@ Download latest datasets from the [Quality of Government Institute](https://qog.
 
 ```r
 devtools::install_github("ropengov/rqog")
-library(rqog)
 ```
 
 ## Use
