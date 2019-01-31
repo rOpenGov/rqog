@@ -91,7 +91,7 @@
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rqog Markdown Vignette made with knitr}
 -->
-<p><code>compiled at</code> 2019-01-31 17:59:12</p>
+<p><code>compiled at</code> 2019-01-31 21:21:38</p>
 <p><em>Download data from the Quality of Government Institute data</em></p>
 <p>Quotation from <a href="http://www.qog.pol.gu.se/">Quality of Governance institute website</a></p>
 <blockquote>
@@ -137,7 +137,7 @@
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyr)</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hrbrthemes)</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co"># Download a local coppy of the file</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">basic &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_qog.html">read_qog</a></span>(<span class="dt">which.data=</span><span class="st">"basic"</span>, <span class="dt">data.type =</span> <span class="st">"time-series"</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">basic &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data=</span><span class="st">"basic"</span>, <span class="dt">data_type =</span> <span class="st">"time-series"</span>)</a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># Subset the data</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9">dat.l &lt;-<span class="st"> </span>basic <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="co"># filter years and countries</span></a>
@@ -330,7 +330,7 @@
 ## 1 ht_region The Region of the C…     1 1. Eastern Europe and post So… fact…
 ## 2 ht_regty… Regime Type              1 limited multiparty             fact…</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># lets download the cross-sectional data first</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">basic_cs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_qog.html">read_qog</a></span>(<span class="dt">which.data =</span> <span class="st">"basic"</span>, <span class="dt">data.type =</span> <span class="st">"cross-sectional"</span>)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">basic_cs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data =</span> <span class="st">"basic"</span>, <span class="dt">data_type =</span> <span class="st">"cross-sectional"</span>)</a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb19-4" data-line-number="4">plot_d &lt;-<span class="st"> </span>basic_cs <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="co"># group by region</span></a>
@@ -371,135 +371,135 @@
 ##  os       Ubuntu 18.04.1 LTS          
 ##  system   x86_64, linux-gnu           
 ##  ui       X11                         
-##  language (EN)                        
+##  language en_US                       
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/Helsinki             
 ##  date     2019-01-31                  
 ## 
 ## ─ Packages ──────────────────────────────────────────────────────────────
-##  package      * version    date       lib
-##  assertthat     0.2.0      2017-04-11 [3]
-##  backports      1.1.3      2018-12-14 [3]
-##  bindr          0.1.1      2018-03-13 [3]
-##  bindrcpp     * 0.2.2      2018-03-29 [3]
-##  callr          3.1.1      2018-12-21 [3]
-##  cellranger     1.1.0      2016-07-27 [3]
-##  cli            1.0.1      2018-09-25 [3]
-##  colorspace     1.4-0      2019-01-13 [3]
-##  commonmark     1.7        2018-12-01 [2]
-##  crayon         1.3.4      2017-09-16 [3]
-##  desc           1.2.0      2018-05-01 [2]
-##  devtools       2.0.1      2018-10-26 [3]
-##  digest         0.6.18     2018-10-10 [3]
-##  dplyr        * 0.7.8      2018-11-10 [3]
-##  evaluate       0.12       2018-10-09 [3]
-##  extrafont      0.17       2014-12-08 [3]
-##  extrafontdb    1.0        2012-06-11 [3]
-##  fansi          0.4.0      2018-10-05 [3]
-##  forcats        0.3.0      2018-02-19 [3]
-##  fs             1.2.6      2018-08-23 [2]
-##  gdtools        0.1.7      2018-02-27 [3]
-##  ggplot2      * 3.1.0      2018-10-25 [3]
-##  glue           1.3.0      2018-07-17 [3]
-##  gtable         0.2.0      2016-02-26 [3]
-##  haven          2.0.0      2018-11-22 [3]
-##  hms            0.4.2      2018-03-10 [3]
-##  hrbrthemes   * 0.6.0      2019-01-21 [2]
-##  htmltools      0.3.6      2017-04-28 [3]
-##  knitr          1.21       2018-12-10 [3]
-##  labeling       0.3        2014-08-23 [3]
-##  labelled     * 2.0.2      2019-01-18 [2]
-##  lazyeval       0.2.1.9000 2018-11-20 [1]
-##  magrittr       1.5        2014-11-22 [3]
-##  MASS           7.3-51.1   2018-11-01 [4]
-##  memoise        1.1.0      2017-04-21 [3]
-##  munsell        0.5.0      2018-06-12 [3]
-##  pillar         1.3.1      2018-12-15 [3]
-##  pkgbuild       1.0.2      2018-10-16 [2]
-##  pkgconfig      2.0.2      2018-08-16 [3]
-##  pkgdown        1.3.0      2018-12-07 [1]
-##  pkgload        1.0.2      2018-10-29 [2]
-##  plyr           1.8.4      2016-06-08 [3]
-##  prettyunits    1.0.2      2015-07-13 [2]
-##  processx       3.2.1      2018-12-05 [3]
-##  ps             1.3.0      2018-12-21 [3]
-##  purrr          0.3.0      2019-01-27 [3]
-##  R6             2.3.0      2018-10-04 [3]
-##  Rcpp           1.0.0      2018-11-07 [3]
-##  readxl         1.2.0      2018-12-19 [3]
-##  remotes        2.0.2      2018-10-30 [3]
-##  rlang          0.3.1      2019-01-08 [3]
-##  rmarkdown      1.11       2018-12-08 [3]
-##  roxygen2       6.1.1      2018-11-07 [2]
-##  rprojroot      1.3-2      2018-01-03 [3]
-##  rqog         * 0.3.0      2019-01-31 [1]
-##  rstudioapi     0.9.0      2019-01-09 [3]
-##  Rttf2pt1       1.3.7      2018-06-29 [3]
-##  scales         1.0.0      2018-08-09 [3]
-##  sessioninfo    1.1.1      2018-11-05 [3]
-##  stringi        1.2.4      2018-07-20 [3]
-##  stringr        1.3.1      2018-05-10 [3]
-##  testthat       2.0.1      2018-10-13 [3]
-##  tibble         2.0.1      2019-01-12 [2]
-##  tidymetadata * 0.2.0      2018-08-27 [2]
-##  tidyr        * 0.8.2      2018-10-28 [3]
-##  tidyselect     0.2.5      2018-10-11 [3]
-##  usethis        1.4.0      2018-08-14 [3]
-##  utf8           1.1.4      2018-05-24 [3]
-##  withr          2.1.2      2018-03-15 [3]
-##  xfun           0.4        2018-10-23 [3]
-##  xml2           1.2.0      2018-01-24 [3]
-##  yaml           2.2.0      2018-07-25 [3]
+##  package      * version  date       lib
+##  assertthat     0.2.0    2017-04-11 [1]
+##  backports      1.1.2    2017-12-13 [1]
+##  base64enc      0.1-3    2015-07-28 [1]
+##  bindr          0.1.1    2018-03-13 [1]
+##  bindrcpp     * 0.2.2    2018-03-29 [1]
+##  callr          3.0.0    2018-08-24 [1]
+##  cellranger     1.1.0    2016-07-27 [1]
+##  cli            1.0.1    2018-09-25 [1]
+##  colorspace     1.3-2    2016-12-14 [1]
+##  commonmark     1.6      2018-09-30 [1]
+##  crayon         1.3.4    2017-09-16 [1]
+##  desc           1.2.0    2018-05-01 [1]
+##  devtools       2.0.0    2018-10-19 [1]
+##  digest         0.6.18   2018-10-10 [1]
+##  dplyr        * 0.7.7    2018-10-16 [1]
+##  evaluate       0.12     2018-10-09 [1]
+##  extrafont      0.17     2014-12-08 [1]
+##  extrafontdb    1.0      2012-06-11 [1]
+##  fansi          0.4.0    2018-10-05 [1]
+##  forcats        0.3.0    2018-02-19 [1]
+##  fs             1.2.6    2018-08-23 [1]
+##  ggplot2      * 3.0.0    2018-07-03 [1]
+##  glue           1.3.0    2018-07-17 [1]
+##  gtable         0.2.0    2016-02-26 [1]
+##  haven          2.0.0    2018-11-22 [1]
+##  hms            0.4.2    2018-03-10 [1]
+##  hrbrthemes   * 0.5.0.1  2018-08-19 [1]
+##  htmltools      0.3.6    2017-04-28 [1]
+##  knitr          1.21     2018-12-10 [1]
+##  labeling       0.3      2014-08-23 [1]
+##  labelled     * 1.1.0    2018-05-24 [1]
+##  lazyeval       0.2.1    2017-10-29 [1]
+##  magrittr       1.5      2014-11-22 [1]
+##  MASS           7.3-51.1 2018-11-01 [4]
+##  memoise        1.1.0    2017-04-21 [1]
+##  munsell        0.5.0    2018-06-12 [1]
+##  pillar         1.3.1    2018-12-15 [1]
+##  pkgbuild       1.0.2    2018-10-16 [1]
+##  pkgconfig      2.0.2    2018-08-16 [1]
+##  pkgdown        1.3.0    2018-12-07 [1]
+##  pkgload        1.0.2    2018-10-29 [1]
+##  plyr           1.8.4    2016-06-08 [1]
+##  prettyunits    1.0.2    2015-07-13 [1]
+##  processx       3.2.0    2018-08-16 [1]
+##  ps             1.2.0    2018-10-16 [1]
+##  purrr          0.2.5    2018-05-29 [1]
+##  R6             2.3.0    2018-10-04 [1]
+##  Rcpp           1.0.0    2018-11-07 [1]
+##  readxl         1.2.0    2018-12-19 [1]
+##  remotes        2.0.1    2018-10-19 [1]
+##  rlang          0.3.1    2019-01-08 [1]
+##  rmarkdown      1.10     2018-06-11 [1]
+##  roxygen2       6.1.0    2018-07-27 [1]
+##  rprojroot      1.3-2    2018-01-03 [1]
+##  rqog         * 0.3.0    2019-01-31 [1]
+##  rstudioapi     0.8      2018-10-02 [1]
+##  Rttf2pt1       1.3.7    2018-06-29 [1]
+##  scales         1.0.0    2018-08-09 [1]
+##  sessioninfo    1.1.0    2018-09-25 [1]
+##  stringi        1.2.4    2018-07-20 [1]
+##  stringr        1.3.1    2018-05-10 [1]
+##  testthat       2.0.1    2018-10-13 [1]
+##  tibble         2.0.1    2019-01-12 [1]
+##  tidymetadata * 0.2.0    2018-08-24 [1]
+##  tidyr        * 0.8.1    2018-05-18 [1]
+##  tidyselect     0.2.5    2018-10-11 [1]
+##  usethis        1.4.0    2018-08-14 [1]
+##  utf8           1.1.4    2018-05-24 [1]
+##  withr          2.1.2    2018-03-15 [1]
+##  xfun           0.4      2018-10-23 [1]
+##  xml2           1.2.0    2018-01-24 [1]
+##  yaml           2.2.0    2018-07-25 [1]
 ##  source                                   
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.2)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.2)                           
-##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.2)                           
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.2)                           
-##  Github (hadley/lazyeval@93c455c)         
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.2)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.2)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.2)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.2)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.2)                           
 ##  CRAN (R 3.5.2)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.2)                           
 ##  CRAN (R 3.5.2)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.2)                           
@@ -507,22 +507,22 @@
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  local                                    
-##  CRAN (R 3.5.2)                           
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.2)                           
 ##  Github (muuankarski/tidymetadata@a907a38)
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
-##  CRAN (R 3.5.0)                           
 ##  CRAN (R 3.5.1)                           
-##  CRAN (R 3.5.0)                           
+##  CRAN (R 3.5.1)                           
+##  CRAN (R 3.5.2)                           
+##  CRAN (R 3.5.1)                           
 ##  CRAN (R 3.5.1)                           
 ## 
 ## [1] /home/aurelius/R/x86_64-pc-linux-gnu-library/3.5

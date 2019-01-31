@@ -83,7 +83,7 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">dectools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ropengov/rqog"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"ropengov/rqog"</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rqog)</a></code></pre></div>
 </div>
 <div id="use" class="section level2">
@@ -91,12 +91,12 @@
 <a href="#use" class="anchor"></a>Use</h2>
 <p><strong>Download data</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rqog)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which.data =</span> <span class="st">"standard"</span>, <span class="dt">data.dir =</span> <span class="st">"datafolder"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data =</span> <span class="st">"standard"</span>, <span class="dt">data_dir =</span> <span class="st">"datafolder"</span>)</a></code></pre></div>
 <p><strong>Browse metadata</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rqog)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">meta_std_ts_<span class="dv">2019</span>[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Corruption"</span>, meta_std_ts_<span class="dv">2019</span><span class="op">$</span>name, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>),]</a></code></pre></div>
 <p>See the vignette for examples <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="uri">http://ropengov.github.io/rqog/articles/rqog_tutorial.html</a> and <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for an interactive access to metadata.</p>
-<p>Copyright (C) 2012-2019 Markus Kainu <a href="mailto:markuskainu@gmail.com">markuskainu@gmail.com</a>. MIT-licence.</p>
+<p>Copyright (C) 2012-2019 Markus Kainu <a href="mailto:markuskainu@gmail.com" class="email">markuskainu@gmail.com</a>. MIT-licence.</p>
 </div>
 <div id="disclaimer" class="section level2">
 <h2 class="hasAnchor">
