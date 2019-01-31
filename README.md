@@ -1,6 +1,6 @@
 # rqog-package. Download data from the Quality of Government Institute data
 
-Download latest datasets from the [Quality of Government Institute](https://qog.pol.gu.se/data) using the function `read_qog()`. See `?read_qog` for instructions.
+Download latest datasets from the [Quality of Government Institute](https://qog.pol.gu.se/data) using the function `read_qog()`. See `?read_qog` for help and http://ropengov.github.io/rqog/ for examples.
 
 ## Installation
 
@@ -14,18 +14,33 @@ devtools::install_github("ropengov/rqog")
 
 ```r
 library(rqog)
-dat <- read_qog(which_data = "standard", data_dir = "datafolder")
+dat <- read_qog(which_data = "standard")
 ```
 
 **Browse metadata**
 
 ```r
 library(rqog)
-meta_std_ts_2019[grepl("Corruption", meta_std_ts_2019$name, ignore.case = TRUE),]
+meta_std_ts_2019[grepl("human development", meta_std_ts_2019$name, ignore.case = TRUE),]
+# A tibble: 2 x 5
+  code     name                    value label class  
+  <chr>    <chr>                   <dbl> <chr> <chr>  
+1 iiag_hd  Human Development          NA NA    numeric
+2 undp_hdi Human Development Index    NA NA    numeric
 ```
 
 
-See the vignette for examples <http://ropengov.github.io/rqog/articles/rqog_tutorial.html> and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for an interactive access to metadata.
+**Plot an indicator**
+
+```r
+library(ggplot2)
+ggplot(dat[!is.na(dat$undp_hdi),], 
+       aes(x = year, y = undp_hdi, color = cname)) + 
+  geom_line() + theme(legend.position = "none")
+```
+![](undp_hdi.png)
+
+See the vignette for more examples <http://ropengov.github.io/rqog/articles/rqog_tutorial.html> and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for an interactive access to metadata.
 
 Copyright (C) 2012-2019 Markus Kainu <markuskainu@gmail.com>. MIT-licence.
 
