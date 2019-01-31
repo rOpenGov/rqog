@@ -5,7 +5,7 @@ Download latest datasets from the [Quality of Government Institute](https://qog.
 ## Installation
 
 ```r
-dectools::install_github("ropengov/rqog")
+devtools::install_github("ropengov/rqog")
 library(rqog)
 ```
 
@@ -15,7 +15,7 @@ library(rqog)
 
 ```r
 library(rqog)
-dat <- read_qog(which.data = "standard", data.dir = "datafolder")
+dat <- read_qog(which_data = "standard", data_dir = "datafolder")
 ```
 
 **Browse metadata**

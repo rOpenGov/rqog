@@ -69,7 +69,7 @@ library(ggplot2)
 library(tidyr)
 library(hrbrthemes)
 # Download a local coppy of the file
-basic <- read_qog(which.data="basic", data.type = "time-series")
+basic <- read_qog(which_data="basic", data_type = "time-series")
 # Subset the data
 dat.l <- basic %>% 
   # filter years and countries
@@ -245,7 +245,7 @@ meta_basic_cs_2019 %>%
 
 ```{r}
 # lets download the cross-sectional data first
-basic_cs <- read_qog(which.data = "basic", data.type = "cross-sectional")
+basic_cs <- read_qog(which_data = "basic", data_type = "cross-sectional")
 
 plot_d <- basic_cs %>% 
   # group by region

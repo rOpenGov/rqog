@@ -4,14 +4,14 @@
 \alias{read_qog}
 \title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
-read_qog(which.data = "basic", data.type = "time-series",
-  year = 2019, data.dir = NULL, file.format = "csv",
+read_qog(which_data = "basic", data_type = "time-series",
+  year = 2019, data.dir = NULL, file_format = "csv",
   download_only = FALSE, cache = TRUE, update_cache = FALSE)
 }
 \arguments{
-\item{which.data}{A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.}
+\item{which_data}{A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.}
 
-\item{data.type}{A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.}
+\item{data_type}{A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available \code{"cross-sectional"} or \code{"time-series"}.}
 
 \item{year}{numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default \code{2019}}
 
@@ -20,7 +20,7 @@ The \code{NULL} (default) uses and creates
 'rqog' directory in the temporary directory from
 \code{\link{tempdir}}.}
 
-\item{file.format}{A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.}
+\item{file_format}{A string. Specify the file format you want to download and import. Currently available \code{"csv"},\code{"dta"}, \code{"sav"} or \code{"xlsx"}.}
 
 \item{download_only}{a logical whether to only download and save the dataset and skip importing in R.  Default is \code{FALSE}.}
 
@@ -36,7 +36,7 @@ Download data from Quality of Government Institute Basic data at
 \url{http://www.qog.pol.gu.se/data/}
 }
 \examples{
-# dat <- read_qog(which.data = "basic", year = 2019, data.dir="data")
+# dat <- read_qog(which_data = "basic", year = 2019, data.dir="data")
 }
 \author{
 Markus Kainu <markuskainu(at)gmail.com>
