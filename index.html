@@ -79,7 +79,7 @@
 <div id="rqog-package--download-data-from-the-quality-of-government-institute-data" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rqog-package--download-data-from-the-quality-of-government-institute-data" class="anchor"></a>rqog-package. Download data from the Quality of Government Institute data</h1></div>
-<p>Download latest datasets from the <a href="https://qog.pol.gu.se/data">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <code><a href="reference/read_qog.html">?read_qog</a></code> for instructions.</p>
+<p>Download latest datasets from the <a href="https://qog.pol.gu.se/data">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <code><a href="reference/read_qog.html">?read_qog</a></code> for help and <a href="http://ropengov.github.io/rqog/" class="uri">http://ropengov.github.io/rqog/</a> for examples.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -90,11 +90,22 @@
 <a href="#use" class="anchor"></a>Use</h2>
 <p><strong>Download data</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rqog)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data =</span> <span class="st">"standard"</span>, <span class="dt">data_dir =</span> <span class="st">"datafolder"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data =</span> <span class="st">"standard"</span>)</a></code></pre></div>
 <p><strong>Browse metadata</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rqog)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">meta_std_ts_<span class="dv">2019</span>[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Corruption"</span>, meta_std_ts_<span class="dv">2019</span><span class="op">$</span>name, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>),]</a></code></pre></div>
-<p>See the vignette for examples <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="uri">http://ropengov.github.io/rqog/articles/rqog_tutorial.html</a> and <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for an interactive access to metadata.</p>
+<a class="sourceLine" id="cb3-2" data-line-number="2">meta_std_ts_<span class="dv">2019</span>[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"human development"</span>, meta_std_ts_<span class="dv">2019</span><span class="op">$</span>name, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>),]</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># A tibble: 2 x 5</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  code     name                    value label class  </a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">                   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="dv">1</span> iiag_hd  Human Development          <span class="ot">NA</span> <span class="ot">NA</span>    numeric</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="dv">2</span> undp_hdi Human Development Index    <span class="ot">NA</span> <span class="ot">NA</span>    numeric</a></code></pre></div>
+<p><strong>Plot an indicator</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(dat[<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(dat<span class="op">$</span>undp_hdi),], </a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> year, <span class="dt">y =</span> undp_hdi, <span class="dt">color =</span> cname)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)</a></code></pre></div>
+<p><img src="undp_hdi.png"></p>
+<p>See the vignette for more examples <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="uri">http://ropengov.github.io/rqog/articles/rqog_tutorial.html</a> and <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for an interactive access to metadata.</p>
 <p>Copyright (C) 2012-2019 Markus Kainu <a href="mailto:markuskainu@gmail.com" class="email">markuskainu@gmail.com</a>. MIT-licence.</p>
 </div>
 <div id="disclaimer" class="section level2">
