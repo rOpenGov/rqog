@@ -1,4 +1,4 @@
-# rqog-package. Download data from the Quality of Government Institute data
+# rqog-package: download data from the Quality of Government Institute data
 
 Download latest datasets from the [Quality of Government Institute](https://qog.pol.gu.se/data) using the function `read_qog()`. See `?read_qog` for help, [package vignette](http://ropengov.github.io/rqog/articles/rqog_tutorial.html) for more examples and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for interactive metadata.
 
