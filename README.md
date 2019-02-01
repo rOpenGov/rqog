@@ -1,6 +1,6 @@
 # rqog-package. Download data from the Quality of Government Institute data
 
-Download latest datasets from the [Quality of Government Institute](https://qog.pol.gu.se/data) using the function `read_qog()`. See `?read_qog` for help and http://ropengov.github.io/rqog/ for examples.
+Download latest datasets from the [Quality of Government Institute](https://qog.pol.gu.se/data) using the function `read_qog()`. See `?read_qog` for help, [package vignette](http://ropengov.github.io/rqog/articles/rqog_tutorial.html) for more examples and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for interactive metadata.
 
 ## Installation
 
@@ -40,7 +40,6 @@ ggplot(dat[!is.na(dat$undp_hdi),],
 ```
 ![](https://raw.githubusercontent.com/rOpenGov/rqog/master/undp_hdi.png)
 
-See the vignette for more examples <http://ropengov.github.io/rqog/articles/rqog_tutorial.html> and [data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html) for an interactive access to metadata.
 
 Copyright (C) 2012-2019 Markus Kainu <markuskainu@gmail.com>. MIT-licence.
 
