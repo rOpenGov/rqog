@@ -4,9 +4,16 @@
 \alias{read_qog}
 \title{Retrieve and Read Quality of Government Institute data in R}
 \usage{
-read_qog(which_data = "basic", data_type = "time-series",
-  year = 2019, data_dir = NULL, file_format = "csv",
-  download_only = FALSE, cache = TRUE, update_cache = FALSE)
+read_qog(
+  which_data = "basic",
+  data_type = "time-series",
+  year = 2020,
+  data_dir = NULL,
+  file_format = "csv",
+  download_only = FALSE,
+  cache = TRUE,
+  update_cache = FALSE
+)
 }
 \arguments{
 \item{which_data}{A string. Specify the name of the QoG data set to retrieve. Currently available \code{"basic"}, \code{"standard"}, \code{"oecd"} or \code{"social_policy"}.}

@@ -1,8 +1,8 @@
 Package: rqog
 Type: Package
 Title: Download data from the Quality of Government Institute data
-Version: 0.3.0
-Date: 2019-01-31
+Version: 0.4.0
+Date: 2020-01-31
 Authors@R: person("Markus", "Kainu", email = "markuskainu@gmail.com", role = c("aut", "cre"))
 Maintainer: Markus Kainu <markuskainu@gmail.com>
 Encoding: UTF-8
@@ -17,5 +17,4 @@ Depends:
     R (>= 3.0.0)
 Description: Download data from the Quality of Government Institute data
 License: MIT
-RoxygenNote: 6.1.1
-
+RoxygenNote: 7.0.2
