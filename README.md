@@ -21,7 +21,7 @@ dat <- read_qog(which_data = "standard")
 
 ```r
 library(rqog)
-meta_std_ts_2019[grepl("human development", meta_std_ts_2019$name, ignore.case = TRUE),]
+meta_std_ts_2020[grepl("human development", meta_std_ts_2020$name, ignore.case = TRUE),]
 # A tibble: 2 x 5
   code     name                    value label class  
   <chr>    <chr>                   <dbl> <chr> <chr>  
@@ -41,7 +41,7 @@ ggplot(dat[!is.na(dat$undp_hdi),],
 ![](https://raw.githubusercontent.com/rOpenGov/rqog/master/undp_hdi.png)
 
 
-Copyright (C) 2012-2019 Markus Kainu <markuskainu@gmail.com>. MIT-licence.
+Copyright (C) 2012-2020 Markus Kainu <markuskainu@gmail.com>. MIT-licence.
 
 ## Disclaimer
 

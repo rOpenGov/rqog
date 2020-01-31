@@ -1,6 +1,6 @@
 # This file is part of the rQog-package (https://github.com/muuankarski/rqog)
 
-# Copyright (C) 2012-2019 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
+# Copyright (C) 2012-2020 Markus Kainu <markuskainu@gmail.com>. All rights reserved.
 
 # This program is open source software; you can redistribute it and/or modify
 # it under the terms of the FreeBSD License (keep this notice):
@@ -36,13 +36,13 @@
 
 read_qog <- function(which_data = "basic", 
                      data_type="time-series", 
-                     year = 2019,
+                     year = 2020,
                      data_dir = NULL, 
                      file_format = "csv",
                      download_only = FALSE,
                      cache = TRUE, update_cache = FALSE) {
   month = "jan"
-  latest_year <- 2019
+  latest_year <- 2020
   # checks
   if (!year %in% 2008:latest_year) stop(glue("Data has been published between 2008 and {latest_year}"))
   if (year != 2019 & file_format == "xlsx") stop("Only the latest data is available in .xlsx-format. Archived data only in .dat, .sav or .csv format")
@@ -74,7 +74,7 @@ read_qog <- function(which_data = "basic",
   }
 
   # Beginning of the URL's for latest data
-  if (year == 2019){
+  if (year == 2020){
     data.url.begin <- "http://www.qogdata.pol.gu.se/data/"
   } else {
     data.url.begin <- "http://www.qogdata.pol.gu.se/dataarchive/"

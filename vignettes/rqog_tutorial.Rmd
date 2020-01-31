@@ -1,6 +1,8 @@
 ---
 title: "rqog-package for R"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -67,7 +69,6 @@ library(rqog)
 library(dplyr)
 library(ggplot2)
 library(tidyr)
-library(hrbrthemes)
 # Download a local coppy of the file
 basic <- read_qog(which_data="basic", data_type = "time-series")
 # Subset the data
@@ -91,7 +92,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme_minimal() +  
   theme(legend.position = "none") +
   labs(title = "Plotting QoG basic data",
        caption = "Data: QoG Basic data")
@@ -100,7 +101,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 **Standard data**
 
-Standard data includes 2190 indicators from 211 countries. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
+Standard data includes 2190 indicators from 211 countries. Below is an example on how to extract data on *Economic Performance*  and *GINI index (World Bank estimate)* from BRIC-countries and plot it.
 
 
 ```{r ExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
@@ -110,10 +111,10 @@ standard <- read_qog("standard", "time-series")
 # Subset the data
 dat.l <- standard %>% 
   # filter years and countries
-  filter(year %in% 1990:2010,
+  filter(year %in% 1990:2020,
          cname %in% c("Russia","China","India","Brazil")) %>% 
   # select variables
-  select(cname,year,epi_epi,dpi_hlio) %>% 
+  select(cname,year,bti_ep,wdi_gini) %>% 
   # gather to long format
   gather(., var, value, 3:4) %>% 
   # remove NA values
@@ -129,7 +130,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme_minimal() +  
   theme(legend.position = "none") +
   labs(title = "Plotting QoG Standard data",
        caption = "Data: QoG Standard data")
@@ -171,7 +172,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme_minimal() +  
   theme(legend.position = "none") +
   labs(title = "Plotting QoG OECD data",
        caption = "Data: QoG OECD data")
@@ -180,7 +181,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 ### Work with metadata and factor indicators
 
-Packages is shipped with six metadatas for each year (2016-2019) `meta_basic_cs_2019`, `meta_basic_ts_2019`, `meta_std_cs_2019`, `meta_std_ts_2019`, `meta_oecd_cs_2019` and  `meta_oecd_ts_2019`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
+Packages is shipped with seven metadatas for each year (2016-2020) `meta_basic_cs_2020`, `meta_basic_ts_2020`, `meta_std_cs_2020`, `meta_std_ts_2020`, `meta_oecd_cs_2020` and  `meta_oecd_ts_2020`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
 
 **Browsing metadata**
 
@@ -188,7 +189,7 @@ You can browse the content by applying `grepl` to `name` column. Let's find indi
 
 ```{r}
 library(rqog)
-meta_basic_ts_2019[grepl("Corruption", meta_basic_ts_2019$name, ignore.case = TRUE),]
+meta_basic_ts_2020[grepl("Corruption", meta_basic_ts_2020$name, ignore.case = TRUE),]
 ```
 
 **Assigning labels to values with metadata**
@@ -196,7 +197,7 @@ meta_basic_ts_2019[grepl("Corruption", meta_basic_ts_2019$name, ignore.case = TR
 The data `rqoq` imports to R is in `.csv`-format without the labels and names shipped together with `spss` or `Stata` formats. As such it is the desired format to work with in R, especially with numeric indicators. However, many of the indicators in QoG are factors meaning that they have discrete values with a corresponding label. You can use the metadatas to assign labels for  values of such indicators. Lets take the `ccp_cc` as an example below and first print the `value` and `label` colums of the data.
 
 ```{r}
-meta_basic_ts_2019 %>% filter(code == "ccp_cc") %>% select(value,label)
+meta_basic_ts_2020 %>% filter(code == "ccp_cc") %>% select(value,label)
 ```
 
 Currently we have basic data in R in an object called `basic`. Lets see the frequencies of each value
@@ -210,24 +211,13 @@ Now, using the metadata with assign values with corresponding labels
 ```{r}
 basic %>% 
   count(ccp_cc) %>% 
-  mutate(ccp_cc_lab = meta_basic_ts_2019[meta_basic_ts_2019$code == "ccp_cc",]$label[match(ccp_cc,meta_basic_ts_2019[meta_basic_ts_2019$code == "ccp_cc",]$value)])
+  mutate(ccp_cc_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ccp_cc",]$label[match(ccp_cc,meta_basic_ts_2020[meta_basic_ts_2020$code == "ccp_cc",]$value)])
 ```
-
-A more straighforward method is by using [`tidymetadata::label_data()`](https://muuankarski.github.io/tidymetadata/reference/label_data.html) -function like this.
-
-
-```{r}
-library(tidymetadata)
-basic %>% 
-  count(ccp_cc) %>% 
-  mutate(ccp_cc_lab = label_data(data = ., variable.data = "ccp_cc", metadata = meta_basic_ts_2019))
-```
-
 
 So, lets find two factor variables with few more values from the *cross-sectional* data
 
 ```{r}
-meta_basic_cs_2019 %>% 
+meta_basic_cs_2020 %>% 
   filter(class =="factor") %>% 
   group_by(code) %>% 
   summarise(n_of_values = n()) %>% 
@@ -237,7 +227,7 @@ meta_basic_cs_2019 %>%
 Lets take these two factors and summarise the regime types per regions
 
 ```{r}
-meta_basic_cs_2019 %>% 
+meta_basic_cs_2020 %>% 
   filter(code %in% c("ht_region","ht_regtype")) %>% 
   distinct(code, .keep_all = TRUE)
 ```
@@ -254,8 +244,8 @@ plot_d <- basic_cs %>%
   count(ht_regtype) %>%
   ungroup() %>% 
   # label
-  mutate(ht_region_lab = label_data(data = ., variable.data = "ht_region", metadata = meta_basic_cs_2019),
-         ht_regtype_lab = label_data(data = ., variable.data = "ht_regtype", metadata = meta_basic_cs_2019)) %>% 
+  mutate(ht_region_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_region",]$label[match(ht_region,meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_region",]$value)],
+         ht_regtype_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_regtype",]$label[match(ht_regtype,meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_regtype",]$value)]) %>% 
   na.omit()
 head(plot_d)
 ```
@@ -264,15 +254,16 @@ Then we can create a simple bar plot
 
 ```{r fig.height = 12, fig.width = 12}
 # indicators names from metadata
-ind_name <- unique(meta_basic_cs_2019[meta_basic_cs_2019$code == "ht_regtype",]$name)
-group_name <- unique(meta_basic_cs_2019[meta_basic_cs_2019$code == "ht_region",]$name)
+ind_name <- unique(meta_basic_cs_2020[meta_basic_cs_2020$code == "ht_regtype",]$name)
+group_name <- unique(meta_basic_cs_2020[meta_basic_cs_2020$code == "ht_region",]$name)
 
 ggplot(plot_d, aes(x=ht_regtype_lab,y=n)) + 
   geom_col() + 
   facet_wrap(~ht_region_lab, scales = "free") + 
-  theme_ipsum_ps() + theme(axis.text.x = element_text(angle = 90, size = 7)) +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 90, size = 7)) +
   labs(title = paste0(ind_name," by ",group_name ), 
-       caption = "Data: Quality of Government institute", x = NULL, y = "number of countries")
+       caption = "Data: Quality of Government institute", x = NULL, y = "number of countries") +
+  coord_flip()
 
 ```
 
