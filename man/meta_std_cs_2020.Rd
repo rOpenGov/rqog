@@ -4,7 +4,7 @@
 \name{meta_std_cs_2020}
 \alias{meta_std_cs_2020}
 \title{Metadata for 2020 Quality of Government institute Standard Data - cross-sectional}
-\format{A data frame with 2478 rows and five columns 
+\format{A data frame with 2063 rows and five columns 
 \describe{
    \item{code}{Indicator code in data}
    \item{name}{Name of the indicator}

@@ -69,7 +69,6 @@ library(rqog)
 library(dplyr)
 library(ggplot2)
 library(tidyr)
-library(hrbrthemes)
 # Download a local coppy of the file
 basic <- read_qog(which_data="basic", data_type = "time-series")
 # Subset the data
@@ -93,7 +92,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme_minimal() +  
   theme(legend.position = "none") +
   labs(title = "Plotting QoG basic data",
        caption = "Data: QoG Basic data")
@@ -102,7 +101,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 **Standard data**
 
-Standard data includes 2190 indicators from 211 countries. Below is an example on how to extract data on *Environmental Performance Index*  and *Party of Chief Executive: How Long in Office* from BRIC-countries and plot it.
+Standard data includes 2190 indicators from 211 countries. Below is an example on how to extract data on *Economic Performance*  and *GINI index (World Bank estimate)* from BRIC-countries and plot it.
 
 
 ```{r ExampleStandard, cache=FALSE, message=FALSE,warning=FALSE, eval=TRUE, fig.width=12, fig.height=10}
@@ -112,10 +111,10 @@ standard <- read_qog("standard", "time-series")
 # Subset the data
 dat.l <- standard %>% 
   # filter years and countries
-  filter(year %in% 1990:2010,
+  filter(year %in% 1990:2020,
          cname %in% c("Russia","China","India","Brazil")) %>% 
   # select variables
-  select(cname,year,epi_epi,dpi_hlio) %>% 
+  select(cname,year,bti_ep,wdi_gini) %>% 
   # gather to long format
   gather(., var, value, 3:4) %>% 
   # remove NA values
@@ -131,7 +130,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme_minimal() +  
   theme(legend.position = "none") +
   labs(title = "Plotting QoG Standard data",
        caption = "Data: QoG Standard data")
@@ -173,7 +172,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
           aes(x=year,y=value,label=cname),
           hjust=1,vjust=-1,size=3,alpha=.8) +
   facet_wrap(~var, scales="free") +
-  theme_ipsum_ps() + scale_color_ipsum() + 
+  theme_minimal() +  
   theme(legend.position = "none") +
   labs(title = "Plotting QoG OECD data",
        caption = "Data: QoG OECD data")
@@ -215,17 +214,6 @@ basic %>%
   mutate(ccp_cc_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ccp_cc",]$label[match(ccp_cc,meta_basic_ts_2020[meta_basic_ts_2020$code == "ccp_cc",]$value)])
 ```
 
-A more straighforward method is by using [`tidymetadata::label_data()`](https://muuankarski.github.io/tidymetadata/reference/label_data.html) -function like this.
-
-
-```{r}
-library(tidymetadata)
-basic %>% 
-  count(ccp_cc) %>% 
-  mutate(ccp_cc_lab = label_data(data = ., variable.data = "ccp_cc", metadata = meta_basic_ts_2020))
-```
-
-
 So, lets find two factor variables with few more values from the *cross-sectional* data
 
 ```{r}
@@ -256,8 +244,8 @@ plot_d <- basic_cs %>%
   count(ht_regtype) %>%
   ungroup() %>% 
   # label
-  mutate(ht_region_lab = label_data(data = ., variable.data = "ht_region", metadata = meta_basic_cs_2020),
-         ht_regtype_lab = label_data(data = ., variable.data = "ht_regtype", metadata = meta_basic_cs_2020)) %>% 
+  mutate(ht_region_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_region",]$label[match(ht_region,meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_region",]$value)],
+         ht_regtype_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_regtype",]$label[match(ht_regtype,meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_regtype",]$value)]) %>% 
   na.omit()
 head(plot_d)
 ```
@@ -272,7 +260,7 @@ group_name <- unique(meta_basic_cs_2020[meta_basic_cs_2020$code == "ht_region",]
 ggplot(plot_d, aes(x=ht_regtype_lab,y=n)) + 
   geom_col() + 
   facet_wrap(~ht_region_lab, scales = "free") + 
-  theme_ipsum_ps() + theme(axis.text.x = element_text(angle = 90, size = 7)) +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 90, size = 7)) +
   labs(title = paste0(ind_name," by ",group_name ), 
        caption = "Data: Quality of Government institute", x = NULL, y = "number of countries") +
   coord_flip()

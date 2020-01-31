@@ -12,9 +12,13 @@ Imports:
      haven,
      readxl,
      glue,
-     knitr
+     knitr,
+     dplyr,
+     ggplot2,
+     tidyr,
+     devtools
 Depends:
-    R (>= 3.0.0)
-Description: Download data from the Quality of Government Institute data
-License: MIT
+    R (>= 3.5.0)
+Description:  R client for the Quality of Government (QOG) open data. Client can be used to fetch data files <https://qog.pol.gu.se/data> and converted into data.frame objects in R.
+License: MIT + file LICENSE
 RoxygenNote: 7.0.2
