@@ -81,7 +81,9 @@
 <div id="rqog-package-download-data-from-the-quality-of-government-institute-data" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rqog-package-download-data-from-the-quality-of-government-institute-data" class="anchor"></a>rqog-package: download data from the Quality of Government Institute data</h1></div>
-<p>Download latest datasets from the <a href="https://qog.pol.gu.se/data">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <code><a href="reference/read_qog.html">?read_qog</a></code> for help, <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html">package vignette</a> for more examples and <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for interactive metadata.</p>
+<!-- badges: start -->
+
+<p>Download the latest and archived datasets from the <a href="https://qog.pol.gu.se/data">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <a href="http://ropengov.github.io/rqog/reference/read_qog.html"><code><a href="reference/read_qog.html">?read_qog</a></code></a> for help, <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html">package vignette</a> for more examples and <a href="http://data.markuskainu.fi/qog/index.html">data.markuskainu.fi/qog/</a> for interactive metadata.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -92,21 +94,22 @@
 <a href="#use" class="anchor"></a>Use</h2>
 <p><strong>Download data</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rqog)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data =</span> <span class="st">"standard"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2">dat &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_qog.html">read_qog</a></span>(<span class="dt">which_data =</span> <span class="st">"standard"</span>, <span class="dt">data_type =</span> <span class="st">"time-series"</span>)</a></code></pre></div>
 <p><strong>Browse metadata</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rqog)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">meta_std_ts_<span class="dv">2020</span>[<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"human development"</span>, meta_std_ts_<span class="dv">2020</span><span class="op">$</span>name, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>),]</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># A tibble: 2 x 5</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  code     name                    value label class  </a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">                   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="dv">1</span> iiag_hd  Human Development          <span class="ot">NA</span> <span class="ot">NA</span>    numeric</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="dv">2</span> undp_hdi Human Development Index    <span class="ot">NA</span> <span class="ot">NA</span>    numeric</a></code></pre></div>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; # A tibble: 2 x 5</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   code     name                    value label class  </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 1 iiag_hd  Human Development          NA &lt;NA&gt;  numeric</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 2 undp_hdi Human Development Index    NA &lt;NA&gt;  numeric</span></a></code></pre></div>
 <p><strong>Plot an indicator</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(dat[<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(dat<span class="op">$</span>undp_hdi),], </a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> year, <span class="dt">y =</span> undp_hdi, <span class="dt">color =</span> cname)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)</a></code></pre></div>
-<p><img src="https://raw.githubusercontent.com/rOpenGov/rqog/master/undp_hdi.png"></p>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 <p>Copyright (C) 2012-2020 Markus Kainu <a href="mailto:markuskainu@gmail.com" class="email">markuskainu@gmail.com</a>. MIT-licence.</p>
 </div>
 <div id="disclaimer" class="section level2">
@@ -133,7 +136,14 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://CRAN.R-project.org/package=rqog"><img src="https://www.r-pkg.org/badges/version/rqog" alt="CRAN status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
