@@ -2,9 +2,9 @@ Package: rqog
 Type: Package
 Title: Download data from the Quality of Government Institute data
 Version: 0.4.0
-Date: 2020-01-31
-Authors@R: person("Markus", "Kainu", email = "markuskainu@gmail.com", role = c("aut", "cre"))
-Maintainer: Markus Kainu <markuskainu@gmail.com>
+Date: 2020-02-01
+Authors@R: person("Markus", "Kainu", email = "markuskainu@kapsi.fi", role = c("aut", "cre"))
+Maintainer: Markus Kainu <markuskainu@kapsi.fi>
 Encoding: UTF-8
 LazyData: TRUE
 VignetteBuilder: knitr
