@@ -4,14 +4,16 @@
 \name{meta_oecd_ts_2020}
 \alias{meta_oecd_ts_2020}
 \title{Metadata for 2020 Quality of Government institute Standard Data - time-series}
-\format{A data frame with 1351 rows and five columns 
+\format{
+A data frame with 1351 rows and five columns 
 \describe{
    \item{code}{Indicator code in data}
    \item{name}{Name of the indicator}
    \item{value}{Indicator value for factor indicator}
    \item{label}{Value label for factor indicators}
    \item{class}{Class of the indicator. Numeric, factor or character}
-}}
+}
+}
 \usage{
 meta_oecd_ts_2020
 }

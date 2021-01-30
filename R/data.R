@@ -1,3 +1,97 @@
+#' Metadata for 2021 Quality of Government institute Basic Data - time-series
+#' 
+#' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#' @format A data frame with 447 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_basic_ts_2021"
+
+#' Metadata for 2021 Quality of Government institute Basic Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#' @format A data frame with 498 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_basic_cs_2021"
+
+
+#'
+#' Metadata for 2021 Quality of Government institute Standard Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#' @format A data frame with 2347 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_std_ts_2021"
+
+#'
+#' Metadata for 2021 Quality of Government institute Standard Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#' @format A data frame with 1997 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_std_cs_2021"
+#'
+#' Metadata for 2021 Quality of Government institute Standard Data - time-series
+#' 
+#' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#' @format A data frame with 1374 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_oecd_ts_2021"
+
+#'
+#' Metadata for 2021 Quality of Government institute Standard Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#' @format A data frame with 1226 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_oecd_cs_2021"
+
 #' Metadata for 2020 Quality of Government institute Basic Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 

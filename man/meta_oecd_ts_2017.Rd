@@ -4,14 +4,16 @@
 \name{meta_oecd_ts_2017}
 \alias{meta_oecd_ts_2017}
 \title{Metadata for 2017 Quality of Government institute Standard Data - time-series}
-\format{A data frame with 1269 rows and five columns 
+\format{
+A data frame with 1269 rows and five columns 
 \describe{
    \item{code}{Indicator code in data}
    \item{name}{Name of the indicator}
    \item{value}{Indicator value for factor indicator}
    \item{label}{Value label for factor indicators}
    \item{class}{Class of the indicator. Numeric, factor or character}
-}}
+}
+}
 \usage{
 meta_oecd_ts_2017
 }

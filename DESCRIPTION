@@ -1,8 +1,8 @@
 Package: rqog
 Type: Package
 Title: Download data from the Quality of Government Institute data
-Version: 0.4.0
-Date: 2020-02-01
+Version: 0.4.2021
+Date: 2021-01-30
 Authors@R: person("Markus", "Kainu", email = "markuskainu@kapsi.fi", role = c("aut", "cre"))
 Maintainer: Markus Kainu <markuskainu@kapsi.fi>
 Encoding: UTF-8
@@ -19,6 +19,6 @@ Imports:
      devtools
 Depends:
     R (>= 3.5.0)
-Description:  R client for the Quality of Government (QOG) open data. Client can be used to fetch data files <https://qog.pol.gu.se/data> and converted into data.frame objects in R.
+Description: R client for the Quality of Government (QOG) open data. Client can be used to fetch data files <https://qog.pol.gu.se/data> and converted into data.frame objects in R.
 License: MIT + file LICENSE
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1

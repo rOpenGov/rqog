@@ -13,7 +13,7 @@ editor_options:
 
 
 ```{r include = FALSE}
-knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE, cache = FALSE)
 ```
 
 
@@ -77,7 +77,7 @@ dat.l <- basic %>%
   filter(year %in% 1990:2010,
          cname %in% c("Russia","China","India","Brazil")) %>% 
   # select variables
-  select(cname,year,fh_ipolity2,wdi_pop1564) %>% 
+  select(cname,year,p_polity2,wdi_pop1564) %>% 
   # gather to long format
   gather(., var, value, 3:4) %>% 
   # remove NA values

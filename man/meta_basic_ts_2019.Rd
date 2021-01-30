@@ -4,14 +4,16 @@
 \name{meta_basic_ts_2019}
 \alias{meta_basic_ts_2019}
 \title{Metadata for 2019 Quality of Government institute Basic Data - time-series}
-\format{A data frame with 494 rows and five columns 
+\format{
+A data frame with 494 rows and five columns 
 \describe{
    \item{code}{Indicator code in data}
    \item{name}{Name of the indicator}
    \item{value}{Indicator value for factor indicator}
    \item{label}{Value label for factor indicators}
    \item{class}{Class of the indicator. Numeric, factor or character}
-}}
+}
+}
 \usage{
 meta_basic_ts_2019
 }
