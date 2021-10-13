@@ -6,3 +6,5 @@
 ^_pkgdown\.yaml$
 ^doc$
 ^Meta$
+^pkgdown$
+^_pkgdown\.yml$

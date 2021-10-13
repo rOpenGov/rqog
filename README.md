@@ -1,10 +1,10 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rqog-package: download data from the Quality of Government Institute data
+# rqog-package: download data from the Quality of Government Institute data <a href='https://ropengov.github.io/rqog/'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-
+[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](http://ropengov.org/)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
