@@ -5,8 +5,9 @@ README.Rmd
 README.html
 rQog.Rproj
 rqog.Rproj
-.Rbuildignore
 Read-and-delete-me
 cache
 testausta.R
 rqog_tutorial.md
+/doc/
+/Meta/

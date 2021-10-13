@@ -1,6 +1,10 @@
 ---
 title: "rqog-package for R"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rqog-package for R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 editor_options: 
   chunk_output_type: console
 ---
@@ -13,7 +17,8 @@ editor_options:
 
 
 ```{r include = FALSE}
-knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE, cache = FALSE)
+knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE, cache = FALSE,
+                      out.width = "100%")
 ```
 
 
@@ -270,5 +275,5 @@ ggplot(plot_d, aes(x=ht_regtype_lab,y=n)) +
 
 
 ```{r}
-devtools::session_info()
+sessionInfo()
 ```

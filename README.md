@@ -9,6 +9,8 @@
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rqog)](https://CRAN.R-project.org/package=rqog)
+[![R-CMD-check](https://github.com/rOpenGov/rqog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rOpenGov/rqog/actions/workflows/R-CMD-check.yaml)
+[![r-universe](https://ropengov.r-universe.dev/badges/rqog)](https://ropengov.r-universe.dev/)
 <!-- badges: end -->
 
 Download the latest and archived datasets from the [Quality of
@@ -18,13 +20,26 @@ Government Institute](https://qog.pol.gu.se/data) using the function
 for help, [package
 vignette](http://ropengov.github.io/rqog/articles/rqog_tutorial.html)
 for more examples and
-[data.markuskainu.fi/qog/](http://data.markuskainu.fi/qog/index.html)
+[data.markuskainu.fi/qog/](https://data.markuskainu.fi/qog/index.html)
 for interactive metadata.
 
 ## Installation
 
 ``` r
 devtools::install_github("ropengov/rqog")
+```
+
+Alternatively, you can use the
+[r-universe](https://ropengov.r-universe.dev):
+
+``` r
+# Enable this universe
+options(repos = c(
+  ropengov = "https://ropengov.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages("rqog")
 ```
 
 ## Use
