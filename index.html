@@ -88,22 +88,31 @@
 <a href="#rqog-package-download-data-from-the-quality-of-government-institute-data" class="anchor" aria-hidden="true"></a>rqog-package: download data from the Quality of Government Institute data</h1></div>
 <!-- badges: start -->
 
-<p>Download the latest and archived datasets from the <a href="https://qog.pol.gu.se/data" class="external-link">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <a href="http://ropengov.github.io/rqog/reference/read_qog.html" class="external-link"><code>?read_qog</code></a> for help, <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="external-link">package vignette</a> for more examples and <a href="http://data.markuskainu.fi/qog/index.html" class="external-link">data.markuskainu.fi/qog/</a> for interactive metadata.</p>
+<p>Download the latest and archived datasets from the <a href="https://qog.pol.gu.se/data" class="external-link">Quality of Government Institute</a> using the function <code><a href="reference/read_qog.html">read_qog()</a></code>. See <a href="http://ropengov.github.io/rqog/reference/read_qog.html" class="external-link"><code>?read_qog</code></a> for help, <a href="http://ropengov.github.io/rqog/articles/rqog_tutorial.html" class="external-link">package vignette</a> for more examples and <a href="https://data.markuskainu.fi/qog/index.html" class="external-link">data.markuskainu.fi/qog/</a> for interactive metadata.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ropengov/rqog"</span><span class="op">)</span></code></pre></div>
+<p>Alternatively, you can use the <a href="https://ropengov.r-universe.dev" class="external-link">r-universe</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Enable this universe</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
+  ropengov <span class="op">=</span> <span class="st">"https://ropengov.r-universe.dev"</span>,
+  CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span>
+<span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rqog"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use" class="anchor" aria-hidden="true"></a>Use</h2>
 <p><strong>Download data</strong></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">rqog</span><span class="op">)</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_qog.html">read_qog</a></span><span class="op">(</span>which_data <span class="op">=</span> <span class="st">"standard"</span>, data_type <span class="op">=</span> <span class="st">"time-series"</span><span class="op">)</span></code></pre></div>
 <p><strong>Browse metadata</strong></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">rqog</span><span class="op">)</span>
 <span class="va">meta_std_ts_2021</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"human development"</span>, <span class="va">meta_std_ts_2021</span><span class="op">$</span><span class="va">name</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,<span class="op">]</span>
 <span class="co">#&gt; # A tibble: 2 x 5</span>
@@ -112,7 +121,7 @@
 <span class="co">#&gt; 1 iiag_hd  Human Development          NA &lt;NA&gt;  numeric</span>
 <span class="co">#&gt; 2 undp_hdi Human Development Index    NA &lt;NA&gt;  numeric</span></code></pre></div>
 <p><strong>Plot an indicator</strong></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">undp_hdi</span><span class="op">)</span>,<span class="op">]</span>, 
        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">undp_hdi</span>, color <span class="op">=</span> <span class="va">cname</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -143,9 +152,8 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENCE</a></small></li>
 </ul>
 </div>
 
@@ -162,6 +170,8 @@
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://CRAN.R-project.org/package=rqog" class="external-link"><img src="https://www.r-pkg.org/badges/version/rqog" alt="CRAN status"></a></li>
+<li><a href="https://github.com/rOpenGov/rqog/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/rOpenGov/rqog/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://ropengov.r-universe.dev/" class="external-link"><img src="https://ropengov.r-universe.dev/badges/rqog" alt="r-universe"></a></li>
 </ul>
 </div>
 
