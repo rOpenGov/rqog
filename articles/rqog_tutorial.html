@@ -96,7 +96,7 @@
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rqog Markdown Vignette made with knitr}
 -->
-<p><code>compiled at</code> 2021-10-13 13:49:56</p>
+<p><code>compiled at</code> 2021-10-26 16:11:57</p>
 <p><em>Download data from the Quality of Government Institute data</em></p>
 <p>Quotation from <a href="http://www.qog.pol.gu.se/" class="external-link">Quality of Governance institute website</a></p>
 <blockquote>
@@ -121,20 +121,20 @@
 <li><a href="http://www.qogdata.pol.gu.se/data/qog_oecd_jan18.pdf" class="external-link">OECD data codebook</a></li>
 </ol>
 <p>You consult the codebooks for description of the data and indicators.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
 <span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ropengov/rqog"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">rqog</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor" aria-hidden="true"></a>Examples</h2>
-<div id="download-data-and-plot-numeric-indicators" class="section level3">
-<h3 class="hasAnchor">
-<a href="#download-data-and-plot-numeric-indicators" class="anchor" aria-hidden="true"></a>Download data and plot numeric indicators</h3>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
+<div class="section level3">
+<h3 id="download-data-and-plot-numeric-indicators">Download data and plot numeric indicators<a class="anchor" aria-label="anchor" href="#download-data-and-plot-numeric-indicators"></a>
+</h3>
 <p><strong>Basic Data</strong></p>
 <p>Basic data has a selection of most common indicators, 344 indicators from 211 countries. Below is an example on how to extract data on population and Democracy (Freedom House/Polity) index from BRIC-countries from 1990 to 2010 and to plot it.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -245,9 +245,9 @@
        caption <span class="op">=</span> <span class="st">"Data: QoG OECD data"</span><span class="op">)</span></code></pre></div>
 <p><img src="rqog_tutorial_files/figure-html/ExampleSocialPolicy-1.png" width="100%"></p>
 </div>
-<div id="work-with-metadata-and-factor-indicators" class="section level3">
-<h3 class="hasAnchor">
-<a href="#work-with-metadata-and-factor-indicators" class="anchor" aria-hidden="true"></a>Work with metadata and factor indicators</h3>
+<div class="section level3">
+<h3 id="work-with-metadata-and-factor-indicators">Work with metadata and factor indicators<a class="anchor" aria-label="anchor" href="#work-with-metadata-and-factor-indicators"></a>
+</h3>
 <p>Packages is shipped with seven metadatas for each year (2016-2020) <code>meta_basic_cs_2020</code>, <code>meta_basic_ts_2020</code>, <code>meta_std_cs_2020</code>, <code>meta_std_ts_2020</code>, <code>meta_oecd_cs_2020</code> and <code>meta_oecd_ts_2020</code>. Data frames are generated from original <code>spss</code> versions of data using <code>tidymetadata::create_metadata()</code>-function.</p>
 <p><strong>Browsing metadata</strong></p>
 <p>You can browse the content by applying <code>grepl</code> to <code>name</code> column. Let’s find indicators containing term <code>Corruption</code> either in lower or uppercase.</p>
@@ -388,11 +388,11 @@
 ## [1] tidyr_1.1.4   ggplot2_3.3.5 dplyr_1.0.7   rqog_0.4.2021
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.1.1         xfun_0.26                bslib_0.3.0             
+##  [1] tidyselect_1.1.1         xfun_0.27                bslib_0.3.0             
 ##  [4] purrr_0.3.4              haven_2.4.3              colorspace_2.0-2        
-##  [7] vctrs_0.3.8              generics_0.1.0           htmltools_0.5.2         
-## [10] yaml_2.2.1               utf8_1.2.2               rlang_0.4.11            
-## [13] pkgdown_1.9000.9000.9000 jquerylib_0.1.4          pillar_1.6.3            
+##  [7] vctrs_0.3.8              generics_0.1.1           htmltools_0.5.2         
+## [10] yaml_2.2.1               utf8_1.2.2               rlang_0.4.12            
+## [13] pkgdown_1.9000.9000.9000 jquerylib_0.1.4          pillar_1.6.4            
 ## [16] glue_1.4.2               withr_2.4.2              readxl_1.3.1            
 ## [19] lifecycle_1.0.1          stringr_1.4.0            munsell_0.5.0           
 ## [22] gtable_0.3.0             cellranger_1.1.0         ragg_1.1.3              
@@ -428,7 +428,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
       </footer>

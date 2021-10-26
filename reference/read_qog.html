@@ -37,7 +37,7 @@ http://www.qog.pol.gu.se/data/"><meta property="og:image" content="/logo.png"><!
     </li>
   </ul></li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/rOpenGov/rqog">
+  <a href="https://github.com/rOpenGov/rqog" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -52,13 +52,13 @@ http://www.qog.pol.gu.se/data/"><meta property="og:image" content="/logo.png"><!
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve and Read Quality of Government Institute data in R</h1>
-    <small class="dont-index">Source: <a href="https://github.com/rOpenGov/rqog/blob/master/R/read_qog.R"><code>R/read_qog.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/rOpenGov/rqog/blob/master/R/read_qog.R" class="external-link"><code>R/read_qog.R</code></a></small>
     <div class="hidden name"><code>read_qog.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Download data from Quality of Government Institute Basic data at
-<a href="http://www.qog.pol.gu.se/data/">http://www.qog.pol.gu.se/data/</a></p>
+<a href="http://www.qog.pol.gu.se/data/" class="external-link">http://www.qog.pol.gu.se/data/</a></p>
     </div>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">read_qog</span><span class="op">(</span>
@@ -72,37 +72,39 @@ http://www.qog.pol.gu.se/data/"><meta property="og:image" content="/logo.png"><!
   update_cache <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>which_data</th>
-      <td><p>A string. Specify the name of the QoG data set to retrieve. Currently available <code>"basic"</code>, <code>"standard"</code>, <code>"oecd"</code> or <code>"social_policy"</code>.</p></td>
-    </tr><tr><th>data_type</th>
-      <td><p>A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available <code>"cross-sectional"</code> or <code>"time-series"</code>.</p></td>
-    </tr><tr><th>year</th>
-      <td><p>numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default <code>2019</code></p></td>
-    </tr><tr><th>data_dir</th>
-      <td><p>a path to a cache directory. The directory have to exist.
+    <div id="ref-sections">
+    <div id="arguments">
+    <h2>Arguments</h2>
+    
+
+<dl><dt>which_data</dt><dd><p>A string. Specify the name of the QoG data set to retrieve. Currently available <code>"basic"</code>, <code>"standard"</code>, <code>"oecd"</code> or <code>"social_policy"</code>.</p></dd>
+</dl><dl><dt>data_type</dt><dd><p>A string. Specify whether you want cross-sectional or time-series QoG data set to retrieve. Currently available <code>"cross-sectional"</code> or <code>"time-series"</code>.</p></dd>
+</dl><dl><dt>year</dt><dd><p>numeric. Specify the year of the dataset. Year refers to the publication year of the dataset not the year of a particular data point. Default <code>2019</code></p></dd>
+</dl><dl><dt>data_dir</dt><dd><p>a path to a cache directory. The directory have to exist.
 The <code>NULL</code> (default) uses and creates
 'rqog' directory in the temporary directory from
-<code><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></code>.</p></td>
-    </tr><tr><th>file_format</th>
-      <td><p>A string. Specify the file format you want to download and import. Currently available <code>"csv"</code>,<code>"dta"</code>, <code>"sav"</code> or <code>"xlsx"</code>.</p></td>
-    </tr><tr><th>download_only</th>
-      <td><p>a logical whether to only download and save the dataset and skip importing in R.  Default is <code>FALSE</code>.</p></td>
-    </tr><tr><th>cache</th>
-      <td><p>a logical whether to do caching. Default is <code>TRUE</code>.</p></td>
-    </tr><tr><th>update_cache</th>
-      <td><p>a locigal whether to update cache. Default is <code>FALSE</code>.</p></td>
-    </tr></table><h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
+<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></code>.</p></dd>
+</dl><dl><dt>file_format</dt><dd><p>A string. Specify the file format you want to download and import. Currently available <code>"csv"</code>,<code>"dta"</code>, <code>"sav"</code> or <code>"xlsx"</code>.</p></dd>
+</dl><dl><dt>download_only</dt><dd><p>a logical whether to only download and save the dataset and skip importing in R.  Default is <code>FALSE</code>.</p></dd>
+</dl><dl><dt>cache</dt><dd><p>a logical whether to do caching. Default is <code>TRUE</code>.</p></dd>
+</dl><dl><dt>update_cache</dt><dd><p>a locigal whether to update cache. Default is <code>FALSE</code>.</p></dd>
+</dl></div>
+    <div id="value">
+    <h2>Value</h2>
     <p>data.frame</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
+    </div>
+    <div id="author">
+    <h2>Author</h2>
     <p>Markus Kainu &lt;markuskainu(at)gmail.com&gt;</p>
+    </div>
+    </div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <div id="examples">
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># dat &lt;- read_qog(which_data = "basic", year = 2019, data_dir="data")</span></span>
 <span class="r-in"></span>
 </code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
