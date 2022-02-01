@@ -22,6 +22,9 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/news/index.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -43,6 +46,9 @@
     <loc>/reference/meta_basic_cs_2021.html</loc>
   </url>
   <url>
+    <loc>/reference/meta_basic_cs_2022.html</loc>
+  </url>
+  <url>
     <loc>/reference/meta_basic_ts_2016.html</loc>
   </url>
   <url>
@@ -59,6 +65,9 @@
   </url>
   <url>
     <loc>/reference/meta_basic_ts_2021.html</loc>
+  </url>
+  <url>
+    <loc>/reference/meta_basic_ts_2022.html</loc>
   </url>
   <url>
     <loc>/reference/meta_oecd_cs_2016.html</loc>
@@ -79,6 +88,9 @@
     <loc>/reference/meta_oecd_cs_2021.html</loc>
   </url>
   <url>
+    <loc>/reference/meta_oecd_cs_2022.html</loc>
+  </url>
+  <url>
     <loc>/reference/meta_oecd_ts_2016.html</loc>
   </url>
   <url>
@@ -95,6 +107,9 @@
   </url>
   <url>
     <loc>/reference/meta_oecd_ts_2021.html</loc>
+  </url>
+  <url>
+    <loc>/reference/meta_oecd_ts_2022.html</loc>
   </url>
   <url>
     <loc>/reference/meta_std_cs_2016.html</loc>
@@ -115,6 +130,9 @@
     <loc>/reference/meta_std_cs_2021.html</loc>
   </url>
   <url>
+    <loc>/reference/meta_std_cs_2022.html</loc>
+  </url>
+  <url>
     <loc>/reference/meta_std_ts_2016.html</loc>
   </url>
   <url>
@@ -131,6 +149,9 @@
   </url>
   <url>
     <loc>/reference/meta_std_ts_2021.html</loc>
+  </url>
+  <url>
+    <loc>/reference/meta_std_ts_2022.html</loc>
   </url>
   <url>
     <loc>/reference/read_qog.html</loc>
