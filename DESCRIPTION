@@ -4,8 +4,8 @@ Title: Download data from the Quality of Government Institute data
 Version: 0.4.2022
 Date: 2022-02-01
 Authors@R: 
-    person("Markus", "Kainu", , "markuskainu@kapsi.fi", role = c("aut", "cre"))
-Maintainer: Markus Kainu <markuskainu@kapsi.fi>
+    person("Markus", "Kainu", , "markus.kainu@kapsi.fi", role = c("aut", "cre"))
+Maintainer: Markus Kainu <markus.kainu@kapsi.fi>
 Description: R client for the Quality of Government (QOG) open data.
     Client can be used to fetch data files <https://qog.pol.gu.se/data>
     and converted into data.frame objects in R.

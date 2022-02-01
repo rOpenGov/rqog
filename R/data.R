@@ -3,6 +3,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 458 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -18,6 +21,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 465 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -35,6 +41,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2408 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -51,6 +60,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1937 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -66,6 +78,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1464 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -82,6 +97,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1223 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -97,6 +115,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 447 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -112,6 +133,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 498 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -129,6 +153,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2347 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -145,6 +172,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1997 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -160,6 +190,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1374 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -176,6 +209,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1226 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -191,6 +227,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 484 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -206,6 +245,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 527 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -223,6 +265,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2620 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -239,6 +284,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2063 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -254,6 +302,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1351 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -270,6 +321,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1170 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -288,6 +342,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 494 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -303,6 +360,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 590 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -320,6 +380,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2751 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -336,6 +399,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2478 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -351,6 +417,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1390 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -367,6 +436,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1449 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -383,6 +455,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 558 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -397,6 +472,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 644 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -412,6 +490,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 3221 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -427,6 +508,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2393 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -442,6 +526,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1407 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -457,6 +544,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1319 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -473,6 +563,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 330 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -487,6 +580,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 447 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -502,6 +598,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 3075 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -517,6 +616,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2455 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -532,6 +634,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1269 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -547,6 +652,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1311 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -563,6 +671,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 335 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -577,6 +688,9 @@
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 438 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -592,6 +706,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2882 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -607,6 +724,9 @@
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 2825 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -622,6 +742,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1507 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
@@ -637,6 +760,9 @@
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
 #' 
+#'
+#' @family datasets 
+#'  
 #' @format A data frame with 1608 rows and five columns 
 #' \describe{
 #'    \item{code}{Indicator code in data}
