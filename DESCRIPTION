@@ -1,26 +1,34 @@
-Package: rqog
 Type: Package
+Package: rqog
 Title: Download data from the Quality of Government Institute data
 Version: 0.4.2022
 Date: 2022-02-01
-Authors@R: person("Markus", "Kainu", email = "markuskainu@kapsi.fi", role = c("aut", "cre"))
+Authors@R: 
+    person("Markus", "Kainu", , "markuskainu@kapsi.fi", role = c("aut", "cre"))
 Maintainer: Markus Kainu <markuskainu@kapsi.fi>
-Encoding: UTF-8
-LazyData: TRUE
-VignetteBuilder: knitr
-Imports: 
-     haven,
-     readxl,
-     glue,
-     ggplot2,
-     tidyr,
-     devtools
+Description: R client for the Quality of Government (QOG) open data.
+    Client can be used to fetch data files <https://qog.pol.gu.se/data>
+    and converted into data.frame objects in R.
+License: MIT + file LICENCE
+URL: https://ropengov.github.io/rqog/, https://github.com/rOpenGov/rqog
+BugReports: https://github.com/rOpenGov/rqog/issues
 Depends:
     R (>= 3.5.0)
+Imports: 
+    devtools,
+    ggplot2,
+    glue,
+    haven,
+    readxl,
+    tidyr
 Suggests: 
     dplyr,
     knitr,
     rmarkdown
-Description: R client for the Quality of Government (QOG) open data. Client can be used to fetch data files <https://qog.pol.gu.se/data> and converted into data.frame objects in R.
-License: MIT + file LICENSE
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: TRUE
 RoxygenNote: 7.1.2
+X-schema.org-isPartOf: http://ropengov.org/
+X-schema.org-keywords: ropengov
