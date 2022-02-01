@@ -1,8 +1,9 @@
-template:
-  params:
-     bootswatch: united
-     
 navbar:
   right:
      - icon: fa-github
        href: https://github.com/rOpenGov/rqog
+template:
+  package: rogtemplate
+  opengraph:
+    twitter:
+      site: '@rOpenGov'

@@ -24,7 +24,7 @@ for interactive metadata.
 ## Installation
 
 ``` r
-devtools::install_github("ropengov/rqog")
+remotes::install_github("ropengov/rqog")
 ```
 
 ## Use
@@ -40,8 +40,8 @@ dat <- read_qog(which_data = "standard", data_type = "time-series")
 
 ``` r
 library(rqog)
-meta_std_ts_2021[grepl("human development", meta_std_ts_2021$name, ignore.case = TRUE),]
-#> # A tibble: 2 x 5
+meta_std_ts_2022[grepl("human development", meta_std_ts_2022$name, ignore.case = TRUE),]
+#> # A tibble: 2 × 5
 #>   code     name                    value label class  
 #>   <chr>    <chr>                   <dbl> <chr> <chr>  
 #> 1 iiag_hd  Human Development          NA <NA>  numeric
@@ -60,7 +60,7 @@ ggplot(dat[!is.na(dat$undp_hdi),],
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-Copyright (C) 2012-2021 Markus Kainu <markuskainu@gmail.com>.
+Copyright (C) 2012-2022 Markus Kainu <markuskainu@gmail.com>.
 MIT-licence.
 
 ## Disclaimer

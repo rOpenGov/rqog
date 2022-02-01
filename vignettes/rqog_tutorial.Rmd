@@ -181,7 +181,7 @@ ggplot(dat.l, aes(x=year,y=value,color=cname)) +
 
 ### Work with metadata and factor indicators
 
-Packages is shipped with seven metadatas for each year (2016-2020) `meta_basic_cs_2020`, `meta_basic_ts_2020`, `meta_std_cs_2020`, `meta_std_ts_2020`, `meta_oecd_cs_2020` and  `meta_oecd_ts_2020`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
+Packages is shipped with seven metadatas for each year (2016-2022) `meta_basic_cs_2022`, `meta_basic_ts_2022`, `meta_std_cs_2022`, `meta_std_ts_2022`, `meta_oecd_cs_2022` and  `meta_oecd_ts_2022`. Data frames are generated from original `spss` versions of data using `tidymetadata::create_metadata()`-function.  
 
 **Browsing metadata**
 
@@ -189,7 +189,7 @@ You can browse the content by applying `grepl` to `name` column. Let's find indi
 
 ```{r}
 library(rqog)
-meta_basic_ts_2020[grepl("Corruption", meta_basic_ts_2020$name, ignore.case = TRUE),]
+meta_basic_ts_2022[grepl("Corruption", meta_basic_ts_2022$name, ignore.case = TRUE),]
 ```
 
 **Assigning labels to values with metadata**
@@ -197,7 +197,7 @@ meta_basic_ts_2020[grepl("Corruption", meta_basic_ts_2020$name, ignore.case = TR
 The data `rqoq` imports to R is in `.csv`-format without the labels and names shipped together with `spss` or `Stata` formats. As such it is the desired format to work with in R, especially with numeric indicators. However, many of the indicators in QoG are factors meaning that they have discrete values with a corresponding label. You can use the metadatas to assign labels for  values of such indicators. Lets take the `ccp_cc` as an example below and first print the `value` and `label` colums of the data.
 
 ```{r}
-meta_basic_ts_2020 %>% filter(code == "ccp_cc") %>% select(value,label)
+meta_basic_ts_2022 %>% filter(code == "ccp_cc") %>% select(value,label)
 ```
 
 Currently we have basic data in R in an object called `basic`. Lets see the frequencies of each value
@@ -211,13 +211,13 @@ Now, using the metadata with assign values with corresponding labels
 ```{r}
 basic %>% 
   count(ccp_cc) %>% 
-  mutate(ccp_cc_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ccp_cc",]$label[match(ccp_cc,meta_basic_ts_2020[meta_basic_ts_2020$code == "ccp_cc",]$value)])
+  mutate(ccp_cc_lab = meta_basic_ts_2022[meta_basic_ts_2022$code == "ccp_cc",]$label[match(ccp_cc,meta_basic_ts_2022[meta_basic_ts_2022$code == "ccp_cc",]$value)])
 ```
 
 So, lets find two factor variables with few more values from the *cross-sectional* data
 
 ```{r}
-meta_basic_cs_2020 %>% 
+meta_basic_cs_2022 %>% 
   filter(class =="factor") %>% 
   group_by(code) %>% 
   summarise(n_of_values = n()) %>% 
@@ -227,8 +227,8 @@ meta_basic_cs_2020 %>%
 Lets take these two factors and summarise the regime types per regions
 
 ```{r}
-meta_basic_cs_2020 %>% 
-  filter(code %in% c("ht_region","ht_regtype")) %>% 
+meta_basic_cs_2022 %>% 
+  filter(code %in% c("ht_region","ht_colonial")) %>% 
   distinct(code, .keep_all = TRUE)
 ```
 
@@ -241,23 +241,26 @@ plot_d <- basic_cs %>%
   # group by region
   group_by(ht_region) %>% 
   # count per group frequencies of each regime type
-  count(ht_regtype) %>%
+  count(ht_colonial) %>%
   ungroup() %>% 
   # label
-  mutate(ht_region_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_region",]$label[match(ht_region,meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_region",]$value)],
-         ht_regtype_lab = meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_regtype",]$label[match(ht_regtype,meta_basic_ts_2020[meta_basic_ts_2020$code == "ht_regtype",]$value)]) %>% 
+  mutate(ht_region_lab = meta_basic_ts_2022[meta_basic_ts_2022$code == "ht_region",]$label[match(ht_region,meta_basic_ts_2022[meta_basic_ts_2022$code == "ht_region",]$value)],
+         ht_colonial_lab = meta_basic_ts_2022[meta_basic_ts_2022$code == "ht_colonial",]$label[match(ht_colonial,meta_basic_ts_2022[meta_basic_ts_2022$code == "ht_colonial",]$value)]) %>% 
   na.omit()
 head(plot_d)
+
+# lets abbreviate option '0. Never colonized by a Western overseas colonial power' to '0. Never'
+plot_d$ht_colonial_lab[plot_d$ht_colonial_lab == "0. Never colonized by a Western overseas colonial power"] <- '0. Never'
 ```
 
 Then we can create a simple bar plot
 
 ```{r fig.height = 12, fig.width = 12}
 # indicators names from metadata
-ind_name <- unique(meta_basic_cs_2020[meta_basic_cs_2020$code == "ht_regtype",]$name)
-group_name <- unique(meta_basic_cs_2020[meta_basic_cs_2020$code == "ht_region",]$name)
+ind_name <- unique(meta_basic_cs_2022[meta_basic_cs_2022$code == "ht_colonial",]$name)
+group_name <- unique(meta_basic_cs_2022[meta_basic_cs_2022$code == "ht_region",]$name)
 
-ggplot(plot_d, aes(x=ht_regtype_lab,y=n)) + 
+ggplot(plot_d, aes(x=ht_colonial_lab,y=n)) + 
   geom_col() + 
   facet_wrap(~ht_region_lab, scales = "free") + 
   theme_minimal() + theme(axis.text.x = element_text(angle = 90, size = 7)) +

@@ -7,7 +7,7 @@
 read_qog(
   which_data = "basic",
   data_type = "time-series",
-  year = 2021,
+  year = 2022,
   data_dir = NULL,
   file_format = "csv",
   download_only = FALSE,
