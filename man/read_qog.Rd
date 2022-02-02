@@ -46,5 +46,5 @@ Download data from Quality of Government Institute Basic data at
 # dat <- read_qog(which_data = "basic", year = 2019, data_dir="data")
 }
 \author{
-Markus Kainu <markuskainu(at)gmail.com>
+Markus Kainu <markus.kainu(at)kapsi.fi>
 }

@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_std_ts_2018}
 \alias{meta_std_ts_2018}
-\title{Metadata for 2018 Quality of Government institute Standard Data - cross-sectional}
+\title{Metadata for 2018 Quality of Government institute Standard Data - time-series}
 \format{
 A data frame with 3221 rows and five columns 
 \describe{

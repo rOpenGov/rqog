@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_oecd_ts_2018}
 \alias{meta_oecd_ts_2018}
-\title{Metadata for 2018 Quality of Government institute Standard Data - time-series}
+\title{Metadata for 2018 Quality of Government institute OECD Data - time-series}
 \format{
 A data frame with 1407 rows and five columns 
 \describe{

@@ -36,7 +36,7 @@
 
 
 #'
-#' Metadata for 2022 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2022 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -72,8 +72,9 @@
 #'    \item{class}{Class of the indicator. Numeric, factor or character}
 #' }
 "meta_std_cs_2022"
+
 #'
-#' Metadata for 2022 Quality of Government institute Standard Data - time-series
+#' Metadata for 2022 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -92,7 +93,7 @@
 "meta_oecd_ts_2022"
 
 #'
-#' Metadata for 2022 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2022 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -148,7 +149,7 @@
 
 
 #'
-#' Metadata for 2021 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2021 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -185,7 +186,7 @@
 #' }
 "meta_std_cs_2021"
 #'
-#' Metadata for 2021 Quality of Government institute Standard Data - time-series
+#' Metadata for 2021 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -204,7 +205,7 @@
 "meta_oecd_ts_2021"
 
 #'
-#' Metadata for 2021 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2021 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -260,7 +261,7 @@
 
 
 #'
-#' Metadata for 2020 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2020 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -297,7 +298,7 @@
 #' }
 "meta_std_cs_2020"
 #'
-#' Metadata for 2020 Quality of Government institute Standard Data - time-series
+#' Metadata for 2020 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -316,7 +317,7 @@
 "meta_oecd_ts_2020"
 
 #'
-#' Metadata for 2020 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2020 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -375,7 +376,7 @@
 
 
 #'
-#' Metadata for 2019 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2019 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -412,7 +413,7 @@
 #' }
 "meta_std_cs_2019"
 #'
-#' Metadata for 2019 Quality of Government institute Standard Data - time-series
+#' Metadata for 2019 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -431,7 +432,7 @@
 "meta_oecd_ts_2019"
 
 #'
-#' Metadata for 2019 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2019 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -485,7 +486,7 @@
 #' }
 "meta_basic_cs_2018"
 #'
-#' Metadata for 2018 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2018 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -521,7 +522,7 @@
 #' }
 "meta_std_cs_2018"
 #'
-#' Metadata for 2018 Quality of Government institute Standard Data - time-series
+#' Metadata for 2018 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -539,7 +540,7 @@
 #' }
 "meta_oecd_ts_2018"
 #'
-#' Metadata for 2018 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2018 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -575,6 +576,8 @@
 #'    \item{class}{Class of the indicator. Numeric, factor or character}
 #' }
 "meta_basic_ts_2017"
+
+
 #' Metadata for 2017 Quality of Government institute Basic Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
@@ -593,7 +596,7 @@
 #' }
 "meta_basic_cs_2017"
 #'
-#' Metadata for 2017 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2017 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -629,7 +632,7 @@
 #' }
 "meta_std_cs_2017"
 #'
-#' Metadata for 2017 Quality of Government institute Standard Data - time-series
+#' Metadata for 2017 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -647,7 +650,7 @@
 #' }
 "meta_oecd_ts_2017"
 #'
-#' Metadata for 2017 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2017 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -701,7 +704,7 @@
 #' }
 "meta_basic_cs_2016"
 #'
-#' Metadata for 2016 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2016 Quality of Government institute Standard Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -737,7 +740,7 @@
 #' }
 "meta_std_cs_2016"
 #'
-#' Metadata for 2016 Quality of Government institute Standard Data - time-series
+#' Metadata for 2016 Quality of Government institute OECD Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
@@ -755,7 +758,7 @@
 #' }
 "meta_oecd_ts_2016"
 #'
-#' Metadata for 2016 Quality of Government institute Standard Data - cross-sectional
+#' Metadata for 2016 Quality of Government institute OECD Data - cross-sectional
 #' 
 #' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   

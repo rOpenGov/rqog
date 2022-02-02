@@ -32,7 +32,7 @@
 #' 
 #' @export
 #' @examples # dat <- read_qog(which_data = "basic", year = 2019, data_dir="data")
-#' @author Markus Kainu <markuskainu(at)gmail.com> 
+#' @author Markus Kainu <markus.kainu(at)kapsi.fi> 
 
 read_qog <- function(which_data = "basic", 
                      data_type="time-series", 

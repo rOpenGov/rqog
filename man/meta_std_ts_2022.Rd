@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_std_ts_2022}
 \alias{meta_std_ts_2022}
-\title{Metadata for 2022 Quality of Government institute Standard Data - cross-sectional}
+\title{Metadata for 2022 Quality of Government institute Standard Data - time-series}
 \format{
 A data frame with 2408 rows and five columns 
 \describe{

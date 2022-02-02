@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_std_ts_2020}
 \alias{meta_std_ts_2020}
-\title{Metadata for 2020 Quality of Government institute Standard Data - cross-sectional}
+\title{Metadata for 2020 Quality of Government institute Standard Data - time-series}
 \format{
 A data frame with 2620 rows and five columns 
 \describe{

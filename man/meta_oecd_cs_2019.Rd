@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_oecd_cs_2019}
 \alias{meta_oecd_cs_2019}
-\title{Metadata for 2019 Quality of Government institute Standard Data - cross-sectional}
+\title{Metadata for 2019 Quality of Government institute OECD Data - cross-sectional}
 \format{
 A data frame with 1449 rows and five columns 
 \describe{

@@ -12,6 +12,7 @@ reference:
   desc: Functions for fetching data from Quality of Government website
   contents:
   - read_qog
+  - run_app
 - title: Datasets
   desc: These objects contains metadata for differents datasets from different years.
   contents: 

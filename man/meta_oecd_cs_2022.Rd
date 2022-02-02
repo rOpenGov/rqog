@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_oecd_cs_2022}
 \alias{meta_oecd_cs_2022}
-\title{Metadata for 2022 Quality of Government institute Standard Data - cross-sectional}
+\title{Metadata for 2022 Quality of Government institute OECD Data - cross-sectional}
 \format{
 A data frame with 1223 rows and five columns 
 \describe{
