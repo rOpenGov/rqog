@@ -46,7 +46,7 @@ ui <- fluidPage(lang = "fi",
                 tags$html(HTML('
     <nav class="navbar navbar-light sticky-top navbar-xyz">
       <a class="navbar-brand" role="brand" href = "https://ropengov.github.io/rqog/"><img src = "https://ropengov.github.io/rqog/reference/figures/logo.png" style = "height: 35px; padding-right: 0px;" alt = "Kompassi"></a>
-      <div class = "lead">rqog browser - Metadata, Data availability and code snippets for Quality of Government Institute Data</div>
+      <div class = "lead">rqog browser</div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -66,12 +66,14 @@ ui <- fluidPage(lang = "fi",
                 tags$h2("", id = "alku"),
                 tags$div(class = "container",
                 fluidRow(column(3, class = "well",
+                                tags$p(class = "lead", "Metadata, Data availability and code snippets for Quality of Government Institute Data"), 
                     tags$p("This app is shipped with  ",
                            tags$a(href = "https://ropengov.github.io/rqog", 
                                   tags$code("rqog")),
                            "R-package. App allows you to quickly check ",tags$a(href = "https://www.gu.se/en/quality-government/qog-data", 
                                                                                      tags$code("The Quality of Government Institute")),
-                           " metadata and completeness of variables and timeseries. App also creates R-code snippets for fetching the data yourself"),
+                           " metadata and completeness of variables and timeseries."),
+                    tags$p("Analytical tools are available at ", tags$a(href = "https://www.gu.se/en/quality-government/qog-data/visualization-tools", "QoG-website"),"."),
                     tags$hr(),
                     tags$p("(C) Markus Kainu 2011-2022"),
                     tags$a(href = "https://github.com/rOpenGov/rqog/blob/master/inst/extras/rqog_app/app.R", 
@@ -192,7 +194,7 @@ server <- function(input, output, session) {
     
     output$ui_availability_tbl <- renderUI({
       tagList(
-        div(style='height:820px; overflow-y: auto; overflow-x: auto;',
+        div(style='height:520px; overflow-y: auto; overflow-x: auto;',
             shinycssloaders::withSpinner(tableOutput("availability_tbl"))
         )
       )
