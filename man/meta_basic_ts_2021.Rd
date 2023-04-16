@@ -36,6 +36,7 @@ Other datasets:
 \code{\link{meta_basic_ts_2018}},
 \code{\link{meta_basic_ts_2019}},
 \code{\link{meta_basic_ts_2020}},
+\code{\link{meta_basic_ts_2022}},
 \code{\link{meta_basic_ts_2023}},
 \code{\link{meta_oecd_cs_2016}},
 \code{\link{meta_oecd_cs_2017}},

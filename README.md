@@ -1,16 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rqog-package: download data from the Quality of Government Institute data
+# rqog-package: download data from the Quality of Government Institute data <a href='https://ropengov.github.io/rqog/'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
+[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](http://ropengov.org/)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rqog)](https://CRAN.R-project.org/package=rqog)
-[![R-CMD-check](https://github.com/rOpenGov/rqog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rOpenGov/rqog/actions/workflows/R-CMD-check.yaml)
-[![r-universe](https://ropengov.r-universe.dev/badges/rqog)](https://ropengov.r-universe.dev/)
 <!-- badges: end -->
 
 Download the latest and archived datasets from the [Quality of
@@ -20,26 +19,13 @@ Government Institute](https://qog.pol.gu.se/data) using the function
 for help, [package
 vignette](http://ropengov.github.io/rqog/articles/rqog_tutorial.html)
 for more examples and
-[data.markuskainu.fi/qog/](https://data.markuskainu.fi/qog/index.html)
-for interactive metadata.
+[muuankarski.shinyapps.io/rqog_app](https://muuankarski.shinyapps.io/rqog_app)
+for interactive metadata shiny.
 
 ## Installation
 
 ``` r
 remotes::install_github("ropengov/rqog")
-```
-
-Alternatively, you can use the
-[r-universe](https://ropengov.r-universe.dev):
-
-``` r
-# Enable this universe
-options(repos = c(
-  ropengov = "https://ropengov.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-
-install.packages("rqog")
 ```
 
 ## Use
@@ -55,12 +41,10 @@ dat <- read_qog(which_data = "standard", data_type = "time-series")
 
 ``` r
 library(rqog)
-meta_std_ts_2022[grepl("human development", meta_std_ts_2022$name, ignore.case = TRUE),]
-#> # A tibble: 2 × 5
-#>   code     name                    value label class  
-#>   <chr>    <chr>                   <dbl> <chr> <chr>  
-#> 1 iiag_hd  Human Development          NA <NA>  numeric
-#> 2 undp_hdi Human Development Index    NA <NA>  numeric
+meta_std_ts_2023[grepl("human development", meta_std_ts_2023$name, ignore.case = TRUE),]
+#>          code                    name value label   class
+#> 1416  iiag_hd       Human Development    NA  <NA> numeric
+#> 1875 undp_hdi Human Development Index    NA  <NA> numeric
 ```
 
 **Plot an indicator**
@@ -75,7 +59,7 @@ ggplot(dat[!is.na(dat$undp_hdi),],
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-Copyright (C) 2012-2022 Markus Kainu <markuskainu@gmail.com>.
+Copyright (C) 2012-2023 Markus Kainu <markus.kainu@kapsi.fi>.
 MIT-licence.
 
 ## Disclaimer

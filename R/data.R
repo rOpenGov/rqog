@@ -1,8 +1,7 @@
-#' Metadata for 2022 Quality of Government institute Basic Data - time-series
+#' Metadata for 2023 Quality of Government institute Basic Data - time-series
 #' 
 #' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
 #' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
-#' 
 #'
 #' @family datasets 
 #' 
@@ -111,6 +110,11 @@
 #' }
 "meta_oecd_cs_2023"
 
+#' Metadata for 2022 Quality of Government institute Basic Data - time-series
+#' 
+#' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#'
 #' @family datasets 
 #'  
 #' @format A data frame with 458 rows and five columns 

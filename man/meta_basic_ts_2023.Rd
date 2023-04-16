@@ -3,7 +3,7 @@
 \docType{data}
 \name{meta_basic_ts_2023}
 \alias{meta_basic_ts_2023}
-\title{Metadata for 2022 Quality of Government institute Basic Data - time-series}
+\title{Metadata for 2023 Quality of Government institute Basic Data - time-series}
 \format{
 A data frame with 458 rows and five columns 
 \describe{
@@ -37,6 +37,7 @@ Other datasets:
 \code{\link{meta_basic_ts_2019}},
 \code{\link{meta_basic_ts_2020}},
 \code{\link{meta_basic_ts_2021}},
+\code{\link{meta_basic_ts_2022}},
 \code{\link{meta_oecd_cs_2016}},
 \code{\link{meta_oecd_cs_2017}},
 \code{\link{meta_oecd_cs_2018}},
