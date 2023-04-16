@@ -75,7 +75,7 @@ ui <- fluidPage(lang = "fi",
                            " metadata and completeness of variables and timeseries."),
                     tags$p("Analytical tools are available at ", tags$a(href = "https://www.gu.se/en/quality-government/qog-data/visualization-tools", "QoG-website"),"."),
                     tags$hr(),
-                    tags$p("(C) Markus Kainu 2011-2022"),
+                    tags$p("(C) Markus Kainu 2011-2023"),
                     tags$a(href = "https://github.com/rOpenGov/rqog/blob/master/inst/extras/rqog_app/app.R", 
                            tags$code("Source code at Github"))
                     ),

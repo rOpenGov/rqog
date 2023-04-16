@@ -30,13 +30,14 @@ Other datasets:
 \code{\link{meta_basic_cs_2020}},
 \code{\link{meta_basic_cs_2021}},
 \code{\link{meta_basic_cs_2022}},
+\code{\link{meta_basic_cs_2023}},
 \code{\link{meta_basic_ts_2016}},
 \code{\link{meta_basic_ts_2017}},
 \code{\link{meta_basic_ts_2018}},
 \code{\link{meta_basic_ts_2019}},
 \code{\link{meta_basic_ts_2020}},
 \code{\link{meta_basic_ts_2021}},
-\code{\link{meta_basic_ts_2022}},
+\code{\link{meta_basic_ts_2023}},
 \code{\link{meta_oecd_cs_2016}},
 \code{\link{meta_oecd_cs_2017}},
 \code{\link{meta_oecd_cs_2018}},
@@ -44,6 +45,7 @@ Other datasets:
 \code{\link{meta_oecd_cs_2020}},
 \code{\link{meta_oecd_cs_2021}},
 \code{\link{meta_oecd_cs_2022}},
+\code{\link{meta_oecd_cs_2023}},
 \code{\link{meta_oecd_ts_2016}},
 \code{\link{meta_oecd_ts_2017}},
 \code{\link{meta_oecd_ts_2018}},
@@ -51,6 +53,7 @@ Other datasets:
 \code{\link{meta_oecd_ts_2020}},
 \code{\link{meta_oecd_ts_2021}},
 \code{\link{meta_oecd_ts_2022}},
+\code{\link{meta_oecd_ts_2023}},
 \code{\link{meta_std_cs_2016}},
 \code{\link{meta_std_cs_2017}},
 \code{\link{meta_std_cs_2018}},
@@ -58,12 +61,14 @@ Other datasets:
 \code{\link{meta_std_cs_2020}},
 \code{\link{meta_std_cs_2021}},
 \code{\link{meta_std_cs_2022}},
+\code{\link{meta_std_cs_2023}},
 \code{\link{meta_std_ts_2016}},
 \code{\link{meta_std_ts_2017}},
 \code{\link{meta_std_ts_2018}},
 \code{\link{meta_std_ts_2019}},
 \code{\link{meta_std_ts_2020}},
-\code{\link{meta_std_ts_2021}}
+\code{\link{meta_std_ts_2021}},
+\code{\link{meta_std_ts_2023}}
 }
 \concept{datasets}
 \keyword{datasets}

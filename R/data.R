@@ -5,6 +5,113 @@
 #' 
 #'
 #' @family datasets 
+#' 
+#' @format A data frame with 458 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_basic_ts_2023"
+
+#' Metadata for 2023 Quality of Government institute Basic Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government Basic data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#'
+#' @family datasets 
+#'  
+#' @format A data frame with 465 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_basic_cs_2023"
+
+
+#'
+#' Metadata for 2023 Quality of Government institute Standard Data - time-series
+#' 
+#' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#'
+#' @family datasets 
+#'  
+#' @format A data frame with 2408 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_std_ts_2023"
+
+#'
+#' Metadata for 2023 Quality of Government institute Standard Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government Standard data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#'
+#' @family datasets 
+#'  
+#' @format A data frame with 1937 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_std_cs_2023"
+
+#'
+#' Metadata for 2023 Quality of Government institute OECD Data - time-series
+#' 
+#' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#'
+#' @family datasets 
+#'  
+#' @format A data frame with 1464 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_oecd_ts_2023"
+
+#'
+#' Metadata for 2023 Quality of Government institute OECD Data - cross-sectional
+#' 
+#' Generated automatically from spss-version of Quality of Government OECD data using \code{tidymetadata::create_metadata()} function. 
+#' Formatted in tidy-format with row per each value of an indicator. Numeric indicators have a single row per indicator.   
+#' 
+#'
+#' @family datasets 
+#'  
+#' @format A data frame with 1223 rows and five columns 
+#' \describe{
+#'    \item{code}{Indicator code in data}
+#'    \item{name}{Name of the indicator}
+#'    \item{value}{Indicator value for factor indicator}
+#'    \item{label}{Value label for factor indicators}
+#'    \item{class}{Class of the indicator. Numeric, factor or character}
+#' }
+"meta_oecd_cs_2023"
+
+#' @family datasets 
 #'  
 #' @format A data frame with 458 rows and five columns 
 #' \describe{

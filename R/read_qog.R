@@ -36,13 +36,14 @@
 
 read_qog <- function(which_data = "basic", 
                      data_type="time-series", 
-                     year = 2022,
+                     year = 2023,
                      data_dir = NULL, 
                      file_format = "csv",
                      download_only = FALSE,
-                     cache = TRUE, update_cache = FALSE) {
+                     cache = TRUE, 
+                     update_cache = FALSE) {
   month = "jan"
-  latest_year <- 2022
+  latest_year <- 2023
   # checks
   if (!year %in% 2008:latest_year) stop(glue("Data has been published between 2008 and {latest_year}"))
   if (year != 2019 & file_format == "xlsx") stop("Only the latest data is available in .xlsx-format. Archived data only in .dat, .sav or .csv format")
@@ -95,8 +96,16 @@ read_qog <- function(which_data = "basic",
   
   if (data_type == "cross-sectional") dtype <- "cs"
   if (data_type == "time-series")     dtype <- "ts"
+
+  if (year == 2023 && file_format == "dta"){
+   postfix <- "_stata14"
+  } else {
+    postfix <- ""
+  }
   
-  file.name <- glue("qog_{dname}_{dtype}_{month}{substr(year, 3, 4)}.{file_ext}")
+  file.name <- glue::glue("qog_{dname}_{dtype}_{month}{substr(year, 3, 4)}{postfix}.{file_ext}")
+  
+  
   
   # creating local file path
   
@@ -141,7 +150,7 @@ read_qog <- function(which_data = "basic",
       message(glue("Reading cache file {cf}"))
       # y <- readRDS(cache_file)
       if (file_format == "csv")  dd <- read.csv(cache_file, sep=",", stringsAsFactors = FALSE)
-      if (file_format == "dta")  dd <- read_dta(cache_file)
+      if (file_format == "dta")  dd <- haven::read_dta(cache_file)
       if (file_format == "sav")  dd <- read_sav(cache_file)
       if (file_format == "xlsx") dd <- read_excel(cache_file)
     }
