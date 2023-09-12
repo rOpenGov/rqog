@@ -19,8 +19,8 @@ Government Institute](https://qog.pol.gu.se/data) using the function
 for help, [package
 vignette](http://ropengov.github.io/rqog/articles/rqog_tutorial.html)
 for more examples and
-[muuankarski.shinyapps.io/rqog_app](https://muuankarski.shinyapps.io/rqog_app)
-for interactive metadata shiny.
+[shiny.vaphana.com/rqog_app](https://shiny.vaphana.com/rqog_app/) for
+interactive metadata shiny.
 
 ## Installation
 
