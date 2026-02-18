@@ -1,14 +1,16 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/master/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+# Workflow triggering derived from: https://stevenmortimer.com/running-github-actions-sequentially/
 on:
   push:
     branches: [main, master]
     tags: ['*']
-    paths-ignore: 
-      - 'README.Rmd'
+    paths-ignore:
+    - 'README.Rmd'
   repository_dispatch:
     types: [trigger-pkgdown-workflow]
   workflow_dispatch:
+
 
 name: rogtemplate-gh-pages
 
@@ -18,39 +20,39 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v6
 
-      - uses: r-lib/actions/setup-pandoc@v1
+    - uses: r-lib/actions/setup-pandoc@v2
 
-      - uses: r-lib/actions/setup-r@v1
-        with:
-          use-public-rspm: true
+    - uses: r-lib/actions/setup-r@v2
+      with:
+        use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: |
-            magick
-            ropengov/rogtemplate
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        needs: website
+        extra-packages: |
+          local::.
+          any::pkgdown
+          ropengov/rogtemplate
 
-          needs: website
+    - name: Build logo if not present and prepare template
+      run: |
+        # Check that logo is not present
+        if (isFALSE(file.exists(file.path("man", "figures", "logo.png")) ||
+          file.exists(file.path("man", "figures", "logo.png")))) {
+          rogtemplate::rog_logo()
+        } else {
 
-      - name: Build logo if not present and prepare template
-        run: |
-          # Check that logo is not present
-          if (isFALSE(file.exists(file.path("man", "figures", "logo.png")) ||
-            file.exists(file.path("man", "figures", "logo.png")))) {
-            rogtemplate::rog_logo()
-          } else {
+          message("The package already has a logo")
+        }
 
-            message("The package already has a logo")
-          }
+        rogtemplate::rog_add_template_pkgdown()
 
-          rogtemplate::rog_add_template_pkgdown()
+      shell: Rscript {0}
 
-        shell: Rscript {0}
-
-      - name: Deploy package
-        run: |
-          git config --local user.name "$GITHUB_ACTOR"
-          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+    - name: Deploy package
+      run: |
+        git config --local user.name "$GITHUB_ACTOR"
+        git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
