@@ -1,6 +1,6 @@
 # rqog-package for R
 
-`compiled at` 2026-02-18 20:46:17.741753
+`compiled at` 2026-02-19 05:59:33.020334
 
 *Download data from the Quality of Government Institute data*
 
