@@ -1,6 +1,6 @@
 # rqog-package for R
 
-`compiled at` 2026-02-26 09:29:55.772146
+`compiled at` 2026-03-10 15:17:15.000384
 
 *Download data from the Quality of Government Institute data*
 
@@ -407,15 +407,15 @@ sessionInfo()
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] gtable_0.3.6       jsonlite_2.0.0     compiler_4.5.2     tidyselect_1.2.1  
-    ##  [5] jquerylib_0.1.4    scales_1.4.0       systemfonts_1.3.1  textshaping_1.0.4 
+    ##  [5] jquerylib_0.1.4    scales_1.4.0       systemfonts_1.3.2  textshaping_1.0.5 
     ##  [9] yaml_2.3.12        fastmap_1.2.0      readxl_1.4.5       R6_2.6.1          
     ## [13] labeling_0.4.3     generics_0.1.4     knitr_1.51         htmlwidgets_1.6.4 
     ## [17] forcats_1.0.1      tibble_3.3.1       desc_1.4.3         RColorBrewer_1.1-3
     ## [21] bslib_0.10.0       pillar_1.11.1      rlang_1.1.7        utf8_1.2.6        
-    ## [25] cachem_1.1.0       xfun_0.56          S7_0.2.1           fs_1.6.6          
+    ## [25] cachem_1.1.0       xfun_0.56          S7_0.2.1           fs_1.6.7          
     ## [29] sass_0.4.10        cli_3.6.5          withr_3.0.2        pkgdown_2.2.0     
     ## [33] magrittr_2.0.4     digest_0.6.39      grid_4.5.2         haven_2.5.5       
     ## [37] hms_1.1.4          lifecycle_1.0.5    vctrs_0.7.1        evaluate_1.0.5    
-    ## [41] glue_1.8.0         farver_2.1.2       cellranger_1.1.0   ragg_1.5.0        
+    ## [41] glue_1.8.0         farver_2.1.2       cellranger_1.1.0   ragg_1.5.1        
     ## [45] purrr_1.2.1        rmarkdown_2.30     tools_4.5.2        pkgconfig_2.0.3   
     ## [49] htmltools_0.5.9
