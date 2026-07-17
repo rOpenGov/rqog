@@ -1,6 +1,6 @@
 # rqog-package for R
 
-`compiled at` 2026-03-10 15:17:15.000384
+`compiled at` 2026-07-17 15:28:37.891858
 
 *Download data from the Quality of Government Institute data*
 
@@ -58,6 +58,7 @@ You consult the codebooks for description of the data and indicators.
 ## Installation
 
 ``` r
+
 library(devtools)
 install_github("ropengov/rqog")
 library(rqog)
@@ -75,6 +76,7 @@ population and Democracy (Freedom House/Polity) index from
 BRIC-countries from 1990 to 2010 and to plot it.
 
 ``` r
+
 library(rqog)
 library(dplyr)
 library(ggplot2)
@@ -117,6 +119,7 @@ example on how to extract data on *Economic Performance* and *GINI index
 (World Bank estimate)* from BRIC-countries and plot it.
 
 ``` r
+
 library(rqog)
 # Download a local coppy of the file
 standard <- read_qog("standard", "time-series")
@@ -165,6 +168,7 @@ We will include all the countries and all the years included in the
 data.
 
 ``` r
+
 library(rqog)
 # Download a local coppy of the file
 oecd <- read_qog("oecd", "time-series")
@@ -210,6 +214,7 @@ find indicators containing term `Corruption` either in lower or
 uppercase.
 
 ``` r
+
 library(rqog)
 meta_basic_ts_2022[grepl("Corruption", meta_basic_ts_2022$name, ignore.case = TRUE),]
 ```
@@ -240,6 +245,7 @@ metadatas to assign labels for values of such indicators. Lets take the
 colums of the data.
 
 ``` r
+
 meta_basic_ts_2022 %>% filter(code == "ccp_cc") %>% select(value,label)
 ```
 
@@ -256,6 +262,7 @@ Currently we have basic data in R in an object called `basic`. Lets see
 the frequencies of each value
 
 ``` r
+
 basic %>% count(ccp_cc)
 ```
 
@@ -268,6 +275,7 @@ basic %>% count(ccp_cc)
 Now, using the metadata with assign values with corresponding labels
 
 ``` r
+
 basic %>% 
   count(ccp_cc) %>% 
   mutate(ccp_cc_lab = meta_basic_ts_2022[meta_basic_ts_2022$code == "ccp_cc",]$label[match(ccp_cc,meta_basic_ts_2022[meta_basic_ts_2022$code == "ccp_cc",]$value)])
@@ -283,6 +291,7 @@ So, lets find two factor variables with few more values from the
 *cross-sectional* data
 
 ``` r
+
 meta_basic_cs_2022 %>% 
   filter(class =="factor") %>% 
   group_by(code) %>% 
@@ -317,6 +326,7 @@ meta_basic_cs_2022 %>%
 Lets take these two factors and summarise the regime types per regions
 
 ``` r
+
 meta_basic_cs_2022 %>% 
   filter(code %in% c("ht_region","ht_colonial")) %>% 
   distinct(code, .keep_all = TRUE)
@@ -329,6 +339,7 @@ meta_basic_cs_2022 %>%
     ## 2 ht_region   The Region of the Country     1 1. Eastern Europe and post … fact…
 
 ``` r
+
 # lets download the cross-sectional data first
 basic_cs <- read_qog(which_data = "basic", data_type = "cross-sectional")
 
@@ -356,6 +367,7 @@ head(plot_d)
     ## 6         3           3     1 3. North Africa & the Middle East  3. Italian
 
 ``` r
+
 # lets abbreviate option '0. Never colonized by a Western overseas colonial power' to '0. Never'
 plot_d$ht_colonial_lab[plot_d$ht_colonial_lab == "0. Never colonized by a Western overseas colonial power"] <- '0. Never'
 ```
@@ -363,6 +375,7 @@ plot_d$ht_colonial_lab[plot_d$ht_colonial_lab == "0. Never colonized by a Wester
 Then we can create a simple bar plot
 
 ``` r
+
 # indicators names from metadata
 ind_name <- unique(meta_basic_cs_2022[meta_basic_cs_2022$code == "ht_colonial",]$name)
 group_name <- unique(meta_basic_cs_2022[meta_basic_cs_2022$code == "ht_region",]$name)
@@ -379,12 +392,13 @@ ggplot(plot_d, aes(x=ht_colonial_lab,y=n)) +
 ![](rqog_tutorial_files/figure-html/unnamed-chunk-10-1.png)
 
 ``` r
+
 sessionInfo()
 ```
 
-    ## R version 4.5.2 (2025-10-31)
+    ## R version 4.6.1 (2026-06-24)
     ## Platform: x86_64-pc-linux-gnu
-    ## Running under: Ubuntu 24.04.3 LTS
+    ## Running under: Ubuntu 24.04.4 LTS
     ## 
     ## Matrix products: default
     ## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
@@ -403,19 +417,19 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] tidyr_1.3.2   ggplot2_4.0.2 dplyr_1.2.0   rqog_0.4.2023
+    ## [1] tidyr_1.3.2   ggplot2_4.0.3 dplyr_1.2.1   rqog_0.4.2023
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] gtable_0.3.6       jsonlite_2.0.0     compiler_4.5.2     tidyselect_1.2.1  
+    ##  [1] gtable_0.3.6       jsonlite_2.0.0     compiler_4.6.1     tidyselect_1.2.1  
     ##  [5] jquerylib_0.1.4    scales_1.4.0       systemfonts_1.3.2  textshaping_1.0.5 
-    ##  [9] yaml_2.3.12        fastmap_1.2.0      readxl_1.4.5       R6_2.6.1          
+    ##  [9] yaml_2.3.12        fastmap_1.2.0      readxl_1.5.0       R6_2.6.1          
     ## [13] labeling_0.4.3     generics_0.1.4     knitr_1.51         htmlwidgets_1.6.4 
     ## [17] forcats_1.0.1      tibble_3.3.1       desc_1.4.3         RColorBrewer_1.1-3
-    ## [21] bslib_0.10.0       pillar_1.11.1      rlang_1.1.7        utf8_1.2.6        
-    ## [25] cachem_1.1.0       xfun_0.56          S7_0.2.1           fs_1.6.7          
-    ## [29] sass_0.4.10        cli_3.6.5          withr_3.0.2        pkgdown_2.2.0     
-    ## [33] magrittr_2.0.4     digest_0.6.39      grid_4.5.2         haven_2.5.5       
-    ## [37] hms_1.1.4          lifecycle_1.0.5    vctrs_0.7.1        evaluate_1.0.5    
-    ## [41] glue_1.8.0         farver_2.1.2       cellranger_1.1.0   ragg_1.5.1        
-    ## [45] purrr_1.2.1        rmarkdown_2.30     tools_4.5.2        pkgconfig_2.0.3   
-    ## [49] htmltools_0.5.9
+    ## [21] bslib_0.11.0       pillar_1.11.1      rlang_1.3.0        utf8_1.2.6        
+    ## [25] cachem_1.1.0       xfun_0.60          S7_0.2.2           fs_2.1.0          
+    ## [29] sass_0.4.10        otel_0.2.0         cli_3.6.6          withr_3.0.3       
+    ## [33] pkgdown_2.2.1      magrittr_2.0.5     grid_4.6.1         digest_0.6.39     
+    ## [37] haven_2.5.5        hms_1.1.4          lifecycle_1.0.5    vctrs_0.7.3       
+    ## [41] evaluate_1.0.5     glue_1.8.1         farver_2.1.2       cellranger_1.1.0  
+    ## [45] ragg_1.5.2         purrr_1.2.2        rmarkdown_2.31     tools_4.6.1       
+    ## [49] pkgconfig_2.0.3    htmltools_0.5.9

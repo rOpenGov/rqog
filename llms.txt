@@ -13,6 +13,7 @@ interactive metadata shiny.
 ## Installation
 
 ``` r
+
 remotes::install_github("ropengov/rqog")
 ```
 
@@ -21,6 +22,7 @@ remotes::install_github("ropengov/rqog")
 **Download data**
 
 ``` r
+
 library(rqog)
 dat <- read_qog(which_data = "standard", data_type = "time-series")
 ```
@@ -28,6 +30,7 @@ dat <- read_qog(which_data = "standard", data_type = "time-series")
 **Browse metadata**
 
 ``` r
+
 library(rqog)
 meta_std_ts_2023[grepl("human development", meta_std_ts_2023$name, ignore.case = TRUE),]
 #>          code                    name value label   class
@@ -38,6 +41,7 @@ meta_std_ts_2023[grepl("human development", meta_std_ts_2023$name, ignore.case =
 **Plot an indicator**
 
 ``` r
+
 library(ggplot2)
 ggplot(dat[!is.na(dat$undp_hdi),], 
        aes(x = year, y = undp_hdi, color = cname)) + 
